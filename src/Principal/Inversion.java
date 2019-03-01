@@ -6,6 +6,11 @@ public abstract class Inversion {
 	private Origen_Inv[] origenes;
 	private Usuario[] usuarios;
 	
+	public Inversion(String codigo, String tipo) {
+		super();
+		this.codigo = codigo;
+		this.tipo = tipo;
+	}
 	// ---------- GETTERS & SETTERS ---------- //
 	public String getCodigo() {
 		return codigo;
