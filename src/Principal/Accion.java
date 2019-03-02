@@ -6,7 +6,7 @@ public class Accion extends Inversion {
 	private String idAcc;
 	
 	public Accion(String codigo, String tipo, String idAcc) {
-		super(codigo , tipo);
+		super(codigo, tipo);
 		this.idAcc = idAcc;
 	}
 	
@@ -24,7 +24,6 @@ public class Accion extends Inversion {
 	public void setIdAcc(String idAcc) {
 		this.idAcc = idAcc;
 	}
-	
 	
 	
 	

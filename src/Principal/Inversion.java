@@ -7,7 +7,6 @@ public abstract class Inversion {
 	private Usuario[] usuarios;
 	
 	public Inversion(String codigo, String tipo) {
-		super();
 		this.codigo = codigo;
 		this.tipo = tipo;
 	}

@@ -6,7 +6,6 @@ public class CuentaBancaria {
 	private String id;
 	
 	public CuentaBancaria(float saldo, String id) {
-		super();
 		this.saldo = saldo;
 		this.id = id;
 	}
