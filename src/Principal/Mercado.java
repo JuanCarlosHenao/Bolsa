@@ -114,4 +114,40 @@ public class Mercado {
 		origenes = Arrays.copyOf(origenes2, origenes2.length);
 		throw new EOrigen("No se pudo eliminar el origen de la inversión.");
 	}
+		
+			// ----- BÚSQUEDA DE CLASES
+	
+	public Usuario buscarUsuario(String id) throws EUsuario {
+		int i = 0 ;
+		while(i < usuarios.length) {
+			if(usuarios[i].getId().compareTo(id)==0) {
+				return usuarios[i];
+			}
+			else i++;
+		}
+		throw new EUsuario("No se pudo encontrar el usuario.");
+	}
+	
+	public Inversion buscarInversion(String codigo) throws EInversion {
+		int i = 0;
+		while(i < inversiones.length) {
+			if(inversiones[i].getCodigo().compareTo(codigo)==0) {
+				return inversiones[i];
+			} else i++;
+		}
+		throw new EInversion("No se pudo encontrar la inversión.");
+	}
+	
+	public Origen_Inv buscarOrigen(String id) throws EOrigen {
+		int i = 0 ;
+		while(i < origenes.length) {
+			if(origenes[i].getId().compareTo(id)==0) {
+				return origenes[i];
+			} else i++;
+		}
+		throw new EOrigen("No se encontró el origen de la acción.");
+	}
+	
+	
+	
 }

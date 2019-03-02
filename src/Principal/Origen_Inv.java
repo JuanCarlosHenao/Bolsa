@@ -3,12 +3,13 @@ package Principal;
 public class Origen_Inv {
 
 	private String nombre;
+	private String id;
 	private String tipo;
 	private double precioBase;
 	
-	public Origen_Inv(String nombre, String tipo, double precioBase) {
-		super();
+	public Origen_Inv(String nombre, String id, String tipo, double precioBase) {
 		this.nombre = nombre;
+		this.id = id;
 		this.tipo = tipo;
 		this.precioBase = precioBase;
 	}
@@ -31,6 +32,13 @@ public class Origen_Inv {
 	}
 	public void setPrecioBase(double precioBase) {
 		this.precioBase = precioBase;
+	}
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
 	}
 	
 }
