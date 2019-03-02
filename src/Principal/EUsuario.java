@@ -12,8 +12,8 @@ class EInversion extends Exception {
 	}
 }
 
-class EOrigen extends Exception {
-	public EOrigen(String s) {
+class EProveedor extends Exception {
+	public EProveedor(String s) {
 		super(s);
 	}
 }

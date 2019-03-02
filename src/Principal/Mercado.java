@@ -6,7 +6,7 @@ public class Mercado {
 
 	private Usuario[] usuarios;
 	private Inversion[] inversiones;
-	private Origen_Inv[] origenes;
+	private Proveedor[] proveedores;
 	private String nombre;
 	
 	public Mercado(String nombre) {
@@ -26,11 +26,11 @@ public class Mercado {
 	public void setInversiones(Inversion[] inversiones) {
 		this.inversiones = inversiones;
 	}
-	public Origen_Inv[] getOrigenes() {
-		return origenes;
+	public Proveedor[] getProveedor() {
+		return proveedores;
 	}
-	public void setOrigenes(Origen_Inv[] origenes) {
-		this.origenes = origenes;
+	public void setProveedor(Proveedor[] proveedores) {
+		this.proveedores = proveedores;
 	}
 	public String getNombre() {
 		return nombre;
@@ -62,13 +62,13 @@ public class Mercado {
 		inversiones[inversiones.length-1] = i;
 	}
 	
-	public void addOrigen(Origen_Inv origen) {
-		if(origenes == null) {
-			origenes = new Origen_Inv[1];
+	public void addProveedor(Proveedor p) {
+		if(proveedores == null) {
+			proveedores = new Proveedor[1];
 		} else {
-			origenes = Arrays.copyOf(origenes, origenes.length+1);
+			proveedores = Arrays.copyOf(proveedores, proveedores.length+1);
 		}
-		origenes[origenes.length-1] = origen;
+		proveedores[proveedores.length-1] = p;
 	}
 	
 		// ----- ELIMINACION DE CLASES
@@ -101,18 +101,18 @@ public class Mercado {
 		throw new EInversion("No se pudo eliminar la inversión.");
 	}
 	
-	public void eliminarOrigen(String nombre) throws EOrigen {
-		Origen_Inv[] origenes2;
-		origenes2 = new Origen_Inv[origenes.length-1];
+	public void eliminarProveedor(String nombre) throws EProveedor {
+		Proveedor[] proveedores2;
+		proveedores2 = new Proveedor[proveedores.length-1];
 		int cont = 0 ;
-		for(int i = 0 ; i < origenes.length ; i++) {
-			if(origenes[i].getNombre().compareTo(nombre)!=0) {
-				origenes2[cont] = origenes[i];
+		for(int i = 0 ; i < proveedores.length ; i++) {
+			if(proveedores[i].getNombre().compareTo(nombre)!=0) {
+				proveedores2[cont] = proveedores[i];
 				cont++;
 			}
 		}
-		origenes = Arrays.copyOf(origenes2, origenes2.length);
-		throw new EOrigen("No se pudo eliminar el origen de la inversión.");
+		proveedores = Arrays.copyOf(proveedores2, proveedores2.length);
+		throw new EProveedor("No se pudo eliminar el origen de la inversión.");
 	}
 		
 			// ----- BÚSQUEDA DE CLASES
@@ -133,20 +133,46 @@ public class Mercado {
 		while(i < inversiones.length) {
 			if(inversiones[i].getCodigo().compareTo(codigo)==0) {
 				return inversiones[i];
-			} else i++;
+			} else i++; 
 		}
 		throw new EInversion("No se pudo encontrar la inversión.");
 	}
 	
-	public Origen_Inv buscarOrigen(String id) throws EOrigen {
+	public Proveedor buscarProveedor(String id) throws EProveedor {
 		int i = 0 ;
-		while(i < origenes.length) {
-			if(origenes[i].getId().compareTo(id)==0) {
-				return origenes[i];
+		while(i < proveedores.length) {
+			if(proveedores[i].getId().compareTo(id)==0) {
+				return proveedores[i];
 			} else i++;
 		}
-		throw new EOrigen("No se encontró el origen de la acción.");
+		throw new EProveedor("No se encontró el origen de la acción.");
 	}
+	
+		// ----- ESTADO DE UNA INVERSION: determina la fase en la cual se encuentra la inversion (PLANEACION , EJECUCION , FINALIZACION)
+	
+	
+	
+		// ----- TOTAL INVERSION POR USUARIO
+	public double inversionTotalPorUsuario(String id) throws EInversion, EUsuario {
+		double total = 0;
+		for(int i = 0 ; i < inversiones.length ; i++) {
+			if(inversiones[i].getCodigo().compareTo(id)==0) {
+				total += inversiones[i].valorInversion();
+			}
+		}
+		return total;
+	}
+	
+	
+		// ----- TOTAL INVERSION DEL MERCADO
+	public double inversionTotalMercado() throws EInversion {
+		double total = 0 ;
+		for(int i = 0 ; i < inversiones.length ; i++) {
+			total += inversiones[i].valorInversion();
+		}
+		return total;
+	}
+	
 	
 	
 	

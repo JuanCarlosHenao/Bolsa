@@ -3,7 +3,7 @@ package Principal;
 public abstract class Inversion {
 	protected String codigo;
 	protected String tipo;
-	private Origen_Inv[] origenes;
+	private Proveedor[] proveedores;
 	private Usuario[] usuarios;
 	
 	public Inversion(String codigo, String tipo) {
@@ -23,17 +23,25 @@ public abstract class Inversion {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public Origen_Inv[] getOrigenes() {
-		return origenes;
+	public Proveedor[] getProveedores() {
+		return proveedores;
 	}
-	public void setOrigenes(Origen_Inv[] origenes) {
-		this.origenes = origenes;
+	public void setProveedores(Proveedor[] proveedores) {
+		this.proveedores = proveedores;
 	}
 	public Usuario[] getUsuarios() {
 		return usuarios;
 	}
 	public void setUsuarios(Usuario[] usuarios) {
 		this.usuarios = usuarios;
+	}
+	
+	// ----------- METODOS DE LA CLASE ---------- // 
+	
+		// ----- METODO QUE CALCULA EL VALOR DE LA INVERSION CONSIDERANDO LAS VARIABLES DE CAMBIO 
+	public double valorInversion() {
+		double total=0;
+		return total;
 	}
 	
 	

@@ -1,13 +1,13 @@
 package Principal;
 
-public class Origen_Inv {
+public class Proveedor {
 
 	private String nombre;
 	private String id;
 	private String tipo;
 	private double precioBase;
 	
-	public Origen_Inv(String nombre, String id, String tipo, double precioBase) {
+	public Proveedor(String nombre, String id, String tipo, double precioBase) {
 		this.nombre = nombre;
 		this.id = id;
 		this.tipo = tipo;
