@@ -1,4 +1,4 @@
-package Principal;
+package principal;
 
 public abstract class Inversion {
 	protected String codigo;

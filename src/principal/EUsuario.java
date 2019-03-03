@@ -1,4 +1,4 @@
-package Principal;
+package principal;
 
 public class EUsuario extends Exception {
 	public EUsuario(String s) {
