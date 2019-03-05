@@ -3,13 +3,15 @@ package principal;
 public abstract class Inversion {
 	protected String codigo;
 	protected String tipo;
+	private double precioBase;
 	private Proveedor proveedores;
 	private Usuario[] usuarios;
-	private double precioBase;
 	
-	public Inversion(String codigo, String tipo) {
+	
+	public Inversion(String codigo, String tipo, double precioBase) {
 		this.codigo = codigo;
 		this.tipo = tipo;
+		this.precioBase = precioBase;
 	}
 	// ---------- GETTERS & SETTERS ---------- //
 	public String getCodigo() {

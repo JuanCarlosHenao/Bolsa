@@ -4,24 +4,21 @@ import java.util.Arrays;
 
 public class Proveedor {
 
-	private String nombre;
-	private String id;
-	private String tipo;
-	private double precioBase;
+	private String nombre;			//nombre del proveedor
+	private String id;				// codigo identificante del proveedor
+	private String tipo;			// tipo de acciones en mercado
 	private Inversion[] inversiones;
 	
-	public Proveedor(String nombre, String id, String tipo, double precioBase) {
+	public Proveedor(String nombre, String id, String tipo) {
 		this.nombre = nombre;
 		this.id = id;
 		this.tipo = tipo;
-		this.precioBase = precioBase;
 	}
 	
-	public Proveedor(String nombre, String id, String tipo, double precioBase, Inversion[] inversiones) {
+	public Proveedor(String nombre, String id, String tipo, Inversion[] inversiones) {
 		this.nombre = nombre;
 		this.id = id;
 		this.tipo = tipo;
-		this.precioBase = precioBase;
 		this.inversiones = inversiones;
 	}
 
@@ -37,12 +34,6 @@ public class Proveedor {
 	}
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
-	}
-	public double getPrecioBase() {
-		return precioBase;
-	}
-	public void setPrecioBase(double precioBase) {
-		this.precioBase = precioBase;
 	}
 	public String getId() {
 		return id;

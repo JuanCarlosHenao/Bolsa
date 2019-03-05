@@ -8,7 +8,6 @@ public class Variable {
 	private boolean pbPoliticos;
 	
 	public Variable(double $dolar, double $petroleo, double inflacion, boolean pbPoliticos) {
-		super();
 		this.$dolar = $dolar;
 		this.$petroleo = $petroleo;
 		this.inflacion = inflacion;

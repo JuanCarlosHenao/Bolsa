@@ -4,8 +4,8 @@ public class Bono extends Inversion {
 
 	private String idBono;
 	
-	public Bono(String codigo, String tipo, String idBono) {
-		super(codigo, tipo);
+	public Bono(String codigo, String tipo, double precioBase, String idBono) {
+		super(codigo, tipo, precioBase);
 		this.idBono = idBono;
 	}
 

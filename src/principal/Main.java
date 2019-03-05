@@ -2,10 +2,11 @@ package principal;
 
 public class Main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws EInversion, EUsuario, EProveedor {
 		
 		Mercado m = new Mercado("Bolsa de Colombia");
 		
+		//-- CREACION DE USUARIOS Y CUENTAS BANCARIAS
 		CuentaBancaria cb1 = new CuentaBancaria(1000000,"lucho1204");
 		Usuario u1 = new Usuario("Luis Montoya", "correo@luisfe.com", "lucho1204", cb1);
 		CuentaBancaria cb2 = new CuentaBancaria(100000,"henao7328");
@@ -26,9 +27,42 @@ public class Main {
 		for(int i = 0 ; i < usuarios.length ; i++ ) {
 			System.out.println("Nombre: " + usuarios[i].getNombre() + "\tId: " + usuarios[i].getId()
 							+ "\tCorreo: " + usuarios[i].getCorreo() + "\tSaldo: " + usuarios[i].getCuentas().getSaldo());
-			System.out.println();
-		}	
+		} System.out.println();	
+
+		//-- CREACION DE PROVEEDORES
+		Proveedor p1 = new Proveedor("Nestlé","N3sTl3","Acciones");
+		Proveedor p2 = new Proveedor("Russia","Russ14","CriptoMoneda");
+		Proveedor p3 = new Proveedor("Bancolombia","paisas123","Acciones");
+		m.addProveedor(p1); m.addProveedor(p2); m.addProveedor(p3);
 		
+		Proveedor[] proveedores = new Proveedor[3];
+		proveedores[0] = p1; proveedores[1] = p2; proveedores[2] = p3;
+		
+		for(int i = 0 ; i < proveedores.length; i++) {
+			System.out.println("Nombre: " + proveedores[i].getNombre() + "\tId: " + proveedores[i].getId()
+								+ "\tTipo de accion: " + proveedores[i].getTipo());
+		} System.out.println();
+		
+		//-- CREACION DE ACCIONES
+		Accion a1 = new Accion(p1.getId(),p1.getTipo(),25000,"accion1");
+		p1.addInversion(a1);
+		Bono b1 = new Bono(p2.getNombre(),p2.getId(),10000,"accion2");
+		p2.addInversion(b1);
+		CriptoMoneda c1 = new CriptoMoneda(p3.getNombre(), p3.getId(), 50000, "accion3");
+		p3.addInversion(c1);
+		
+		System.out.println("La acción identificada por el codigo " + a1.getIdAcc() 
+	 	                    + ", fue depositada por la empresa " + a1.getCodigo());
+		System.out.println("La acción identificada por el codigo " + b1.getIdBono() 
+							+ ", fue depositada por la empresa " + b1.getCodigo());
+		System.out.println("La acción identificada por el codigo " + c1.getIdCripto() 
+         					+ ", fue depositada por la empresa " + c1.getCodigo());
+		
+		//-- METODOS 
+		System.out.println();
+		System.out.println(m.buscarUsuario("lucho1204").getNombre());
+		System.out.println(m.buscarProveedor("Russ14").getNombre());
+		System.out.println(m.buscarInversion("accion1").getCodigo());
 		
 		
 	}
