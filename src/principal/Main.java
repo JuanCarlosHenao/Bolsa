@@ -50,6 +50,8 @@ public class Main {
 		p2.addInversion(b1);
 		CriptoMoneda c1 = new CriptoMoneda(p3.getNombre(), p3.getId(), 50000, "accion3");
 		p3.addInversion(c1);
+		Inversion[] inv = new Inversion[3];
+		inv[0] = a1; inv[1] = b1; inv[2] = c1;
 		
 		System.out.println("La acción identificada por el codigo " + a1.getIdAcc() 
 	 	                    + ", fue depositada por la empresa " + a1.getCodigo());
@@ -62,7 +64,8 @@ public class Main {
 		System.out.println();
 		System.out.println(m.buscarUsuario("lucho1204").getNombre());
 		System.out.println(m.buscarProveedor("Russ14").getNombre());
-		System.out.println(m.buscarInversion("accion1").getCodigo());
+		//System.out.println(m.buscarInversion("accion1").getCodigo());
+		
 		
 		
 	}
