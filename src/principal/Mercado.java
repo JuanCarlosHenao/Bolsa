@@ -69,15 +69,6 @@ public class Mercado {
 		usuarios[usuarios.length-1] = u ;
 	}
 	
-	public void addInversion(Inversion i) {
-		if(inversiones == null) {
-			inversiones = new Inversion[1];
-		} else {
-			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
-		}
-		inversiones[inversiones.length-1] = i;
-	}
-	
 	public void addProveedor(Proveedor p) {
 		if(proveedores == null) {
 			proveedores = new Proveedor[1];
@@ -101,20 +92,6 @@ public class Mercado {
 		}
 		usuarios = Arrays.copyOf(usuarios2, usuarios2.length);
 		throw new EUsuario("No se pudo eliminar el usuario.");
-	}
-	
-	public void eliminarInversion(String codigo) throws EInversion {
-		Inversion[] inversiones2;
-		inversiones2 = new Inversion[inversiones.length-1];
-		int cont = 0 ;
-		for(int i = 0 ; i < inversiones.length ; i++) {
-			if(inversiones[i].getCodigo().compareTo(codigo)!=0) {
-				inversiones2[cont]=inversiones[i];
-				cont++;
-			}
-		}
-		inversiones = Arrays.copyOf(inversiones2, inversiones2.length);
-		throw new EInversion("No se pudo eliminar la inversión.");
 	}
 	
 	public void eliminarProveedor(String nombre) throws EProveedor {
