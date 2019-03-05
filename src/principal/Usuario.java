@@ -48,4 +48,30 @@ public class Usuario {
 		this.cuentas = cuentas;
 	}
 	
+	
+	// ----- METODOS DE LA CLASE
+	
+	public void realizarInversion() {
+		
+	}
+	
+	public double consultarSaldo() {
+		return cuentas.getSaldo();
+	}
+	
+	public void historialInversiones() {
+		
+	}
+	
+	public double hacerDeposito(double monto) {
+		double saldoAnterior = cuentas.getSaldo();
+		if(monto > 0) {
+			saldoAnterior += monto;
+		} else {
+			System.out.println("Ingrese un valor positivo.");
+		}
+		return saldoAnterior;
+	}
+	
+	
 }

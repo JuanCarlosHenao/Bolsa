@@ -166,6 +166,13 @@ public class Mercado {
 		return total;
 	}
 	
+		// ----- CONSULTA EL ESTADO DE UNA INVERSION
+	public void consultarEstado() {
+		
+	}
+	
+	
+	
 	
 	
 	

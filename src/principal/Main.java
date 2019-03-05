@@ -30,7 +30,7 @@ public class Main {
 		} System.out.println();	
 
 		//-- CREACION DE PROVEEDORES
-		Proveedor p1 = new Proveedor("Nestlé","N3sTl3","Acciones");
+		Proveedor p1 = new Proveedor("Nestle","N3sTl3","Acciones");
 		Proveedor p2 = new Proveedor("Russia","Russ14","CriptoMoneda");
 		Proveedor p3 = new Proveedor("Bancolombia","paisas123","Acciones");
 		m.addProveedor(p1); m.addProveedor(p2); m.addProveedor(p3);
@@ -64,8 +64,12 @@ public class Main {
 		System.out.println();
 		System.out.println(m.buscarUsuario("lucho1204").getNombre());
 		System.out.println(m.buscarProveedor("Russ14").getNombre());
-		//System.out.println(m.buscarInversion("accion1").getCodigo());
+		//System.out.println(m.buscarInversion("Nestle").getCodigo());
+		System.out.println();
 		
+		System.out.println("El saldo inicial era de: " + u1.consultarSaldo());
+		u1.hacerDeposito(1234);
+		System.out.println("El saldo despues de cambios era de: " + u1.consultarSaldo());
 		
 		
 	}
