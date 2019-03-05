@@ -2,7 +2,6 @@ package principal;
 
 public class Accion extends Inversion {
 
-	private Variable[] variables;
 	private String idAcc;
 	
 	public Accion(String codigo, String tipo, String idAcc) {
@@ -11,13 +10,6 @@ public class Accion extends Inversion {
 	}
 	
 	//------------ GETTERS & SETTERS ---------- //
-	
-	public Variable[] getVariables() {
-		return variables;
-	}
-	public void setVariables(Variable[] variables) {
-		this.variables = variables;
-	}
 	public String getIdAcc() {
 		return idAcc;
 	}

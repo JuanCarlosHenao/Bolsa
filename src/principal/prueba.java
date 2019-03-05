@@ -14,9 +14,6 @@ public class prueba {
 		System.out.println("Precio Base de la accion:"+ precioBase);
 		
 		
-		
-		
-		
 		while(true) {
 			
 			Thread.sleep(3000);

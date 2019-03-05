@@ -3,7 +3,6 @@ package principal;
 public class Bono extends Inversion {
 
 	private String idBono;
-	private Variable[] variables;
 	
 	public Bono(String codigo, String tipo, String idBono) {
 		super(codigo, tipo);
@@ -19,13 +18,6 @@ public class Bono extends Inversion {
 		this.idBono = idBono;
 	}
 
-	public Variable[] getVariables() {
-		return variables;
-	}
-
-	public void setVariables(Variable[] variables) {
-		this.variables = variables;
-	}
 	
 	
 }

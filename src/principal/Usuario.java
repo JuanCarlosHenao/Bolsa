@@ -48,6 +48,4 @@ public class Usuario {
 		this.cuentas = cuentas;
 	}
 	
-	
-	
 }

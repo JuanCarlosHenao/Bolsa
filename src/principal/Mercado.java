@@ -7,6 +7,7 @@ public class Mercado {
 	private Usuario[] usuarios;
 	private Inversion[] inversiones;
 	private Proveedor[] proveedores;
+	private Variable[] variables;
 	private String nombre;
 	
 	public Mercado(String nombre) {
@@ -37,6 +38,21 @@ public class Mercado {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre ;
+	}
+	public Proveedor[] getProveedores() {
+		return proveedores;
+	}
+
+	public void setProveedores(Proveedor[] proveedores) {
+		this.proveedores = proveedores;
+	}
+
+	public Variable[] getVariables() {
+		return variables;
+	}
+
+	public void setVariables(Variable[] variables) {
+		this.variables = variables;
 	}
 	
 	
