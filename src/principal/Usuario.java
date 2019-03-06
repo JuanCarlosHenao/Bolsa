@@ -63,10 +63,11 @@ public class Usuario {
 		
 	}
 	
-	public double hacerDeposito(double monto) {
-		double saldoAnterior = cuentas.getSaldo();
+	public double hacerDeposito(float monto) {
+		float saldoAnterior = cuentas.getSaldo();
 		if(monto > 0) {
 			saldoAnterior += monto;
+			cuentas.setSaldo(saldoAnterior);
 		} else {
 			System.out.println("Ingrese un valor positivo.");
 		}

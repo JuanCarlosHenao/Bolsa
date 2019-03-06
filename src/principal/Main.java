@@ -52,10 +52,10 @@ public class Main {
 		p3.addInversion(c1);
 		Inversion[] inv = new Inversion[3];
 		inv[0] = a1; inv[1] = b1; inv[2] = c1;
-		
-		System.out.println("La acción identificada por el codigo " + a1.getIdAcc() 
-	 	                    + ", fue depositada por la empresa " + a1.getCodigo());
-		System.out.println("La acción identificada por el codigo " + b1.getIdBono() 
+		for(Inversion i:inv)
+		System.out.println("La acción identificada por el codigo " + i.getTipo() );
+	 	                 //   + ", fue depositada por la empresa " + a1.getCodigo());
+		/*System.out.println("La acción identificada por el codigo " + b1.getIdBono() 
 							+ ", fue depositada por la empresa " + b1.getCodigo());
 		System.out.println("La acción identificada por el codigo " + c1.getIdCripto() 
          					+ ", fue depositada por la empresa " + c1.getCodigo());
@@ -69,7 +69,7 @@ public class Main {
 		
 		System.out.println("El saldo inicial era de: " + u1.consultarSaldo());
 		u1.hacerDeposito(1234);
-		System.out.println("El saldo despues de cambios era de: " + u1.consultarSaldo());
+		System.out.println("El saldo despues de cambios era de: " + u1.consultarSaldo());*/
 		
 		
 	}
