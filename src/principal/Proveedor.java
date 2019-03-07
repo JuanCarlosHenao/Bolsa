@@ -6,19 +6,16 @@ public class Proveedor {
 
 	private String nombre;			//nombre del proveedor
 	private String id;				// codigo identificante del proveedor
-	private String tipo;			// tipo de acciones en mercado
 	private Inversion[] inversiones;
 	
-	public Proveedor(String nombre, String id, String tipo) {
+	public Proveedor(String nombre, String id) {
 		this.nombre = nombre;
 		this.id = id;
-		this.tipo = tipo;
 	}
 	
-	public Proveedor(String nombre, String id, String tipo, Inversion[] inversiones) {
+	public Proveedor(String nombre, String id, Inversion[] inversiones) {
 		this.nombre = nombre;
 		this.id = id;
-		this.tipo = tipo;
 		this.inversiones = inversiones;
 	}
 
@@ -28,12 +25,6 @@ public class Proveedor {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
 	}
 	public String getId() {
 		return id;

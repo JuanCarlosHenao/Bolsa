@@ -24,27 +24,30 @@ public class Main {
 		Usuario[] usuarios = new Usuario[6];
 		usuarios[0] = u1; usuarios[1] = u2; usuarios[2] = u3; usuarios[3] = u4; usuarios[4] = u5; usuarios[5] = u6;
 		
-		for(int i = 0 ; i < usuarios.length ; i++ ) {
+		/*
+		 for(int i = 0 ; i < usuarios.length ; i++ ) {
 			System.out.println("Nombre: " + usuarios[i].getNombre() + "\tId: " + usuarios[i].getId()
 							+ "\tCorreo: " + usuarios[i].getCorreo() + "\tSaldo: " + usuarios[i].getCuentas().getSaldo());
 		} System.out.println();	
+		*/
 
 		//-- CREACION DE PROVEEDORES
-		Proveedor p1 = new Proveedor("Nestle","N3sTl3","Acciones");
-		Proveedor p2 = new Proveedor("Russia","Russ14","CriptoMoneda");
-		Proveedor p3 = new Proveedor("Bancolombia","paisas123","Acciones");
-		m.addProveedor(p1); m.addProveedor(p2); m.addProveedor(p3);
-		
+		Proveedor p1 = new Proveedor("Nestle","N3sTl3");
+		Proveedor p2 = new Proveedor("Russia","Russ14");
+		Proveedor p3 = new Proveedor("Bancolombia","paisas123");
+		m.addProveedor(p1); m.addProveedor(p2); m.addProveedor(p3);  
 		Proveedor[] proveedores = new Proveedor[3];
 		proveedores[0] = p1; proveedores[1] = p2; proveedores[2] = p3;
 		
-		for(int i = 0 ; i < proveedores.length; i++) {
+		/*
+		 for(int i = 0 ; i < proveedores.length; i++) {
 			System.out.println("Nombre: " + proveedores[i].getNombre() + "\tId: " + proveedores[i].getId()
 								+ "\tTipo de accion: " + proveedores[i].getTipo());
 		} System.out.println();
+		*/
 		
 		//-- CREACION DE ACCIONES
-		Accion a1 = new Accion(p1.getId(),p1.getTipo(),25000,"accion1");
+		/*Accion a1 = new Accion(p1.getId(),p1.getTipo(),25000,"accion1");
 		p1.addInversion(a1);
 		Bono b1 = new Bono(p2.getNombre(),p2.getId(),10000,"accion2");
 		p2.addInversion(b1);
@@ -52,10 +55,11 @@ public class Main {
 		p3.addInversion(c1);
 		Inversion[] inv = new Inversion[3];
 		inv[0] = a1; inv[1] = b1; inv[2] = c1;
-		for(Inversion i:inv)
+		*/
+		/*for(Inversion i:inv)
 		System.out.println("La acción identificada por el codigo " + i.getTipo() );
 	 	                 //   + ", fue depositada por la empresa " + a1.getCodigo());
-		/*System.out.println("La acción identificada por el codigo " + b1.getIdBono() 
+		System.out.println("La acción identificada por el codigo " + b1.getIdBono() 
 							+ ", fue depositada por la empresa " + b1.getCodigo());
 		System.out.println("La acción identificada por el codigo " + c1.getIdCripto() 
          					+ ", fue depositada por la empresa " + c1.getCodigo());
@@ -69,8 +73,9 @@ public class Main {
 		
 		System.out.println("El saldo inicial era de: " + u1.consultarSaldo());
 		u1.hacerDeposito(1234);
-		System.out.println("El saldo despues de cambios era de: " + u1.consultarSaldo());*/
+		System.out.println("El saldo despues de cambios era de: " + u1.consultarSaldo());
+		*/
 		
-		
+		//m.imprimirInversiones();
 	}
 }

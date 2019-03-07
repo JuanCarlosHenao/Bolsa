@@ -80,12 +80,12 @@ public class Mercado {
 	
 		// ----- ELIMINACION DE CLASES
 	
-	public void eliminarUsuario(String nombre) throws EUsuario {
+	public void eliminarUsuario(String id) throws EUsuario {
 		Usuario[] usuarios2;
 		usuarios2 = new Usuario[usuarios.length-1];
 		int cont = 0 ;
 		for(int i = 0 ; i < usuarios.length; i++) {
-			if(usuarios[i].getNombre().compareTo(nombre)!=0) {
+			if(usuarios[i].getNombre().compareTo(id)!=0) {
 				usuarios2[cont]=usuarios[i]; 
 				cont++;
 			}
@@ -141,10 +141,6 @@ public class Mercado {
 		throw new EProveedor("No se encontró el origen de la acción.");
 	}
 	
-		// ----- ESTADO DE UNA INVERSION: determina la fase en la cual se encuentra la inversion (PLANEACION , EJECUCION , FINALIZACION)
-	
-	
-	
 		// ----- TOTAL INVERSION POR USUARIO
 	public double inversionTotalPorUsuario(String id) throws EInversion, EUsuario {
 		double total = 0;
@@ -156,7 +152,6 @@ public class Mercado {
 		return total;
 	}
 	
-	
 		// ----- TOTAL INVERSION DEL MERCADO
 	public double inversionTotalMercado() throws EInversion {
 		double total = 0 ;
@@ -166,13 +161,49 @@ public class Mercado {
 		return total;
 	}
 	
-		// ----- CONSULTA EL ESTADO DE UNA INVERSION
-	public void consultarEstado() {
+		// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA ACCION POR LAS VARIABLES QUE LA INFLUYEN
+	public double alterarPrecio(Variable variables, double precioBase) {
+		return 0;
+	}
+	
+		// ----- USUARIO PRIORITARIO : EL QUE SUMA LA MAYOR INVERSION EN EL MERCADO
+	public Usuario buscarUsuarioPrioritario() throws EUsuario, EInversion {
+		double mayor = 0;
+		for (int i = 0; i < usuarios.length ; i++) {
+			if (inversionTotalPorUsuario(usuarios[i].getId()) > mayor) {
+				mayor=inversionTotalPorUsuario(usuarios[i].getId());
+			}
+		}
+		for (int i=0;i<usuarios.length;i++) {
+			if (inversionTotalPorUsuario(usuarios[i].getId()) == mayor) {
+				return usuarios[i];
+			}
+		}
+		return null;
+	}
+		
+		// ----- IMPRIMIR RECIBO : POR USUARIO DE CADA INVERSION QUE TIENE CON SU PRECIO
+	public void imprimirRecibo(Usuario u) {
 		
 	}
 	
-	
-	
+		// ----- IMPRIMIR INVERSIONES : imprime las inversiones con formato
+	public void imprimirInversiones() throws EInversion {
+		for(int i = 0 ; i < getUsuarios().length ; i++) {
+			System.out.println("Codigo del usuario "  + getUsuarios()[i].getId()
+						     + "\nNombre: " + getUsuarios()[i].getNombre());
+			System.out.println();
+			for(int j = 0 ; j < inversiones.length ; j++) {
+				if(inversiones[i].getCodigo() == usuarios[i].getId()) {
+					System.out.println("\nInversion: " + inversiones[i].getCodigo()
+									 + "\nPrecio: " );
+				} else {
+					System.out.println("El usuario no tiene inversiones aún.");
+				}
+			}
+			System.out.println("---------------------------------------------------");
+		}
+	}
 	
 	
 	

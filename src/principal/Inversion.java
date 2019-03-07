@@ -2,14 +2,17 @@ package principal;
 
 public abstract class Inversion {
 	protected String codigo;
+	protected String idProv;
+	protected String idUsu = null;
 	protected String tipo;
 	private double precioBase;
 	private Proveedor proveedores;
-	private Usuario[] usuarios;
+	private Usuario usuarios;
 	
 	
-	public Inversion(String codigo, String tipo, double precioBase) {
+	public Inversion(String codigo,String idProv, String tipo, double precioBase) {
 		this.codigo = codigo;
+		this.idProv = idProv;
 		this.tipo = tipo;
 		this.precioBase = precioBase;
 	}
@@ -19,6 +22,18 @@ public abstract class Inversion {
 	}
 	public void setCodigo(String codigo) {
 		this.codigo = codigo;
+	}
+	public String getIdProv() {
+		return idProv;
+	}
+	public void setIdProv(String idProv) {
+		this.idProv = idProv;
+	}
+	public String getIdUsu() {
+		return idUsu;
+	}
+	public void setIdUsu(String idUsu) {
+		this.idUsu = idUsu;
 	}
 	public String getTipo() {
 		return tipo;
@@ -32,10 +47,10 @@ public abstract class Inversion {
 	public void setProveedores(Proveedor proveedores) {
 		this.proveedores = proveedores;
 	}
-	public Usuario[] getUsuarios() {
+	public Usuario getUsuarios() {
 		return usuarios;
 	}
-	public void setUsuarios(Usuario[] usuarios) {
+	public void setUsuarios(Usuario usuarios) {
 		this.usuarios = usuarios;
 	}
 	public double getPrecioBase() {
