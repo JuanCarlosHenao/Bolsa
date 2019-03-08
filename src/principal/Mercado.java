@@ -183,15 +183,11 @@ public class Mercado {
 	}
 		
 		// ----- IMPRIMIR RECIBO : POR USUARIO DE CADA INVERSION QUE TIENE CON SU PRECIO
-	public void imprimirRecibo(Usuario u) {
-		
-	}
-	
-		// ----- IMPRIMIR INVERSIONES : imprime las inversiones con formato
-	public void imprimirInversiones() throws EInversion {
+	public void imprimirRecibo(String codUsuario) {
 		for(int i = 0 ; i < getUsuarios().length ; i++) {
-			System.out.println("Codigo del usuario "  + getUsuarios()[i].getId()
-						     + "\nNombre: " + getUsuarios()[i].getNombre());
+			System.out.println("Codigo del usuario: "  + getUsuarios()[i].getId()
+						     + "\nNombre: " + getUsuarios()[i].getNombre()
+						     + "\nCorreo: " + getUsuarios()[i].getCorreo());
 			System.out.println();
 			for(int j = 0 ; j < inversiones.length ; j++) {
 				if(inversiones[i].getCodigo() == usuarios[i].getId()) {
@@ -203,6 +199,21 @@ public class Mercado {
 			}
 			System.out.println("---------------------------------------------------");
 		}
+	}
+	
+		// ----- IMPRIMIR INVERSIONES : imprime las inversiones con formato
+	public void imprimirInversiones() throws EInversion {
+			for(int i = 0 ; i < inversiones.length ; i++) {
+				System.out.println("Numero de la inversion:" + (i+1) 
+								 + "\nCodigo de la inversion:" + inversiones[i].getCodigo()
+								 + "\nCodigo del Proveedor: " + inversiones[i].getIdProv()
+								 + "\nCodigo del Usuario Comprador: " + inversiones[i].getIdUsu()
+								 + "\nTipo de inversion:" + inversiones[i].getTipo()
+								 + "\nPrecio base: " + inversiones[i].getPrecioBase()
+								 + "\nPrecio Real en Mercado: ");
+				System.out.println("---------------------------------------------------");
+			}
+			
 	}
 	
 	

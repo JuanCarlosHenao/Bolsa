@@ -3,21 +3,13 @@ package principal;
 public class Accion extends Inversion {
 	// ES AFECTADA POR EL $DOLAR Y EL $PETROLEO.
 
-	private String idAcc;
 	private Variable[] variables;
 	
-	public Accion(String codigo,String idProv , String tipo, double precioBase, String idAcc) {
+	public Accion(String codigo,String idProv , String tipo, double precioBase) {
 		super(codigo, idProv, tipo, precioBase);
-		this.idAcc = idAcc;
 	}
 	
 	//------------ GETTERS & SETTERS ---------- //
-	public String getIdAcc() {
-		return idAcc;
-	}
-	public void setIdAcc(String idAcc) {
-		this.idAcc = idAcc;
-	}
 	public Variable[] getVariables() {
 		return variables;
 	}
