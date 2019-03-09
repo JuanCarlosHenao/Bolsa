@@ -166,6 +166,18 @@ public class Mercado {
 		return 0;
 	}
 	
+	public void alterarPrecioCripto(double precioBase) {
+		if(variables.length == 1) {
+			if(variables[variables.length-1].get$dolar() > variables[variables.length-2].get$dolar()) {
+				
+			}
+		} 
+		
+	}
+	
+	
+	
+	
 		// ----- USUARIO PRIORITARIO : EL QUE SUMA LA MAYOR INVERSION EN EL MERCADO
 	public Usuario buscarUsuarioPrioritario() throws EUsuario, EInversion {
 		double mayor = 0;
