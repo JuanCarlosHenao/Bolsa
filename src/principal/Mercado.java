@@ -193,13 +193,80 @@ public class Mercado {
 		// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA ACCION POR LAS VARIABLES QUE LA INFLUYEN
 	
 	
-	public void alterarPrecioCripto(double precioBase) {
-		if(variables.length == 1) {
-			if(variables[variables.length-1].get$dolar() > variables[variables.length-2].get$dolar()) {
+	public void alterarPrecioBono(double precioBase) {
+		if(variables.length==1) {
+			for(int i =0; i<inversiones.length; i++) {
+				if(inversiones[i] instanceof Bono) {
+					double a= inversiones[i].getPrecioBase()+ variables[1].getInflacion()*0.1 + variables[1].get$dolar()*0.1;
+					inversiones[i].setPrecioBase(a);
+				}//------------poner else if para las que no son acciones?
+			}
+		}else {
+		
+		//---condicion para cuando el dolar y el petroleo bajan de precio
+		if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()<variables[variables.length-2].getInflacion()) {
+			for(int i =0; i<inversiones.length; i++) {
+				if(inversiones[i] instanceof Bono) {
+					double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.5 - variables[1].getInflacion()*0.5;
+					inversiones[i].setPrecioBase(a);
+				}//------------poner else if para las que no son acciones?
+			}
+			//-----cuando ambas suben de precio
+			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()>variables[variables.length-2].getInflacion()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Bono) {
+						double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.5 + variables[1].getInflacion()*0.5;
+						inversiones[i].setPrecioBase(a);
+					}//------------poner else if para las que no son acciones?
+				}
 				
+				//---dolar bajo, petroleo subio
+			}else if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()>variables[variables.length-2].getInflacion()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Bono) {
+						double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.8 + variables[1].getInflacion()*0.8;
+						inversiones[i].setPrecioBase(a);
+					}//------------poner else if para las que no son acciones?
+				}
+				//----dolar subio, petroleo bajo
+			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()<variables[variables.length-2].getInflacion()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Bono) {
+						double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.8 - variables[1].getInflacion()*0.8;
+						inversiones[i].setPrecioBase(a);
+					}//------------poner else if para las que no son acciones?
+				}
 			}
 		} 
-		
+	}
+	
+	public void alterarPrecioCripto(double precioBase) {
+		if(variables.length==1) {
+			for(int i =0; i<inversiones.length; i++) {
+				if(inversiones[i] instanceof CriptoMoneda) {
+					double a= inversiones[i].getPrecioBase() + variables[1].get$dolar()*0.1;
+					inversiones[i].setPrecioBase(a);
+				}//------------poner else if para las que no son acciones?
+			}
+		}else {
+			//----- condicion para cuando el dolar baja
+			if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() ) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof CriptoMoneda) {
+						double a= inversiones[i].getPrecioBase() + variables[1].get$dolar()*0.5 ;
+						inversiones[i].setPrecioBase(a);
+					}
+				}
+			//----- cuando el dolar suben de precio
+			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() ) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof CriptoMoneda) {
+						double a= inversiones[i].getPrecioBase() - variables[1].get$dolar()*0.5 ;
+						inversiones[i].setPrecioBase(a);
+					}//------------poner else if para las que no son acciones?
+				}
+			}
+		}
 	}
 	
 	public void alterarPrecioAccion() {

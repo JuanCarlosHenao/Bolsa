@@ -81,7 +81,7 @@ public class Main {
 		System.out.println("El saldo despues de cambios era de: " + u1.consultarSaldo());
 		System.out.println();
 		
-		m.historialInversiones("lucho1204");
+		//m.historialInversiones("lucho1204");
 		
 		
 		//m.imprimirInversiones();

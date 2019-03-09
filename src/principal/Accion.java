@@ -19,10 +19,7 @@ public class Accion extends Inversion {
 	}
 
 	// ---------- METODOS ---------- //
-	public void formulaCambio(double dolar , double petroleo) {
-		double fomrmula=precioBase+;
-		
-	}
+	
 	
 	
 }
