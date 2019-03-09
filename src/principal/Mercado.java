@@ -82,6 +82,33 @@ public class Mercado {
 		proveedores[proveedores.length-1] = p;
 	}
 	
+	public void addAccion(String codigo, String idProv, String tipo, double precioBase) {
+		if(inversiones == null) {
+			inversiones = new Inversion[1];
+		} else {
+			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
+		}
+		inversiones[inversiones.length-1] = new Accion(codigo, idProv, tipo, precioBase);
+	}
+	
+	public void addCriptoMoneda(String codigo, String idProv, String tipo, double precioBase) {
+		if(inversiones == null) {
+			inversiones = new Inversion[1];
+		} else {
+			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
+		}
+		inversiones[inversiones.length-1] = new CriptoMoneda(codigo, idProv, tipo, precioBase);
+	}
+	
+	public void addBono(String codigo, String idProv, String tipo, double precioBase) {
+		if(inversiones == null) {
+			inversiones = new Inversion[1];
+		} else {
+			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
+		}
+		inversiones[inversiones.length-1] = new Bono(codigo, idProv, tipo, precioBase);
+	}
+	
 		// ----- ELIMINACION DE CLASES
 	
 	public void eliminarUsuario(String id) throws EUsuario {
@@ -273,16 +300,7 @@ public class Mercado {
 		}
 	}
 	
-	public void addAccion (String codigo, String idProv , String tipo, double precioBase) {
-		if(inversiones == null) {
-			inversiones = new Inversion[1];
-		} else {
-			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
-		}
-		inversiones[inversiones.length-1] = new Accion(codigo, idProv, tipo, precioBase);
-		
-		
-	}
+	
 	
 	
 }
