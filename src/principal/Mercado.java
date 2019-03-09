@@ -125,15 +125,12 @@ public class Mercado {
 		throw new EUsuario("No se pudo eliminar el usuario.");
 	}
 	
-	
-	
-	// jc se debe eliminar es con el id 
-	public void eliminarProveedor(String nombre) throws EProveedor {
+	public void eliminarProveedor(String id) throws EProveedor {
 		Proveedor[] proveedores2;
 		proveedores2 = new Proveedor[proveedores.length-1];
 		int cont = 0 ;
 		for(int i = 0 ; i < proveedores.length ; i++) {
-			if(proveedores[i].getNombre().compareTo(nombre)!=0) {
+			if(proveedores[i].getId().compareTo(id)!=0) {
 				proveedores2[cont] = proveedores[i];
 				cont++;
 			}
