@@ -51,9 +51,9 @@ public class Main {
 		
 		Inversion[] inv = new Inversion[1];
 		inv[0]= a1;
-		u1.setInversiones(inv);
-		
-		u1.realizarInversion("idACCION-1");
+		m.setInversiones(inv);
+		m.realizarInversion("lucho1204", "idACCION-1");
+
 		//System.out.println(inv.length);
 		//m.imprimirInversiones();
 		/*Accion a1 = new Accion(p1.getId(),p1.getTipo(),25000,"accion1");

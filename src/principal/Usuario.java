@@ -21,6 +21,8 @@ public class Usuario {
 	}
 
 	// ----------- GETTERS & SETTERS ---------- //
+	
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -42,8 +44,8 @@ public class Usuario {
 	public CuentaBancaria getCuentas() {
 		return cuentas;
 	}
-	public void setCuentas(CuentaBancaria cuentas) {
-		this.cuentas = cuentas;
+	public void setCuentas(CuentaBancaria cuenta) {
+		this.cuentas = cuenta;
 	}
 	
 	// ----- METODOS DE LA CLASE
