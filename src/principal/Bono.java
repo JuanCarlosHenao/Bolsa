@@ -1,6 +1,7 @@
 package principal;
 
 public class Bono extends Inversion {
+	// DEPENDE DE LA INFLACION Y DEL DOLAR
 
 	private Variable[] variables ;
 	

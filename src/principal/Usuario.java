@@ -5,8 +5,7 @@ public class Usuario {
 	private String nombre;
 	private String correo;
 	private String id;
-	private CuentaBancaria cuenta;
-	
+	private CuentaBancaria cuentas;
 
 	public Usuario(String nombre, String correo, String id) {
 		this.nombre = nombre;
@@ -18,7 +17,7 @@ public class Usuario {
 		this.nombre = nombre;
 		this.correo = correo;
 		this.id = id;
-		this.cuenta = cuentas;
+		this.cuentas = cuentas;
 	}
 
 	// ----------- GETTERS & SETTERS ---------- //
@@ -43,26 +42,22 @@ public class Usuario {
 		this.id = id;
 	}
 	public CuentaBancaria getCuentas() {
-		return cuenta;
+		return cuentas;
 	}
 	public void setCuentas(CuentaBancaria cuenta) {
-		this.cuenta = cuenta;
+		this.cuentas = cuenta;
 	}
 	
-	
-	
 	// ----- METODOS DE LA CLASE
-	
-
 	public double consultarSaldo() {
-		return cuenta.getSaldo();
+		return cuentas.getSaldo();
 	}
 	
 	public double hacerDeposito(float monto) {
-		float saldoAnterior = cuenta.getSaldo();
+		float saldoAnterior = cuentas.getSaldo();
 		if(monto > 0) {
 			saldoAnterior += monto;
-			cuenta.setSaldo(saldoAnterior);
+			cuentas.setSaldo(saldoAnterior);
 		} else {
 			System.out.println("Ingrese un valor positivo.");
 		}
