@@ -48,14 +48,19 @@ public class Main {
 		
 		//-- CREACION DE ACCIONES
 		Accion a1 = new Accion("idACCION-1", "idPROV-1", "ACCION", 23);
+		
 		Inversion[] inv = new Inversion[1];
-		inv[0]=a1;
-		System.out.println(inv.length);
+		inv[0]= a1;
+		u1.setInversiones(inv);
+		
+		u1.realizarInversion("idACCION-1");
+		//System.out.println(inv.length);
 		//m.imprimirInversiones();
 		/*Accion a1 = new Accion(p1.getId(),p1.getTipo(),25000,"accion1");
 		p1.addInversion(a1);
 		Bono b1 = new Bono(p2.getNombre(),p2.getId(),10000,"accion2");
 		p2.addInversion(b1);
+		
 		CriptoMoneda c1 = new CriptoMoneda(p3.getNombre(), p3.getId(), 50000, "accion3");
 		p3.addInversion(c1);
 		Inversion[] inv = new Inversion[3];
@@ -65,7 +70,7 @@ public class Main {
 	 	                 
 		
 		//-- METODOS 
-		System.out.println();
+		//System.out.println();
 		System.out.println(m.buscarUsuario("lucho1204").getNombre());
 		System.out.println(m.buscarProveedor("paisas123").getNombre());
 		//System.out.println(m.buscarInversion("Nestle").getCodigo());
@@ -74,7 +79,9 @@ public class Main {
 		System.out.println("El saldo inicial era de: " + u1.consultarSaldo());
 		u1.hacerDeposito(1234);
 		System.out.println("El saldo despues de cambios era de: " + u1.consultarSaldo());
+		System.out.println();
 		
+		m.historialInversiones("lucho1204");
 		
 		//m.imprimirInversiones();
 		//m.imprimirRecibo("lucho1204");

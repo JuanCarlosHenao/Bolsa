@@ -6,6 +6,7 @@ public class Usuario {
 	private String correo;
 	private String id;
 	private CuentaBancaria cuentas;
+	private Inversion[] inversiones;
 
 	public Usuario(String nombre, String correo, String id) {
 		this.nombre = nombre;
@@ -42,24 +43,30 @@ public class Usuario {
 	public CuentaBancaria getCuentas() {
 		return cuentas;
 	}
-
 	public void setCuentas(CuentaBancaria cuentas) {
 		this.cuentas = cuentas;
+	}
+	public Inversion[] getInversiones() {
+		return inversiones;
+	}
+
+	public void setInversiones(Inversion[] inversiones) {
+		this.inversiones = inversiones;
 	}
 	
 	
 	// ----- METODOS DE LA CLASE
 	
-	public void realizarInversion() {
-		
+	public void realizarInversion(String idInversion) {
+		for(int i = 0 ; i < inversiones.length ; i++) {
+			if(inversiones[i].getCodigo().compareTo(idInversion)==0) {
+				inversiones[i].setIdUsu(getId()); 
+			}
+		}
 	}
 	
 	public double consultarSaldo() {
 		return cuentas.getSaldo();
-	}
-	
-	public void historialInversiones() {
-		
 	}
 	
 	public double hacerDeposito(float monto) {

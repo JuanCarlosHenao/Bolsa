@@ -10,7 +10,7 @@ public abstract class Inversion {
 	private Usuario usuarios;
 	
 	
-	public Inversion(String codigo,String idProv, String tipo, double precioBase) {
+	public Inversion(String codigo, String idProv, String tipo, double precioBase) {
 		this.codigo = codigo;
 		this.idProv = idProv;
 		this.tipo = tipo;

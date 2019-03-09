@@ -13,15 +13,7 @@ public class Usuario {
 	private CuentaBancaria cuentas;
 private String contrasena;
 
-
 	
-	/**
- * @param nombre
- * @param correo
- * @param id
- * @param cuentas
- * @param contrasena
- */
 public Usuario(String nombre, String correo, String id, CuentaBancaria cuentas, String contrasena) {
 	super();
 	this.nombre = nombre;

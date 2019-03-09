@@ -45,7 +45,7 @@ public class Proveedor {
 	// ---------- METODOS DE LA CLASE --------- //
 	
 		// ----- AGREGAR UNA POSIBLE INVERSION AL MERCADO
-	public void addInversion(Inversion i) {
+	public void addInversion(String codigo, String tipo, double precioBase) {
 		if(inversiones == null) {
 			inversiones = new Inversion[1];
 		} else {

@@ -2,22 +2,20 @@ package principal;
 
 public class Bono extends Inversion {
 
-	private String idBono;
+	private Variable[] variables ;
 	
-	public Bono(String codigo, String idProv, String tipo, double precioBase, String idBono) {
+	public Bono(String codigo, String idProv, String tipo, double precioBase) {
 		super(codigo, idProv, tipo, precioBase);
-		this.idBono = idBono;
 	}
 
 	// ---------- GETTERS & SETTERS ---------- //
-	public String getIdBono() {
-		return idBono;
+	public Variable[] getVariables() {
+		return variables;
 	}
 
-	public void setIdBono(String idBono) {
-		this.idBono = idBono;
+	public void setVariables(Variable[] variables) {
+		this.variables = variables;
 	}
-
 	
 	
 }

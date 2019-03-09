@@ -2,21 +2,19 @@ package principal;
 
 public class CriptoMoneda extends Inversion {
 
-	private String idCripto;
+	private Variable[] variables ;
 	
-	public CriptoMoneda(String codigo, String idProv, String tipo, double precioBase, String idCripto) {
+	public CriptoMoneda(String codigo, String idProv, String tipo, double precioBase) {
 		super(codigo, idProv, tipo, precioBase);
-		this.idCripto = idCripto;
 	}
 
 	// ---------- GETTERS & SETTERS ---------- //
-	public String getIdCripto() {
-		return idCripto;
+	public Variable[] getVariables() {
+		return variables;
 	}
 
-	public void setIdCripto(String idCripto) {
-		this.idCripto = idCripto;
+	public void setVariables(Variable[] variables) {
+		this.variables = variables;
 	}
-	
 	
 }

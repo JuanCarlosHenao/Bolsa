@@ -5,7 +5,7 @@ public class Accion extends Inversion {
 
 	private Variable[] variables;
 	
-	public Accion(String codigo,String idProv , String tipo, double precioBase) {
+	public Accion(String codigo, String idProv , String tipo, double precioBase) {
 		super(codigo, idProv, tipo, precioBase);
 	}
 	
@@ -20,7 +20,7 @@ public class Accion extends Inversion {
 
 	// ---------- METODOS ---------- //
 	public void formulaCambio(double dolar , double petroleo) {
-		double fomrmula=2*dolar;
+		double formula=2*dolar;
 		
 	}
 	

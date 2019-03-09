@@ -201,9 +201,24 @@ public class Mercado {
 		}
 	}
 	
+		// ----- HISTORIAL DE LAS INVERSIONES DEL USUARIO
+	public void historialInversiones(String idUsuario) throws EInversion {
+		Inversion [] invUsuario =new Inversion[0];
+		for(int i = 0 ; i < inversiones.length ; i++ ) {
+			if(inversiones[i].getIdUsu().compareTo(idUsuario)==0) {
+				invUsuario=Arrays.copyOf(invUsuario, invUsuario.length+1);
+				invUsuario[invUsuario.length-1]=inversiones[i];
+				
+				//return inversiones[i];
+			} else i++; 
+		}
+		 imprimirInversiones(invUsuario);
+	
+	}
+	
 		// ----- IMPRIMIR INVERSIONES : imprime las inversiones con formato
-	public void imprimirInversiones() throws EInversion {
-			for(int i = 0 ; i < inversiones.length ; i++) {
+	public void imprimirInversiones(Inversion[] invUsuario) throws EInversion {
+			for(int i = 0 ; i < invUsuario.length ; i++) {
 				System.out.println("Numero de la inversion:" + (i+1) 
 								 + "\nCodigo de la inversion:" + inversiones[i].getCodigo()
 								 + "\nCodigo del Proveedor: " + inversiones[i].getIdProv()
@@ -213,7 +228,15 @@ public class Mercado {
 								 + "\nPrecio Real en Mercado: ");
 				System.out.println("---------------------------------------------------");
 			}
-			
+	}
+	
+		// ----- HACER UNA INVERSION
+	public void realizarInversion(String idUsuario, String idInversion) {
+		for(int i = 0 ; i < inversiones.length ; i++) {
+			if(inversiones[i].getCodigo().compareTo(idInversion)==0) {
+				inversiones[i].setIdUsu(idUsuario); 
+			}
+		}
 	}
 	
 	
