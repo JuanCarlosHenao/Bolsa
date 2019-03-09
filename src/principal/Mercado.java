@@ -3,19 +3,18 @@ package principal;
 import java.util.Arrays;
 
 public class Mercado {
-	private String nombre;
+
 	private Usuario[] usuarios;
 	private Inversion[] inversiones;
 	private Proveedor[] proveedores;
 	private Variable[] variables;
-	
+	private String nombre;
 	
 	public Mercado(String nombre) {
 		this.nombre = nombre;
 	}
 	
 	// ---------- GETTERS & SETTERS ---------- //
-	
 	public Usuario[] getUsuarios() {
 		return usuarios;
 	}
@@ -60,9 +59,6 @@ public class Mercado {
 	//---------- METODOS DE LA CLASE ---------- //
 	
 		// ----- AGREGACION DE CLASES
-	
-	
-	// jc se le deben es pasar todos los parametros 
 	
 	public void addUsuario(Usuario u) {
 		if(usuarios == null) {
@@ -138,21 +134,6 @@ public class Mercado {
 		proveedores = Arrays.copyOf(proveedores2, proveedores2.length);
 		throw new EProveedor("No se pudo eliminar el origen de la inversión.");
 	}
-	
-	// ----- ELIMINAR UNA INVERSION EXISTENTE DEL MERCADO
-		public void eliminarInversion(String codigo) throws EInversion {
-			Inversion[] inversiones2;
-			inversiones2 = new Inversion[inversiones.length-1];
-			int cont = 0 ;
-			for(int i = 0 ; i < inversiones.length ; i++) {
-				if(inversiones[i].getCodigo().compareTo(codigo)!=0) {
-					inversiones2[cont]=inversiones[i];
-					cont++;
-				}
-			}
-			inversiones = Arrays.copyOf(inversiones2, inversiones2.length);
-			throw new EInversion("No se pudo eliminar la inversión.");
-		}
 		
 			// ----- BÚSQUEDA DE CLASES
 	
@@ -187,6 +168,8 @@ public class Mercado {
 		throw new EProveedor("No se encontró el origen de la acción.");
 	}
 	
+	
+	
 		// ----- TOTAL INVERSION POR USUARIO
 	public double inversionTotalPorUsuario(String id) throws EInversion, EUsuario {
 		double total = 0;
@@ -208,8 +191,33 @@ public class Mercado {
 	}
 	
 		// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA ACCION POR LAS VARIABLES QUE LA INFLUYEN
-	public double alterarPrecio(Variable variables, double precioBase) {
-		return 0;
+	public void alterarPrecioAccion() {
+		if(variables.length==1) {
+			for(int i =0; i<inversiones.length; i++) {
+				if(inversiones[i] instanceof Accion) {
+					double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.1 + variables[1].get$petroleo()*0.1;
+					inversiones[i].setPrecioBase(a);
+				}//------------poner else if para las que no son acciones?
+			}
+		}else {
+		
+		//---condicion para cuando el dolar y el petroleo bajan de precio
+		if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()<variables[variables.length-2].get$petroleo()) {
+			for(int i =0; i<inversiones.length; i++) {
+				if(inversiones[i] instanceof Accion) {
+					double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.5 - variables[1].get$petroleo()*0.5;
+					inversiones[i].setPrecioBase(a);
+				}//------------poner else if para las que no son acciones?
+			}
+			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()>variables[variables.length-2].get$petroleo()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Accion) {
+						double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.5 - variables[1].get$petroleo()*0.5;
+						inversiones[i].setPrecioBase(a);
+					}//------------poner else if para las que no son acciones?
+				}
+				}
+		}
 	}
 	
 	public void alterarPrecioCripto(double precioBase) {
@@ -259,24 +267,9 @@ public class Mercado {
 		}
 	}
 	
-		// ----- HISTORIAL DE LAS INVERSIONES DEL USUARIO
-	public void historialInversiones(String idUsuario) throws EInversion {
-		Inversion [] invUsuario =new Inversion[0];
-		for(int i = 0 ; i < inversiones.length ; i++ ) {
-			if(inversiones[i].getIdUsu().compareTo(idUsuario)==0) {
-				invUsuario=Arrays.copyOf(invUsuario, invUsuario.length+1);
-				invUsuario[invUsuario.length-1]=inversiones[i];
-				
-				//return inversiones[i];
-			} else i++; 
-		}
-		 imprimirInversiones(invUsuario);
-	
-	}
-	
 		// ----- IMPRIMIR INVERSIONES : imprime las inversiones con formato
-	public void imprimirInversiones(Inversion[] invUsuario) throws EInversion {
-			for(int i = 0 ; i < invUsuario.length ; i++) {
+	public void imprimirInversiones() throws EInversion {
+			for(int i = 0 ; i < inversiones.length ; i++) {
 				System.out.println("Numero de la inversion:" + (i+1) 
 								 + "\nCodigo de la inversion:" + inversiones[i].getCodigo()
 								 + "\nCodigo del Proveedor: " + inversiones[i].getIdProv()
@@ -286,8 +279,10 @@ public class Mercado {
 								 + "\nPrecio Real en Mercado: ");
 				System.out.println("---------------------------------------------------");
 			}
+			
 	}
 	
+
 		// ----- HACER UNA INVERSION
 	public void realizarInversion(String idUsuario, String idInversion) {
 		for(int i = 0 ; i < inversiones.length ; i++) {
