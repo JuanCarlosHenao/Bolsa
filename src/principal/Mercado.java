@@ -191,6 +191,17 @@ public class Mercado {
 	}
 	
 		// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA ACCION POR LAS VARIABLES QUE LA INFLUYEN
+	
+	
+	public void alterarPrecioCripto(double precioBase) {
+		if(variables.length == 1) {
+			if(variables[variables.length-1].get$dolar() > variables[variables.length-2].get$dolar()) {
+				
+			}
+		} 
+		
+	}
+	
 	public void alterarPrecioAccion() {
 		if(variables.length==1) {
 			for(int i =0; i<inversiones.length; i++) {
@@ -209,25 +220,35 @@ public class Mercado {
 					inversiones[i].setPrecioBase(a);
 				}//------------poner else if para las que no son acciones?
 			}
+			//-----cuando ambas suben de precio
 			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()>variables[variables.length-2].get$petroleo()) {
 				for(int i =0; i<inversiones.length; i++) {
 					if(inversiones[i] instanceof Accion) {
-						double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.5 - variables[1].get$petroleo()*0.5;
+						double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.5 + variables[1].get$petroleo()*0.5;
 						inversiones[i].setPrecioBase(a);
 					}//------------poner else if para las que no son acciones?
 				}
+				
+				//---dolar bajo, petroleo subio
+			}else if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()>variables[variables.length-2].get$petroleo()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Accion) {
+						double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.8 + variables[1].get$petroleo()*0.8;
+						inversiones[i].setPrecioBase(a);
+					}//------------poner else if para las que no son acciones?
 				}
+				//----dolar subio, petroleo bajo
+			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()<variables[variables.length-2].get$petroleo()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Accion) {
+						double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.8 - variables[1].get$petroleo()*0.8;
+						inversiones[i].setPrecioBase(a);
+					}//------------poner else if para las que no son acciones?
+				}
+			}
 		}
 	}
 	
-	public void alterarPrecioCripto(double precioBase) {
-		if(variables.length == 1) {
-			if(variables[variables.length-1].get$dolar() > variables[variables.length-2].get$dolar()) {
-				
-			}
-		} 
-		
-	}
 	
 	
 	
