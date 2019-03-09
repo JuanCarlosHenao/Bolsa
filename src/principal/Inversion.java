@@ -6,8 +6,8 @@ public abstract class Inversion {
 	protected String idUsu = null;
 	protected String tipo;
 	private double precioBase;
-	private Proveedor proveedores;
-	private Usuario usuarios;
+	private Proveedor proveedor;
+	private Usuario usuario;
 	
 	
 	public Inversion(String codigo, String idProv, String tipo, double precioBase) {
@@ -42,16 +42,16 @@ public abstract class Inversion {
 		this.tipo = tipo;
 	}
 	public Proveedor getProveedores() {
-		return proveedores;
+		return proveedor;
 	}
 	public void setProveedores(Proveedor proveedores) {
-		this.proveedores = proveedores;
+		this.proveedor = proveedores;
 	}
 	public Usuario getUsuarios() {
-		return usuarios;
+		return usuario;
 	}
 	public void setUsuarios(Usuario usuarios) {
-		this.usuarios = usuarios;
+		this.usuario = usuarios;
 	}
 	public double getPrecioBase() {
 		return precioBase;

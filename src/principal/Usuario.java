@@ -5,8 +5,8 @@ public class Usuario {
 	private String nombre;
 	private String correo;
 	private String id;
-	private CuentaBancaria cuentas;
-	private Inversion[] inversiones;
+	private CuentaBancaria cuenta;
+	
 
 	public Usuario(String nombre, String correo, String id) {
 		this.nombre = nombre;
@@ -18,10 +18,12 @@ public class Usuario {
 		this.nombre = nombre;
 		this.correo = correo;
 		this.id = id;
-		this.cuentas = cuentas;
+		this.cuenta = cuentas;
 	}
 
 	// ----------- GETTERS & SETTERS ---------- //
+	
+	
 	public String getNombre() {
 		return nombre;
 	}
@@ -41,39 +43,26 @@ public class Usuario {
 		this.id = id;
 	}
 	public CuentaBancaria getCuentas() {
-		return cuentas;
+		return cuenta;
 	}
-	public void setCuentas(CuentaBancaria cuentas) {
-		this.cuentas = cuentas;
+	public void setCuentas(CuentaBancaria cuenta) {
+		this.cuenta = cuenta;
 	}
-	public Inversion[] getInversiones() {
-		return inversiones;
-	}
-
-	public void setInversiones(Inversion[] inversiones) {
-		this.inversiones = inversiones;
-	}
+	
 	
 	
 	// ----- METODOS DE LA CLASE
 	
-	public void realizarInversion(String idInversion) {
-		for(int i = 0 ; i < inversiones.length ; i++) {
-			if(inversiones[i].getCodigo().compareTo(idInversion)==0) {
-				inversiones[i].setIdUsu(getId()); 
-			}
-		}
-	}
-	
+
 	public double consultarSaldo() {
-		return cuentas.getSaldo();
+		return cuenta.getSaldo();
 	}
 	
 	public double hacerDeposito(float monto) {
-		float saldoAnterior = cuentas.getSaldo();
+		float saldoAnterior = cuenta.getSaldo();
 		if(monto > 0) {
 			saldoAnterior += monto;
-			cuentas.setSaldo(saldoAnterior);
+			cuenta.setSaldo(saldoAnterior);
 		} else {
 			System.out.println("Ingrese un valor positivo.");
 		}

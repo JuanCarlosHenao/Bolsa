@@ -3,18 +3,19 @@ package principal;
 import java.util.Arrays;
 
 public class Mercado {
-
+	private String nombre;
 	private Usuario[] usuarios;
 	private Inversion[] inversiones;
 	private Proveedor[] proveedores;
 	private Variable[] variables;
-	private String nombre;
+	
 	
 	public Mercado(String nombre) {
 		this.nombre = nombre;
 	}
 	
 	// ---------- GETTERS & SETTERS ---------- //
+	
 	public Usuario[] getUsuarios() {
 		return usuarios;
 	}
@@ -60,6 +61,9 @@ public class Mercado {
 	
 		// ----- AGREGACION DE CLASES
 	
+	
+	// jc se le deben es pasar todos los parametros 
+	
 	public void addUsuario(Usuario u) {
 		if(usuarios == null) {
 			usuarios = new Usuario[1];
@@ -94,6 +98,9 @@ public class Mercado {
 		throw new EUsuario("No se pudo eliminar el usuario.");
 	}
 	
+	
+	
+	// jc se debe eliminar es con el id 
 	public void eliminarProveedor(String nombre) throws EProveedor {
 		Proveedor[] proveedores2;
 		proveedores2 = new Proveedor[proveedores.length-1];
@@ -107,6 +114,21 @@ public class Mercado {
 		proveedores = Arrays.copyOf(proveedores2, proveedores2.length);
 		throw new EProveedor("No se pudo eliminar el origen de la inversión.");
 	}
+	
+	// ----- ELIMINAR UNA INVERSION EXISTENTE DEL MERCADO
+		public void eliminarInversion(String codigo) throws EInversion {
+			Inversion[] inversiones2;
+			inversiones2 = new Inversion[inversiones.length-1];
+			int cont = 0 ;
+			for(int i = 0 ; i < inversiones.length ; i++) {
+				if(inversiones[i].getCodigo().compareTo(codigo)!=0) {
+					inversiones2[cont]=inversiones[i];
+					cont++;
+				}
+			}
+			inversiones = Arrays.copyOf(inversiones2, inversiones2.length);
+			throw new EInversion("No se pudo eliminar la inversión.");
+		}
 		
 			// ----- BÚSQUEDA DE CLASES
 	
@@ -239,6 +261,16 @@ public class Mercado {
 		}
 	}
 	
+	public void addAccion (String codigo, String idProv , String tipo, double precioBase) {
+		if(inversiones == null) {
+			inversiones = new Inversion[1];
+		} else {
+			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
+		}
+		inversiones[inversiones.length-1] = new Accion(codigo, idProv, tipo, precioBase);
+		
+		
+	}
 	
 	
 }
