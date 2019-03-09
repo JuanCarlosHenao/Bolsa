@@ -68,9 +68,7 @@ public abstract class Inversion {
 		return total;
 	}
 	
-	public double formulaCambio() {
-		
-	}
+	
 	
 	
 }

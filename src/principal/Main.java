@@ -2,7 +2,7 @@ package principal;
 
 public class Main {
 
-	public static void main(String[] args) throws EInversion, EUsuario, EProveedor {
+	public static void main(String[] args) throws EInversion, EUsuario, EProveedor, InterruptedException {
 		
 		Mercado m = new Mercado("Bolsa de Colombia");
 		
@@ -82,6 +82,7 @@ public class Main {
 		System.out.println();
 		
 		m.historialInversiones("lucho1204");
+		
 		
 		//m.imprimirInversiones();
 		//m.imprimirRecibo("lucho1204");
