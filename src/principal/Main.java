@@ -83,6 +83,18 @@ public class Main {
 		
 		//m.historialInversiones("lucho1204");
 		
+		Variable v = new Variable();
+		System.out.println(v.get$dolar());
+		v.set$dolar();
+		System.out.println(v.get$dolar());
+		System.out.println();
+		System.out.println(v.get$petroleo());
+		v.set$petroleo();
+		System.out.println(v.get$petroleo());
+		System.out.println();
+		System.out.println(v.getInflacion());
+		v.setInflacion();
+		System.out.println(v.getInflacion());
 		
 		//m.imprimirInversiones();
 		//m.imprimirRecibo("lucho1204");

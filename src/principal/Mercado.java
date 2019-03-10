@@ -185,15 +185,19 @@ public class Mercado {
 	public double inversionTotalMercado() throws EInversion {
 		double total = 0 ;
 		for(int i = 0 ; i < inversiones.length ; i++) {
-			total += inversiones[i].valorInversion();
+			total += inversiones[i].valorInversion();		// CAMBIAR A GET PRECIO
 		}
 		return total;
 	}
+
+	public void actualizarPrecios() {
+		alterarPrecioAccion();
+		alterarPrecioBono();
+		alterarPrecioCripto();
+	}
 	
 		// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA ACCION POR LAS VARIABLES QUE LA INFLUYEN
-	
-	
-	public void alterarPrecioBono(double precioBase) {
+	public void alterarPrecioBono() {
 		if(variables.length==1) {
 			for(int i =0; i<inversiones.length; i++) {
 				if(inversiones[i] instanceof Bono) {
@@ -240,7 +244,7 @@ public class Mercado {
 		} 
 	}
 	
-	public void alterarPrecioCripto(double precioBase) {
+	public void alterarPrecioCripto() {
 		if(variables.length==1) {
 			for(int i =0; i<inversiones.length; i++) {
 				if(inversiones[i] instanceof CriptoMoneda) {
