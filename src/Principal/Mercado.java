@@ -2,12 +2,16 @@ package principal;
 
 import java.util.Arrays;
 
+import Excepciones.EInversion;
+import Excepciones.EProveedor;
+import Excepciones.EUsuario;
+
 public class Mercado {
 
 	private Usuario[] usuarios;
 	private Inversion[] inversiones;
 	private Proveedor[] proveedores;
-	private Variable[] variables;
+	private Variable[] variables=new Variable[2];
 	private String nombre;
 	
 	public Mercado(String nombre) {
@@ -15,6 +19,7 @@ public class Mercado {
 	}
 	
 	// ---------- GETTERS & SETTERS ---------- //
+	
 	public Usuario[] getUsuarios() {
 		return usuarios;
 	}
@@ -174,7 +179,7 @@ public class Mercado {
 	public double inversionTotalPorUsuario(String id) throws EInversion, EUsuario {
 		double total = 0;
 		for(int i = 0 ; i < inversiones.length ; i++) {
-			if(inversiones[i].getCodigo().compareTo(id)==0) {
+			if(inversiones[i].getIdUsu().compareTo(id)==0) {
 				total += inversiones[i].valorInversion();
 			}
 		}
@@ -191,9 +196,9 @@ public class Mercado {
 	}
 
 	public void actualizarPrecios() {
-		alterarPrecioAccion();
+		//alterarPrecioAccion();
 		alterarPrecioBono();
-		alterarPrecioCripto();
+		//alterarPrecioCripto();
 	}
 	
 		// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UN BONO POR LAS VARIABLES QUE LA INFLUYEN
@@ -239,9 +244,57 @@ public class Mercado {
 						double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.8 - variables[1].getInflacion()*0.8;
 						inversiones[i].setPrecioBase(a);
 					}
+		// si las dos suben 
+		if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
+			for (int i=0;i<inversiones.length;i++) {
+				if (inversiones[i] instanceof Bono ) {
+					double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()*variables[1].getInflacion()/100;
+					
+					inversiones[i].setPrecioBase(1);
 				}
 			}
-		} 
+			
+			// si las dos bajan 
+		}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].getInflacion()>variables[1].getInflacion()) {
+			for (int i=0;i<inversiones.length;i++) {
+				if (inversiones[i] instanceof Bono ) {
+					double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()*variables[1].getInflacion()/100;
+					inversiones[i].setPrecioBase(2);
+				}
+			}
+			
+			//si dolar sube e inflacion baja 
+		}else if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()>variables[1].getInflacion()) {
+			for (int i=0;i<inversiones.length;i++) {
+				if (inversiones[i] instanceof Bono ) {
+					double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()-variables[1].getInflacion()/100;
+					inversiones[i].setPrecioBase(3);
+				}
+			}
+			
+			
+		}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
+			// si dolar baja e inlfacion sube 
+			for (int i=0;i<inversiones.length;i++) {
+				if (inversiones[i] instanceof Bono ) {
+					double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()+variables[1].getInflacion()/100;
+					inversiones[i].setPrecioBase(4);
+				}
+			}
+			
+		} else {
+			for (int i=0;i<inversiones.length;i++) {
+				if (inversiones[i] instanceof Bono ) {
+					
+					inversiones[i].setPrecioBase(5);
+				}
+			}
+		}
+				}
+			}
+		}
+			
+ 
 	}
 
 	// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA CRIPTOMONEDA POR LAS VARIABLES QUE LA INFLUYEN
@@ -249,7 +302,7 @@ public class Mercado {
 		if(variables.length==1) {
 			for(int i =0; i<inversiones.length; i++) {
 				if(inversiones[i] instanceof CriptoMoneda) {
-					double a= inversiones[i].getPrecioBase() + variables[1].get$dolar()*0.1;
+					double a= inversiones[i].getPrecioBase() + variables[0].get$dolar()*0.1;
 					inversiones[i].setPrecioBase(a);
 				}
 			}
@@ -258,7 +311,7 @@ public class Mercado {
 			if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() ) {
 				for(int i =0; i<inversiones.length; i++) {
 					if(inversiones[i] instanceof CriptoMoneda) {
-						double a= inversiones[i].getPrecioBase() + variables[1].get$dolar()*0.5 ;
+						double a= inversiones[i].getPrecioBase() + variables[0].get$dolar()*0.5 ;
 						inversiones[i].setPrecioBase(a);
 					}
 				}
@@ -266,7 +319,7 @@ public class Mercado {
 			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() ) {
 				for(int i =0; i<inversiones.length; i++) {
 					if(inversiones[i] instanceof CriptoMoneda) {
-						double a= inversiones[i].getPrecioBase() - variables[1].get$dolar()*0.5 ;
+						double a= inversiones[i].getPrecioBase() - variables[0].get$dolar()*0.5 ;
 						inversiones[i].setPrecioBase(a);
 					}
 				}
@@ -374,13 +427,56 @@ public class Mercado {
 	
 
 		// ----- HACER UNA INVERSION
-	public void realizarInversion(String idUsuario, String idInversion) {
-		for(int i = 0 ; i < inversiones.length ; i++) {
-			if(inversiones[i].getCodigo().compareTo(idInversion)==0) {
-				inversiones[i].setIdUsu(idUsuario); 
+	public void realizarInversion(String idUsuario, String idInversion) throws EInversion {
+		Inversion voyAComprar=buscarInversion(idInversion);
+		voyAComprar.setIdUsu(idUsuario);
+		if (voyAComprar.getIdUsu()==null) {
+			voyAComprar.setIdUsu(idUsuario);
+			
+		}else {
+			throw new EInversion("La inversion ya tiene dueño ");
+			
+		}
+
+	}
+	
+	
+	public void actualizarVariables() {
+		
+		
+		
+			variables[1]=new Variable();
+			variables[1].set$dolar();
+			variables[1].set$petroleo();
+			variables[1].setInflacion();
+			
+			variables[0].recibeDolar(variables[1].get$dolar());
+			variables[0].recibeInflacion(variables[1].getInflacion());
+			variables[0].recibePetroleo(variables[1].get$petroleo());
+			
+			variables[1]=new Variable();
+			variables[1].set$dolar();
+			variables[1].set$petroleo();
+			variables[1].setInflacion();
+			
+
+	}
+	
+	
+	public Inversion[] inversionesSinDueño() {
+		Inversion[] sinComprar=new Inversion[0];
+		for (int i=0;i<inversiones.length;i++) {
+			if (inversiones[i].getIdUsu()==null) {
+			sinComprar=Arrays.copyOf(sinComprar, sinComprar.length+1);
+			sinComprar[sinComprar.length-1]=inversiones[i];
+
 			}
 		}
+		return sinComprar;
 	}
+	
+	
+	
 	
 	
 	
