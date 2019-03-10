@@ -44,7 +44,7 @@ public class PaginaAccesoProveedor {
 	 */
 	private void initialize() {
 		frmLogginAcces = new JFrame();
-		frmLogginAcces.setTitle("Loggin Access");
+		frmLogginAcces.setTitle("Bolsa de Colombia");
 		frmLogginAcces.setBounds(100, 100, 550, 700);
 		frmLogginAcces.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmLogginAcces.getContentPane().setLayout(null);
