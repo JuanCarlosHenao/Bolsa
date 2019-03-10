@@ -1,4 +1,4 @@
-package principal;
+package Principal;
 
 public class Accion extends Inversion {
 	// ES AFECTADA POR EL $DOLAR Y EL $PETROLEO.

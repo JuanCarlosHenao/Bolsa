@@ -1,4 +1,8 @@
-package principal;
+package Principal;
+
+import Excepciones.EInversion;
+import Excepciones.EProveedor;
+import Excepciones.EUsuario;
 
 public class Main {
 
@@ -84,7 +88,7 @@ public class Main {
 		//m.historialInversiones("lucho1204");
 		
 		Variable v = new Variable();
-		System.out.println(v.get$dolar());
+		/*System.out.println(v.get$dolar());
 		v.set$dolar();
 		System.out.println(v.get$dolar());
 		System.out.println();
@@ -94,7 +98,46 @@ public class Main {
 		System.out.println();
 		System.out.println(v.getInflacion());
 		v.setInflacion();
-		System.out.println(v.getInflacion());
+		System.out.println(v.getInflacion());*/
+		
+		
+		m.addBono("b1","idPROV-1","Bono",5000);
+		m.addCriptoMoneda("cp1","idPROV-1","CriptoMoneda",4000);
+
+		Variable[] vars=new Variable [2];
+		vars[0]=v;
+		
+		vars[1]=v;
+		m.setVariables(vars);
+		/*System.out.println("dolar1---- "+m.getVariables()[0].get$dolar()); 
+		System.out.println("inlfacion1---- "+m.getVariables()[0].getInflacion());*/
+		
+		System.out.println("bono1----- "+m.buscarInversion("b1").getPrecioBase());
+		m.actualizarVariables();
+		
+		
+		System.out.println("dolar1 ---- "+m.getVariables()[0].get$dolar());
+		System.out.println("inlfacion1---- "+m.getVariables()[0].getInflacion());
+		System.out.println();
+		System.out.println();
+		System.out.println("dolar2 ---- "+m.getVariables()[1].get$dolar());
+		System.out.println("inlfacion2---- "+m.getVariables()[1].getInflacion());
+		
+		m.actualizarPrecios();
+		System.out.println();
+		
+		
+		System.out.println("bono2---- "+m.buscarInversion("b1").getPrecioBase());
+		
+		
+		
+		
+		
+		
+		
+		
+		// jc 
+		//v.escribirVariablesFichero();
 		
 		//m.imprimirInversiones();
 		//m.imprimirRecibo("lucho1204");

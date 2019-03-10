@@ -1,4 +1,4 @@
-package principal;
+package Principal;
 
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -47,8 +47,8 @@ public class prueba {
 			BufferedWriter c= null;
 			
 			try {
-				f = new FileWriter("C:\\Users\\LUIS FELIPE\\Documents\\TRABAJOS\\UNIVERSIDAD\\2019\\6to semestre\\Estructura de Datos\\texto.txt", true);
-				f2= new FileWriter("C:\\Users\\LUIS FELIPE\\Documents\\TRABAJOS\\UNIVERSIDAD\\2019\\6to semestre\\Estructura de Datos\\texto.txt", true);
+				f = new FileWriter("C:\\Users\\Personal\\eclipse-workspace\\Bolsa\\src\\Principal\\texto.txt", true);
+				f2= new FileWriter("C:\\Users\\Personal\\eclipse-workspace\\Bolsa\\src\\Principal\\texto.txt", true);
 				b= new BufferedWriter(f);
 				c= new BufferedWriter(f2);
 				

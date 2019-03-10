@@ -1,11 +1,11 @@
-package principal;
+package Principal;
 
-public class Bono extends Inversion {
-	// DEPENDE DE LA INFLACION Y DEL DOLAR
+public class CriptoMoneda extends Inversion {
+	// DEPENDE DEL DOLAR 
 
 	private Variable[] variables ;
 	
-	public Bono(String codigo, String idProv, String tipo, double precioBase) {
+	public CriptoMoneda(String codigo, String idProv, String tipo, double precioBase) {
 		super(codigo, idProv, tipo, precioBase);
 	}
 
@@ -17,6 +17,5 @@ public class Bono extends Inversion {
 	public void setVariables(Variable[] variables) {
 		this.variables = variables;
 	}
-	
 	
 }
