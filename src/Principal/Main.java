@@ -1,4 +1,4 @@
-package Principal;
+package principal;
 
 import Excepciones.EInversion;
 import Excepciones.EProveedor;
