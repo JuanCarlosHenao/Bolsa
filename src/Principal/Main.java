@@ -162,6 +162,7 @@ public class Main implements Serializable {
 		// jc 
 		//v.escribirVariablesFichero();
 		
+		
 		//m.imprimirInversiones();
 		//m.imprimirRecibo("lucho1204");
 	}
