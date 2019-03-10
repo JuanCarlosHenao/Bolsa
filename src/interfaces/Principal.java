@@ -10,7 +10,9 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
-public class RegisterPage {
+import Principal.Mercado;
+
+public class Principal {
 
 	JFrame frame;
 	JFrame frmLogginAcces;
@@ -18,6 +20,7 @@ public class RegisterPage {
 	public static JPasswordField cajaContrasena;
     public static JButton btnLoggin;
     public static JButton btnRegister;
+    private Mercado mercado;
 
 	/**
 	 * Launch the application.
@@ -26,7 +29,8 @@ public class RegisterPage {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegisterPage window = new RegisterPage();
+					Mercado m=new Mercado();
+					Principal window = new Principal(m);
 					window.frmLogginAcces.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -35,7 +39,8 @@ public class RegisterPage {
 		});
 	}
 	
-	public RegisterPage() {
+	public Principal(Mercado m) {
+		mercado= m;
 		initialize();
 	}
 

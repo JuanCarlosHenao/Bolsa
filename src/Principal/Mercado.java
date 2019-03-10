@@ -207,7 +207,6 @@ public class Mercado {
 	
 		// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UN BONO POR LAS VARIABLES QUE LA INFLUYEN
 	public void alterarPrecioBono() {
-<<<<<<< HEAD
 		// si las dos suben 
 		if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
 			for (int i=0;i<inversiones.length;i++) {
@@ -249,7 +248,6 @@ public class Mercado {
 				if (inversiones[i] instanceof Bono ) {
 					double precioNuevo=inversiones[i].getPrecioBase();
 					inversiones[i].setPrecioBase(precioNuevo);
-=======
 		if(variables.length==1) {
 			for(int i =0; i<inversiones.length; i++) {
 				if(inversiones[i] instanceof Bono) {
@@ -339,7 +337,6 @@ public class Mercado {
 						
 						inversiones[i].setPrecioBase(5);
 					}
->>>>>>> fa03785d82b139e657f34b68d462c830ce432ec5
 				}
 			}
 		}
@@ -350,7 +347,6 @@ public class Mercado {
 
 	// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA CRIPTOMONEDA POR LAS VARIABLES QUE LA INFLUYEN
 	public void alterarPrecioCripto() {
-<<<<<<< HEAD
 		// si el dolar sube 
 				if (variables[0].get$dolar()<variables[1].get$dolar()) {
 					for (int i=0;i<inversiones.length;i++) {
@@ -369,7 +365,6 @@ public class Mercado {
 					}
 				}
 		
-=======
 		if(variables.length==1) {
 			for(int i =0; i<inversiones.length; i++) {
 				if(inversiones[i] instanceof CriptoMoneda) {
@@ -396,12 +391,10 @@ public class Mercado {
 				}
 			}
 		}
->>>>>>> fa03785d82b139e657f34b68d462c830ce432ec5
 	}
 	
 	// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA ACCION POR LAS VARIABLES QUE LA INFLUYEN
 	public void alterarPrecioAccion() {
-<<<<<<< HEAD
 		// si las dos suben 
 				if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].get$petroleo()<variables[1].get$petroleo()) {
 					for (int i=0;i<inversiones.length;i++) {
@@ -443,7 +436,6 @@ public class Mercado {
 							double precioNuevo=inversiones[i].getPrecioBase();
 							inversiones[i].setPrecioBase(precioNuevo);
 						}
-=======
 		if(variables.length==1) {
 			for(int i =0; i<inversiones.length; i++) {
 				if(inversiones[i] instanceof Accion) {
@@ -484,9 +476,11 @@ public class Mercado {
 					if(inversiones[i] instanceof Accion) {
 						double a= inversiones[i].getPrecioBase()+ variables[0].get$dolar()*0.8 - variables[0].get$petroleo()*0.8;
 						inversiones[i].setPrecioBase(a);
->>>>>>> fa03785d82b139e657f34b68d462c830ce432ec5
 					}
 				}
+			}
+		}
+					
 	}
 	
 		// ----- USUARIO PRIORITARIO : EL QUE SUMA LA MAYOR INVERSION EN EL MERCADO
