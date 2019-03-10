@@ -1,4 +1,4 @@
-package principal;
+package Principal;
 
 public class Bono extends Inversion {
 	// DEPENDE DE LA INFLACION Y DEL DOLAR

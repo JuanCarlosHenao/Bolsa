@@ -1,4 +1,4 @@
-package principal;
+package Principal;
 
 public class CriptoMoneda extends Inversion {
 	// DEPENDE DEL DOLAR 
