@@ -1,12 +1,31 @@
 package Principal;
 
+import java.io.File;
+import java.io.Serializable;
+
 import Excepciones.EInversion;
 import Excepciones.EProveedor;
 import Excepciones.EUsuario;
 
-public class Main {
+
+public class Main implements Serializable {
 
 	public static void main(String[] args) throws EInversion, EUsuario, EProveedor, InterruptedException {
+		
+			// TODO Auto-generated method stub
+			/*File file = new File("mercado.datos");
+			if(file.exists()) {
+				Mercado merca = Recursos.ReadFileObjectEmpresa("mercado.datos");
+				// se debe crear una nuve ventana de la principal del mercado y pasarle merca
+				FormLogin inicio = new FormLogin(hotel);
+				inicio.setVisible(true);
+			}else {
+				// se debe crear el inicio de todos los tiempos para colocarle el nombre a la bolsa
+				FormZeroDay principal = new FormZeroDay();
+				principal.setVisible(true);
+			}*/
+		
+
 		
 		Mercado m = new Mercado("Bolsa de Colombia");
 		
@@ -51,12 +70,13 @@ public class Main {
 		*/
 		
 		//-- CREACION DE ACCIONES
-		Accion a1 = new Accion("idACCION-1", "idPROV-1", "ACCION", 23);
 		
-		Inversion[] inv = new Inversion[1];
-		inv[0]= a1;
-		m.setInversiones(inv);
-		m.realizarInversion("lucho1204", "idACCION-1");
+		
+		
+		/*Inversion[] inv = new Inversion[1];
+		inv[0]= a1;*/
+		//m.setInversiones(inv);
+		//m.realizarInversion("lucho1204", "idACCION-1");
 
 		//System.out.println(inv.length);
 		//m.imprimirInversiones();
@@ -100,7 +120,7 @@ public class Main {
 		v.setInflacion();
 		System.out.println(v.getInflacion());*/
 		
-		
+		m.addAccion("idACCION-1", "idPROV-1", "Accion", 10000);
 		m.addBono("b1","idPROV-1","Bono",5000);
 		m.addCriptoMoneda("cp1","idPROV-1","CriptoMoneda",4000);
 
@@ -112,22 +132,25 @@ public class Main {
 		/*System.out.println("dolar1---- "+m.getVariables()[0].get$dolar()); 
 		System.out.println("inlfacion1---- "+m.getVariables()[0].getInflacion());*/
 		
-		System.out.println("bono1----- "+m.buscarInversion("b1").getPrecioBase());
+		System.out.println("bono1----- "+m.buscarInversion("cp1").getPrecioBase());
 		m.actualizarVariables();
 		
 		
 		System.out.println("dolar1 ---- "+m.getVariables()[0].get$dolar());
 		System.out.println("inlfacion1---- "+m.getVariables()[0].getInflacion());
+		System.out.println("Petroleo1---- "+m.getVariables()[0].get$petroleo());
 		System.out.println();
 		System.out.println();
 		System.out.println("dolar2 ---- "+m.getVariables()[1].get$dolar());
 		System.out.println("inlfacion2---- "+m.getVariables()[1].getInflacion());
+		System.out.println("Petroleo2---- "+m.getVariables()[1].get$petroleo());
+		
 		
 		m.actualizarPrecios();
 		System.out.println();
 		
 		
-		System.out.println("bono2---- "+m.buscarInversion("b1").getPrecioBase());
+		System.out.println("bono2---- "+m.buscarInversion("cp1").getPrecioBase());
 		
 		
 		

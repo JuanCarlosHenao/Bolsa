@@ -20,6 +20,10 @@ public class Mercado {
 	
 	// ---------- GETTERS & SETTERS ---------- //
 	
+	public Mercado() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public Usuario[] getUsuarios() {
 		return usuarios;
 	}
@@ -196,9 +200,9 @@ public class Mercado {
 	}
 
 	public void actualizarPrecios() {
-		//alterarPrecioAccion();
+		alterarPrecioAccion();
 		alterarPrecioBono();
-		//alterarPrecioCripto();
+		alterarPrecioCripto();
 	}
 	
 		// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA ACCION POR LAS VARIABLES QUE LA INFLUYEN
@@ -209,7 +213,7 @@ public class Mercado {
 				if (inversiones[i] instanceof Bono ) {
 					double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()*variables[1].getInflacion()/100;
 					
-					inversiones[i].setPrecioBase(1);
+					inversiones[i].setPrecioBase(precioNuevo);
 				}
 			}
 			
@@ -218,7 +222,7 @@ public class Mercado {
 			for (int i=0;i<inversiones.length;i++) {
 				if (inversiones[i] instanceof Bono ) {
 					double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()*variables[1].getInflacion()/100;
-					inversiones[i].setPrecioBase(2);
+					inversiones[i].setPrecioBase(precioNuevo);
 				}
 			}
 			
@@ -227,25 +231,23 @@ public class Mercado {
 			for (int i=0;i<inversiones.length;i++) {
 				if (inversiones[i] instanceof Bono ) {
 					double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()-variables[1].getInflacion()/100;
-					inversiones[i].setPrecioBase(3);
+					inversiones[i].setPrecioBase(precioNuevo);
 				}
 			}
-			
-			
 		}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
 			// si dolar baja e inlfacion sube 
 			for (int i=0;i<inversiones.length;i++) {
 				if (inversiones[i] instanceof Bono ) {
 					double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()+variables[1].getInflacion()/100;
-					inversiones[i].setPrecioBase(4);
+					inversiones[i].setPrecioBase(precioNuevo);
 				}
 			}
 			
 		} else {
 			for (int i=0;i<inversiones.length;i++) {
 				if (inversiones[i] instanceof Bono ) {
-					
-					inversiones[i].setPrecioBase(5);
+					double precioNuevo=inversiones[i].getPrecioBase();
+					inversiones[i].setPrecioBase(precioNuevo);
 				}
 			}
 		}
@@ -254,79 +256,70 @@ public class Mercado {
 	}
 	
 	public void alterarPrecioCripto() {
-		if(variables.length==1) {
-			for(int i =0; i<inversiones.length; i++) {
-				if(inversiones[i] instanceof CriptoMoneda) {
-					double a= inversiones[i].getPrecioBase() + variables[0].get$dolar()*0.1;
-					inversiones[i].setPrecioBase(a);
-				}//------------poner else if para las que no son acciones?
-			}
-		}else {
-			//----- condicion para cuando el dolar baja
-			if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() ) {
-				for(int i =0; i<inversiones.length; i++) {
-					if(inversiones[i] instanceof CriptoMoneda) {
-						double a= inversiones[i].getPrecioBase() + variables[0].get$dolar()*0.5 ;
-						inversiones[i].setPrecioBase(a);
+		// si el dolar sube 
+				if (variables[0].get$dolar()<variables[1].get$dolar()) {
+					for (int i=0;i<inversiones.length;i++) {
+						if (inversiones[i] instanceof CriptoMoneda ) {
+							double 							precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar();
+							inversiones[i].setPrecioBase(precioNuevo);
+						}
+					}
+					// si el dolar baja 
+				}else if (variables[0].get$dolar()>variables[1].get$dolar()) {
+					for (int i=0;i<inversiones.length;i++) {
+						if (inversiones[i] instanceof CriptoMoneda ) {
+							double 							precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar();
+							inversiones[i].setPrecioBase(precioNuevo);
+						}
 					}
 				}
-			//----- cuando el dolar suben de precio
-			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() ) {
-				for(int i =0; i<inversiones.length; i++) {
-					if(inversiones[i] instanceof CriptoMoneda) {
-						double a= inversiones[i].getPrecioBase() - variables[0].get$dolar()*0.5 ;
-						inversiones[i].setPrecioBase(a);
-					}//------------poner else if para las que no son acciones?
-				}
-			}
-		}
+		
 	}
 	
 	public void alterarPrecioAccion() {
-		if(variables.length==1) {
-			for(int i =0; i<inversiones.length; i++) {
-				if(inversiones[i] instanceof Accion) {
-					double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.1 + variables[1].get$petroleo()*0.1;
-					inversiones[i].setPrecioBase(a);
-				}//------------poner else if para las que no son acciones?
-			}
-		}else {
-		
-		//---condicion para cuando el dolar y el petroleo bajan de precio
-		if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()<variables[variables.length-2].get$petroleo()) {
-			for(int i =0; i<inversiones.length; i++) {
-				if(inversiones[i] instanceof Accion) {
-					double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.5 - variables[1].get$petroleo()*0.5;
-					inversiones[i].setPrecioBase(a);
-				}//------------poner else if para las que no son acciones?
-			}
-			//-----cuando ambas suben de precio
-			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()>variables[variables.length-2].get$petroleo()) {
-				for(int i =0; i<inversiones.length; i++) {
-					if(inversiones[i] instanceof Accion) {
-						double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.5 + variables[1].get$petroleo()*0.5;
-						inversiones[i].setPrecioBase(a);
-					}//------------poner else if para las que no son acciones?
+		// si las dos suben 
+				if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].get$petroleo()<variables[1].get$petroleo()) {
+					for (int i=0;i<inversiones.length;i++) {
+						if (inversiones[i] instanceof Accion ) {
+							double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()*variables[1].get$petroleo()/100;
+							
+							inversiones[i].setPrecioBase(precioNuevo);
+						}
+					}
+					
+					// si las dos bajan 
+				}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].get$petroleo()>variables[1].get$petroleo()) {
+					for (int i=0;i<inversiones.length;i++) {
+						if (inversiones[i] instanceof Accion ) {
+							double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()*variables[1].get$petroleo()/100;
+							inversiones[i].setPrecioBase(precioNuevo);
+						}
+					}
+					
+					//si dolar sube e petroleo baja 
+				}else if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].get$petroleo()>variables[1].get$petroleo()) {
+					for (int i=0;i<inversiones.length;i++) {
+						if (inversiones[i] instanceof Accion ) {
+							double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()-variables[1].get$petroleo()/100;
+							inversiones[i].setPrecioBase(precioNuevo);
+						}
+					}
+				}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].get$petroleo()<variables[1].get$petroleo()) {
+					// si dolar baja e petroleo sube 
+					for (int i=0;i<inversiones.length;i++) {
+						if (inversiones[i] instanceof Accion ) {
+							double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()+variables[1].get$petroleo()/100;
+							inversiones[i].setPrecioBase(precioNuevo);
+						}
+					}
+				} else {
+					for (int i=0;i<inversiones.length;i++) {
+						if (inversiones[i] instanceof Accion ) {
+							double precioNuevo=inversiones[i].getPrecioBase();
+							inversiones[i].setPrecioBase(precioNuevo);
+						}
+					}
 				}
-				
-				//---dolar bajo, petroleo subio
-			}else if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()>variables[variables.length-2].get$petroleo()) {
-				for(int i =0; i<inversiones.length; i++) {
-					if(inversiones[i] instanceof Accion) {
-						double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.8 + variables[1].get$petroleo()*0.8;
-						inversiones[i].setPrecioBase(a);
-					}//------------poner else if para las que no son acciones?
-				}
-				//----dolar subio, petroleo bajo
-			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()<variables[variables.length-2].get$petroleo()) {
-				for(int i =0; i<inversiones.length; i++) {
-					if(inversiones[i] instanceof Accion) {
-						double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.8 - variables[1].get$petroleo()*0.8;
-						inversiones[i].setPrecioBase(a);
-					}//------------poner else if para las que no son acciones?
-				}
-			}
-		}
 	}
 	
 	
