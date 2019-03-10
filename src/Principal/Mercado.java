@@ -212,15 +212,16 @@ public class Mercado {
 			}
 		}else {
 		
-		//---condicion para cuando el dolar y el petroleo bajan de precio
-		if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()<variables[variables.length-2].getInflacion()) {
-			for(int i =0; i<inversiones.length; i++) {
-				if(inversiones[i] instanceof Bono) {
-					double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.5 - variables[1].getInflacion()*0.5;
-					inversiones[i].setPrecioBase(a);
+			//---condicion para cuando el dolar y el petroleo bajan de precio
+			if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()<variables[variables.length-2].getInflacion()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Bono) {
+						double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.5 - variables[1].getInflacion()*0.5;
+						inversiones[i].setPrecioBase(a);
+					}
 				}
-			}
-			//-----cuando ambas suben de precio
+				
+				//-----cuando ambas suben de precio
 			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()>variables[variables.length-2].getInflacion()) {
 				for(int i =0; i<inversiones.length; i++) {
 					if(inversiones[i] instanceof Bono) {
@@ -228,7 +229,7 @@ public class Mercado {
 						inversiones[i].setPrecioBase(a);
 					}
 				}
-				
+					
 				//---dolar bajo, petroleo subio
 			}else if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()>variables[variables.length-2].getInflacion()) {
 				for(int i =0; i<inversiones.length; i++) {
@@ -237,6 +238,7 @@ public class Mercado {
 						inversiones[i].setPrecioBase(a);
 					}
 				}
+				
 				//----dolar subio, petroleo bajo
 			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()<variables[variables.length-2].getInflacion()) {
 				for(int i =0; i<inversiones.length; i++) {
@@ -244,58 +246,59 @@ public class Mercado {
 						double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.8 - variables[1].getInflacion()*0.8;
 						inversiones[i].setPrecioBase(a);
 					}
-		// si las dos suben 
-		if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
-			for (int i=0;i<inversiones.length;i++) {
-				if (inversiones[i] instanceof Bono ) {
-					double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()*variables[1].getInflacion()/100;
-					
-					inversiones[i].setPrecioBase(1);
 				}
 			}
 			
-			// si las dos bajan 
-		}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].getInflacion()>variables[1].getInflacion()) {
-			for (int i=0;i<inversiones.length;i++) {
-				if (inversiones[i] instanceof Bono ) {
-					double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()*variables[1].getInflacion()/100;
-					inversiones[i].setPrecioBase(2);
+			// si las dos suben 
+			if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()*variables[1].getInflacion()/100;
+						inversiones[i].setPrecioBase(1);
+					}
 				}
-			}
-			
-			//si dolar sube e inflacion baja 
-		}else if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()>variables[1].getInflacion()) {
-			for (int i=0;i<inversiones.length;i++) {
-				if (inversiones[i] instanceof Bono ) {
-					double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()-variables[1].getInflacion()/100;
-					inversiones[i].setPrecioBase(3);
+				
+				// si las dos bajan 
+			}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].getInflacion()>variables[1].getInflacion()) {
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()*variables[1].getInflacion()/100;
+						inversiones[i].setPrecioBase(2);
+					}
 				}
-			}
-			
-			
-		}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
-			// si dolar baja e inlfacion sube 
-			for (int i=0;i<inversiones.length;i++) {
-				if (inversiones[i] instanceof Bono ) {
-					double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()+variables[1].getInflacion()/100;
-					inversiones[i].setPrecioBase(4);
+				
+				//si dolar sube e inflacion baja 
+			}else if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()>variables[1].getInflacion()) {
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()-variables[1].getInflacion()/100;
+						inversiones[i].setPrecioBase(3);
+					}
 				}
-			}
-			
-		} else {
-			for (int i=0;i<inversiones.length;i++) {
-				if (inversiones[i] instanceof Bono ) {
-					
-					inversiones[i].setPrecioBase(5);
+				
+				
+			}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
+				// si dolar baja e inlfacion sube 
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()+variables[1].getInflacion()/100;
+						inversiones[i].setPrecioBase(4);
+					}
+				}
+				
+			} else {
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						
+						inversiones[i].setPrecioBase(5);
+					}
 				}
 			}
 		}
-				}
-			}
-		}
+	}
 			
  
-	}
+	
 
 	// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA CRIPTOMONEDA POR LAS VARIABLES QUE LA INFLUYEN
 	public void alterarPrecioCripto() {
