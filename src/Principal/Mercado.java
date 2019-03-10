@@ -207,7 +207,10 @@ public class Mercado {
 	
 		// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UN BONO POR LAS VARIABLES QUE LA INFLUYEN
 	public void alterarPrecioBono() {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 93c1ebabaa81e44ddec9b2bc2c900ba2b1adcc50
 		// si las dos suben 
 		if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
 			for (int i=0;i<inversiones.length;i++) {
@@ -249,9 +252,86 @@ public class Mercado {
 				if (inversiones[i] instanceof Bono ) {
 					double precioNuevo=inversiones[i].getPrecioBase();
 					inversiones[i].setPrecioBase(precioNuevo);
+<<<<<<< HEAD
+=======
+		if(variables.length==1) {
+			for(int i =0; i<inversiones.length; i++) {
+				if(inversiones[i] instanceof Bono) {
+					double a= inversiones[i].getPrecioBase()+ variables[1].getInflacion()*0.1 + variables[1].get$dolar()*0.1;
+					inversiones[i].setPrecioBase(a);
+				}
+			}
+		}else {
+		
+			//---condicion para cuando el dolar y el petroleo bajan de precio
+			if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()<variables[variables.length-2].getInflacion()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Bono) {
+						double a= inversiones[i].getPrecioBase()- variables[1].get$dolar()*0.5 - variables[1].getInflacion()*0.5;
+						inversiones[i].setPrecioBase(a);
+					}
+				}
+				
+				//-----cuando ambas suben de precio
+			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].getInflacion()>variables[variables.length-2].getInflacion()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Bono) {
+						double a= inversiones[i].getPrecioBase()+ variables[1].get$dolar()*0.5 + variables[1].getInflacion()*0.5;
+						inversiones[i].setPrecioBase(a);
+					}
+				}
+>>>>>>> 93c1ebabaa81e44ddec9b2bc2c900ba2b1adcc50
 					
 		
 			}
+<<<<<<< HEAD
+=======
+			
+			// si las dos suben 
+			if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()*variables[1].getInflacion()/100;
+						inversiones[i].setPrecioBase(1);
+					}
+				}
+				
+				// si las dos bajan 
+			}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].getInflacion()>variables[1].getInflacion()) {
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()*variables[1].getInflacion()/100;
+						inversiones[i].setPrecioBase(2);
+					}
+				}
+				
+				//si dolar sube e inflacion baja 
+			}else if (variables[0].get$dolar()<variables[1].get$dolar() && variables[0].getInflacion()>variables[1].getInflacion()) {
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						double precioNuevo=inversiones[i].getPrecioBase()+variables[1].get$dolar()-variables[1].getInflacion()/100;
+						inversiones[i].setPrecioBase(3);
+					}
+				}
+				
+				
+			}else if (variables[0].get$dolar()>variables[1].get$dolar() && variables[0].getInflacion()<variables[1].getInflacion()) {
+				// si dolar baja e inlfacion sube 
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						double precioNuevo=inversiones[i].getPrecioBase()-variables[1].get$dolar()+variables[1].getInflacion()/100;
+						inversiones[i].setPrecioBase(4);
+					}
+				}
+				
+			} else {
+				for (int i=0;i<inversiones.length;i++) {
+					if (inversiones[i] instanceof Bono ) {
+						
+						inversiones[i].setPrecioBase(5);
+					}
+				}
+>>>>>>> 93c1ebabaa81e44ddec9b2bc2c900ba2b1adcc50
 			}
 		}
 	}
@@ -305,7 +385,10 @@ public class Mercado {
 				}
 			}
 		}
+<<<<<<< HEAD
 
+=======
+>>>>>>> 93c1ebabaa81e44ddec9b2bc2c900ba2b1adcc50
 	}
 	
 	// ----- METODO PARA MODIFICAR EL PRECIO BASE DE UNA ACCION POR LAS VARIABLES QUE LA INFLUYEN
@@ -351,10 +434,58 @@ public class Mercado {
 							double precioNuevo=inversiones[i].getPrecioBase();
 							inversiones[i].setPrecioBase(precioNuevo);
 						}
+<<<<<<< HEAD
 		
 					}
 				}
 
+=======
+		if(variables.length==1) {
+			for(int i =0; i<inversiones.length; i++) {
+				if(inversiones[i] instanceof Accion) {
+					double a= inversiones[i].getPrecioBase()+ variables[0].get$dolar()*0.1 + variables[0].get$petroleo()*0.1;
+					inversiones[i].setPrecioBase(a);
+				}
+			}
+		}else {
+		
+		//---condicion para cuando el dolar y el petroleo bajan de precio
+		if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()<variables[variables.length-2].get$petroleo()) {
+			for(int i =0; i<inversiones.length; i++) {
+				if(inversiones[i] instanceof Accion) {
+					double a= inversiones[i].getPrecioBase()- variables[0].get$dolar()*0.5 - variables[0].get$petroleo()*0.5;
+					inversiones[i].setPrecioBase(a);
+				}
+			}
+			//-----cuando ambas suben de precio
+			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()>variables[variables.length-2].get$petroleo()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Accion) {
+						double a= inversiones[i].getPrecioBase()+ variables[0].get$dolar()*0.5 + variables[0].get$petroleo()*0.5;
+						inversiones[i].setPrecioBase(a);
+					}
+				}
+				
+				//---dolar bajo, petroleo subio
+			}else if(variables[variables.length-1].get$dolar()<variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()>variables[variables.length-2].get$petroleo()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Accion) {
+						double a= inversiones[i].getPrecioBase()- variables[0].get$dolar()*0.8 + variables[0].get$petroleo()*0.8;
+						inversiones[i].setPrecioBase(a);
+					}
+				}
+				//----dolar subio, petroleo bajo
+			}else if(variables[variables.length-1].get$dolar()>variables[variables.length-2].get$dolar() && variables[variables.length-1].get$petroleo()<variables[variables.length-2].get$petroleo()) {
+				for(int i =0; i<inversiones.length; i++) {
+					if(inversiones[i] instanceof Accion) {
+						double a= inversiones[i].getPrecioBase()+ variables[0].get$dolar()*0.8 - variables[0].get$petroleo()*0.8;
+						inversiones[i].setPrecioBase(a);
+					}
+				}
+			}
+		}
+					
+>>>>>>> 93c1ebabaa81e44ddec9b2bc2c900ba2b1adcc50
 	}
 	
 		// ----- USUARIO PRIORITARIO : EL QUE SUMA LA MAYOR INVERSION EN EL MERCADO

@@ -14,7 +14,6 @@ public class Usuario {
 
 	
 public Usuario(String nombre, String correo, String id, CuentaBancaria cuentas, String contrasena) {
-	super();
 	this.nombre = nombre;
 	this.correo = correo;
 	this.id = id;

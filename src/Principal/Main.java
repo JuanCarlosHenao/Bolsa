@@ -17,7 +17,7 @@ public class Main implements Serializable {
 			if(file.exists()) {
 				Mercado merca = Recursos.ReadFileObjectEmpresa("mercado.datos");
 				// se debe crear una nuve ventana de la principal del mercado y pasarle merca
-				FormLogin inicio = new FormLogin(hotel);
+				Principal inicio = new Principal(merca);
 				inicio.setVisible(true);
 			}else {
 				// se debe crear el inicio de todos los tiempos para colocarle el nombre a la bolsa
