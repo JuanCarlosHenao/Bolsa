@@ -1,17 +1,16 @@
 package interfaces;
 
 import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JPasswordField;
-import javax.swing.JButton;
 import java.awt.Font;
 
-public class PaginaAcceso {
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 
+public class PaginaAccesoProveedor {
 	JFrame frmLogginAcces;
 	public static JTextField cajaUsuario;
 	public static JPasswordField cajaContrasena;
@@ -24,7 +23,7 @@ public class PaginaAcceso {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					PaginaAcceso window = new PaginaAcceso();
+					PaginaAccesoProveedor window = new PaginaAccesoProveedor();
 					window.frmLogginAcces.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +35,7 @@ public class PaginaAcceso {
 	/**
 	 * Create the application.
 	 */
-	public PaginaAcceso() {
+	public PaginaAccesoProveedor() {
 		initialize();
 	}
 
@@ -45,40 +44,46 @@ public class PaginaAcceso {
 	 */
 	private void initialize() {
 		frmLogginAcces = new JFrame();
-		frmLogginAcces.setTitle("Loggin Acces");
+		frmLogginAcces.setTitle("Loggin Access");
 		frmLogginAcces.setBounds(100, 100, 550, 700);
 		frmLogginAcces.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frmLogginAcces.getContentPane().setLayout(null);
 		
-		JLabel lblWelcomToMarktrade = new JLabel("Welcom To MarkTrade");
+		JLabel lblWelcomToMarktrade = new JLabel("Bienvenidos a la Bolsa");
 		lblWelcomToMarktrade.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblWelcomToMarktrade.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWelcomToMarktrade.setBounds(159, 70, 212, 27);
+		lblWelcomToMarktrade.setBounds(159, 50, 212, 27);
+		frmLogginAcces.getContentPane().add(lblWelcomToMarktrade);
+		
+		lblWelcomToMarktrade = new JLabel("Plataforma para Proveedores");
+		lblWelcomToMarktrade.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblWelcomToMarktrade.setHorizontalAlignment(SwingConstants.CENTER);
+		lblWelcomToMarktrade.setBounds(159, 90, 212, 27);
 		frmLogginAcces.getContentPane().add(lblWelcomToMarktrade);
 		
 		cajaUsuario = new JTextField();
-		cajaUsuario.setBounds(200, 168, 116, 22);
+		cajaUsuario.setBounds(210, 180, 116, 22);
 		frmLogginAcces.getContentPane().add(cajaUsuario);
 		cajaUsuario.setColumns(10);
 		
-		JLabel lblUsuario = new JLabel("User / Mail");
-		lblUsuario.setBounds(200, 139, 84, 16);
+		JLabel lblUsuario = new JLabel("Identificación");
+		lblUsuario.setBounds(230, 160, 84, 16);
 		frmLogginAcces.getContentPane().add(lblUsuario);
 		
-		JLabel lblPassword = new JLabel("Password");
-		lblPassword.setBounds(200, 241, 68, 16);
+		JLabel lblPassword = new JLabel("Contraseña");
+		lblPassword.setBounds(235, 252, 68, 16);
 		frmLogginAcces.getContentPane().add(lblPassword);
 		
 		cajaContrasena = new JPasswordField();
-		cajaContrasena.setBounds(200, 270, 116, 22);
+		cajaContrasena.setBounds(210, 270, 116, 22);
 		frmLogginAcces.getContentPane().add(cajaContrasena);
 		
-		JButton btnLoggin = new JButton("Loggin ");
-		btnLoggin.setBounds(210, 341, 97, 25);
+		JButton btnLoggin = new JButton("Entrar");
+		btnLoggin.setBounds(215, 350, 97, 25);
 		frmLogginAcces.getContentPane().add(btnLoggin);
 		
-		JButton btnRegister = new JButton("Register");
-		btnRegister.setBounds(210, 398, 97, 25);
+		JButton btnRegister = new JButton("Registrarse");
+		btnRegister.setBounds(210, 398, 110, 25);
 		frmLogginAcces.getContentPane().add(btnRegister);
 	}
 }

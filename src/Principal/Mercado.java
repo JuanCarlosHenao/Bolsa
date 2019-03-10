@@ -180,7 +180,7 @@ public class Mercado {
 		double total = 0;
 		for(int i = 0 ; i < inversiones.length ; i++) {
 			if(inversiones[i].getIdUsu().compareTo(id)==0) {
-				total += inversiones[i].valorInversion();
+				total += inversiones[i].getPrecioBase();
 			}
 		}
 		return total;
@@ -435,12 +435,9 @@ public class Mercado {
 		voyAComprar.setIdUsu(idUsuario);
 		if (voyAComprar.getIdUsu()==null) {
 			voyAComprar.setIdUsu(idUsuario);
-			
 		}else {
 			throw new EInversion("La inversion ya tiene dueño ");
-			
 		}
-
 	}
 	
 	
