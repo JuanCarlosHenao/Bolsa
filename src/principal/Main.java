@@ -96,6 +96,7 @@ public class Main {
 		v.setInflacion();
 		System.out.println(v.getInflacion());
 		
+		
 		//m.imprimirInversiones();
 		//m.imprimirRecibo("lucho1204");
 	}
