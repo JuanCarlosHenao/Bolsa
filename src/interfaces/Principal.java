@@ -1,93 +1,73 @@
 package interfaces;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.Font;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
-import javax.swing.JPasswordField;
-import javax.swing.JTextField;
+import java.awt.Font;
 import javax.swing.SwingConstants;
-
-import Principal.Mercado;
+import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class Principal {
-	
+public class Principal extends JFrame {
 
-	JFrame frame;
-	JFrame frmLogginAcces;
-	public static JTextField cajaUsuario;
-	public static JPasswordField cajaContrasena;
-    public static JButton btnLoggin;
-    public static JButton btnRegister;
-    private Mercado mercado;
-    private JLabel lblWelcomToMarktrade_1;
+	private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Mercado m=new Mercado();
-					Principal window = new Principal(m);
-					window.frmLogginAcces.setVisible(true);
+					Principal frame = new Principal();
+					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
 	}
-	
-	public Principal(Mercado m) {
-		mercado= m;
-		initialize();
-	}
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Create the frame.
 	 */
-	private void initialize() {
-		frame = new JFrame();
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+	public Principal() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 500, 500);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
-		frmLogginAcces = new JFrame();
-		frmLogginAcces.setTitle("Bolsa de Colombia");
-		frmLogginAcces.setBounds(80, 20, 550, 700);
-		frmLogginAcces.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frmLogginAcces.getContentPane().setLayout(null);
+		JLabel lblNewLabel = new JLabel("Bienvenidos a la Bolsa");
+		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblNewLabel.setBounds(122, 66, 221, 37);
+		contentPane.add(lblNewLabel);
 		
-		JLabel lblWelcomToMarktrade = new JLabel("Bienvenidos a la Bolsa");
-		lblWelcomToMarktrade.setBounds(159, 50, 200, 27);
-		lblWelcomToMarktrade.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblWelcomToMarktrade.setHorizontalAlignment(SwingConstants.CENTER);
-		frmLogginAcces.getContentPane().add(lblWelcomToMarktrade);
+		JLabel lblNewLabel_1 = new JLabel("Escoja la opci\u00F3n de cuenta :");
+		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
+		lblNewLabel_1.setFont(new Font("Tahoma", Font.BOLD, 14));
+		lblNewLabel_1.setBounds(135, 150, 208, 17);
+		contentPane.add(lblNewLabel_1);
 		
-		lblWelcomToMarktrade_1 = new JLabel("Escoja la opción de cuenta:");
-		lblWelcomToMarktrade_1.setBounds(159, 150, 212, 27);
-		lblWelcomToMarktrade_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblWelcomToMarktrade_1.setHorizontalAlignment(SwingConstants.CENTER);
-		frmLogginAcces.getContentPane().add(lblWelcomToMarktrade_1);
-		
-		JButton btnLoggin = new JButton("Usuario");
-		btnLoggin.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
+		JButton btnUsu = new JButton("Usuarios");
+		btnUsu.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
 			}
 		});
-		btnLoggin.setBounds(100, 300, 150, 50);
-		frmLogginAcces.getContentPane().add(btnLoggin);
+		btnUsu.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnUsu.setBounds(100, 246, 117, 37);
+		contentPane.add(btnUsu);
 		
-		JButton btnRegister = new JButton("Proveedor");
-		btnRegister.setBounds(310, 300, 150, 50);
-		frmLogginAcces.getContentPane().add(btnRegister);
-		
-		
-		
+		JButton btnProv = new JButton("Proveedores");
+		btnProv.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnProv.setBounds(274, 246, 117, 37);
+		contentPane.add(btnProv);
 	}
-
 }
