@@ -94,14 +94,14 @@ public class AccesoUsuario extends JFrame implements Serializable  {
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				/*EntradaUsuario eu=new EntradaUsuario(mercado);
-				eu.setvisible
-				dispose();*/
+				EntradaUsuario eu=new EntradaUsuario(mercado);
+				eu.setVisible(true);
+				dispose();
 				
 			}
 		});
 		btnNewButton.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 14));
-		btnNewButton.setBounds(227, 437, 89, 34);
+		btnNewButton.setBounds(220, 431, 89, 34);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Registrarse");
