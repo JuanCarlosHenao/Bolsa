@@ -91,6 +91,14 @@ public class EntradaProveedor extends JFrame implements Serializable {
 		contentPane.add(btnMisInversiones);
 		
 		JButton btnAadirInversion = new JButton("A\u00F1adir inversion");
+		btnAadirInversion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AgregarInversion ai=new AgregarInversion(mercado);
+				ai.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnAadirInversion.setBackground(Color.WHITE);
 		btnAadirInversion.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnAadirInversion.setBounds(176, 351, 202, 61);
