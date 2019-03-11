@@ -27,8 +27,8 @@ public class AccesoProveedor extends JFrame implements Serializable {
     public static JButton btnLoggin;
     public static JButton btnRegister;
     private JTextField textField;
-    private JTextField textField_1;
     private Mercado mercado;
+    private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -88,11 +88,6 @@ public class AccesoProveedor extends JFrame implements Serializable {
 		lblContrasea.setBounds(215, 310, 111, 27);
 		contentPane.add(lblContrasea);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(210, 340, 121, 34);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
-		
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -114,6 +109,10 @@ public class AccesoProveedor extends JFrame implements Serializable {
 		btnNewButton_1.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 14));
 		btnNewButton_1.setBounds(218, 498, 113, 42);
 		contentPane.add(btnNewButton_1);
+		
+		passwordField = new JPasswordField();
+		passwordField.setBounds(210, 348, 121, 34);
+		contentPane.add(passwordField);
 	}
 
 }

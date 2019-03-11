@@ -1,26 +1,28 @@
 package interfaces;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
 import java.io.Serializable;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import Principal.Mercado;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.SwingConstants;
-import javax.swing.JTable;
+import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import java.awt.Color;
+
+import Principal.Mercado;
 
 public class InversionesUsuario extends JFrame implements Serializable {
 
 	private JPanel contentPane;
 	private Mercado mercado;
 	private JTable table;
+	private JScrollBar scrollBar;
 
 	/**
 	 * Launch the application.
@@ -58,8 +60,14 @@ public class InversionesUsuario extends JFrame implements Serializable {
 		contentPane.add(lblMenDeInversiones);
 		
 		table = new JTable();
-		table.setBorder(new LineBorder(new Color(1, 1, 1)));
+		table.setBorder(new LineBorder(new Color(1, 1, 1), 2));
 		table.setBounds(10, 58, 514, 192);
 		contentPane.add(table);
+		getContentPane().add(new JScrollPane(table));
+
+		
+		scrollBar = new JScrollBar();
+		scrollBar.setBounds(507, 58, 17, 192);
+		contentPane.add(scrollBar);
 	}
 }
