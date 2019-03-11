@@ -114,7 +114,7 @@ public class AccesoUsuario extends JFrame {
 			}
 		});
 		btnNewButton_1.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 14));
-		btnNewButton_1.setBounds(218, 498, 113, 42);
+		btnNewButton_1.setBounds(210, 498, 130, 42);
 		contentPane.add(btnNewButton_1);
 	}
 }
