@@ -3,9 +3,12 @@ package Principal;
 import java.io.File;
 import java.io.Serializable;
 
+
 import Excepciones.EInversion;
 import Excepciones.EProveedor;
 import Excepciones.EUsuario;
+
+import interfaces.Principal;
 
 
 public class Main implements Serializable {
@@ -13,21 +16,31 @@ public class Main implements Serializable {
 	public static void main(String[] args) throws EInversion, EUsuario, EProveedor, InterruptedException {
 		
 			// TODO Auto-generated method stub
-			/*File file = new File("mercado.datos");
+			File file = new File("mercado.datos");
 			if(file.exists()) {
-				Mercado merca = Recursos.ReadFileObjectEmpresa("mercado.datos");
+			
+				Main main=new Main();
+				main = UtilidadesFicheros.leerDatosMercado("mercado.datos");
+				
 				// se debe crear una nuve ventana de la principal del mercado y pasarle merca
-				Principal inicio = new Principal(merca);
+				Principal inicio = new Principal(main);
 				inicio.setVisible(true);
 			}else {
 				// se debe crear el inicio de todos los tiempos para colocarle el nombre a la bolsa
-				FormZeroDay principal = new FormZeroDay();
-				principal.setVisible(true);
-			}*/
+					Main main =new Main();
+					Principal inicio = new Principal(main);
+					UtilidadesFicheros.escribirDatosMercado("mercado.datos", main);
+					inicio.setVisible(true);
+				/*FormZeroDay principal = new FormZeroDay();
+				principal.setVisible(true);*/
+			}
+			
+			
+		
 		
 
 		
-		Mercado m = new Mercado("Bolsa de Colombia");
+		/*Mercado m = new Mercado("Bolsa de Colombia");
 		
 		//-- CREACION DE USUARIOS Y CUENTAS BANCARIAS
 		CuentaBancaria cb1 = new CuentaBancaria(1000000,"lucho1204");
@@ -47,12 +60,12 @@ public class Main implements Serializable {
 		Usuario[] usuarios = new Usuario[6];
 		usuarios[0] = u1; usuarios[1] = u2; usuarios[2] = u3; usuarios[3] = u4; usuarios[4] = u5; usuarios[5] = u6;
 		
-		/*
+		
 		 for(int i = 0 ; i < usuarios.length ; i++ ) {
 			System.out.println("Nombre: " + usuarios[i].getNombre() + "\tId: " + usuarios[i].getId()
 							+ "\tCorreo: " + usuarios[i].getCorreo() + "\tSaldo: " + usuarios[i].getCuentas().getSaldo());
 		} System.out.println();	
-		*/
+		
 
 		//-- CREACION DE PROVEEDORES
 		Proveedor p1 = new Proveedor("Nestle","N3sTl3");
@@ -62,25 +75,25 @@ public class Main implements Serializable {
 		Proveedor[] proveedores = new Proveedor[3];
 		proveedores[0] = p1; proveedores[1] = p2; proveedores[2] = p3;
 		
-		/*
+		
 		 for(int i = 0 ; i < proveedores.length; i++) {
 			System.out.println("Nombre: " + proveedores[i].getNombre() + "\tId: " + proveedores[i].getId()
 								+ "\tTipo de accion: " + proveedores[i].getTipo());
 		} System.out.println();
-		*/
+		
 		
 		//-- CREACION DE ACCIONES
 		
 		
 		
-		/*Inversion[] inv = new Inversion[1];
-		inv[0]= a1;*/
+		Inversion[] inv = new Inversion[1];
+		inv[0]= a1;
 		//m.setInversiones(inv);
 		//m.realizarInversion("lucho1204", "idACCION-1");
 
 		//System.out.println(inv.length);
 		//m.imprimirInversiones();
-		/*Accion a1 = new Accion(p1.getId(),p1.getTipo(),25000,"accion1");
+		Accion a1 = new Accion(p1.getId(),p1.getTipo(),25000,"accion1");
 		p1.addInversion(a1);
 		Bono b1 = new Bono(p2.getNombre(),p2.getId(),10000,"accion2");
 		p2.addInversion(b1);
@@ -89,7 +102,7 @@ public class Main implements Serializable {
 		p3.addInversion(c1);
 		Inversion[] inv = new Inversion[3];
 		inv[0] = a1; inv[1] = b1; inv[2] = c1;
-		*/
+		
 		//for(Inversion i:inv)	System.out.println("La acción identificada por el codigo " + i.getTipo() );
 	 	                 
 		
@@ -108,7 +121,7 @@ public class Main implements Serializable {
 		//m.historialInversiones("lucho1204");
 		
 		Variable v = new Variable();
-		/*System.out.println(v.get$dolar());
+		System.out.println(v.get$dolar());
 		v.set$dolar();
 		System.out.println(v.get$dolar());
 		System.out.println();
@@ -118,7 +131,7 @@ public class Main implements Serializable {
 		System.out.println();
 		System.out.println(v.getInflacion());
 		v.setInflacion();
-		System.out.println(v.getInflacion());*/
+		System.out.println(v.getInflacion());
 		
 		m.addAccion("idACCION-1", "idPROV-1", "Accion", 10000);
 		m.addBono("b1","idPROV-1","Bono",5000);
@@ -129,8 +142,8 @@ public class Main implements Serializable {
 		
 		vars[1]=v;
 		m.setVariables(vars);
-		/*System.out.println("dolar1---- "+m.getVariables()[0].get$dolar()); 
-		System.out.println("inlfacion1---- "+m.getVariables()[0].getInflacion());*/
+		System.out.println("dolar1---- "+m.getVariables()[0].get$dolar()); 
+		System.out.println("inlfacion1---- "+m.getVariables()[0].getInflacion());
 		
 		System.out.println("bono1----- "+m.buscarInversion("cp1").getPrecioBase());
 		m.actualizarVariables();
@@ -165,5 +178,5 @@ public class Main implements Serializable {
 		
 		//m.imprimirInversiones();
 		//m.imprimirRecibo("lucho1204");
-	}
+*/	}
 }

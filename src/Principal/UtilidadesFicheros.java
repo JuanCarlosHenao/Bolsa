@@ -18,7 +18,7 @@ public class UtilidadesFicheros implements Serializable {
 	 *  archivo El archivo
 	 * mercado El mercado 
 	 */
-	public static void escribirDatosMercado(String archivo, Mercado mercado) {
+	public static void escribirDatosMercado(String archivo, Main mercado) {
 		FileOutputStream fos = null;
 		ObjectOutputStream oos = null;
 		try {
@@ -57,15 +57,15 @@ public class UtilidadesFicheros implements Serializable {
 	 * archivo El archivo
 	 *  La empresa
 	 */
-	public static Mercado leerDatosMercado(String archivo) {
+	public static Main leerDatosMercado(String archivo) {
 		ObjectInputStream ois = null;
 		FileInputStream fis = null;
-		Mercado mercado = new Mercado();
+		Main mercado = new Main();
 		try {
 			fis = new FileInputStream(archivo);
 			ois = new ObjectInputStream(fis);
 			while (fis.available() > 0) {
-				Mercado mercado2 = (Mercado) ois.readObject();
+				Main mercado2 = (Main) ois.readObject();
 				mercado= mercado2;
 			}
 		} catch (FileNotFoundException e) {

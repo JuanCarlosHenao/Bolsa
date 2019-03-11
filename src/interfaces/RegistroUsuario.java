@@ -12,14 +12,24 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.JPasswordField;
 
-public class RegistroUsuario extends JFrame {
+import Principal.Main;
+import Principal.Usuario;
+import Principal.UtilidadesFicheros;
+
+import javax.swing.JPasswordField;
+import java.awt.event.ActionListener;
+import java.io.Serializable;
+import java.awt.event.ActionEvent;
+
+public class RegistroUsuario extends JFrame implements Serializable  {
 	private JPanel contra;
 	private JTextField nbEmpresa;
 	private JTextField identi;
 	private JTextField email;
 	private JPasswordField passwordField;
+	private Usuario user;
+	private static Main main;
 
 	/**
 	 * Launch the application.
@@ -28,7 +38,7 @@ public class RegistroUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroUsuario frame = new RegistroUsuario();
+					RegistroUsuario frame = new RegistroUsuario(main);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,7 +50,7 @@ public class RegistroUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroUsuario() {
+	public RegistroUsuario(Main main) {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contra = new JPanel();
@@ -48,7 +58,7 @@ public class RegistroUsuario extends JFrame {
 		setContentPane(contra);
 		contra.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel("Registro de Proveedores");
+		JLabel lblNewLabel = new JLabel("Registro de Usuarios");
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 14));
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setBounds(187, 100, 170, 36);
@@ -88,6 +98,16 @@ public class RegistroUsuario extends JFrame {
 		email.setColumns(10);
 		
 		JButton btnRegistroP = new JButton("Registrar");
+		btnRegistroP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				user=new Usuario(nbEmpresa.getText(),email.getText(),identi.getText());
+				AccesoUsuario au=new AccesoUsuario(main);
+				UtilidadesFicheros.escribirDatosMercado("mercado.datos", main);
+				au.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnRegistroP.setForeground(Color.BLACK);
 		btnRegistroP.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnRegistroP.setBounds(211, 528, 105, 36);

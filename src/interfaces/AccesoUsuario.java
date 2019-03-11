@@ -9,13 +9,19 @@ import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+
+import Principal.Main;
+
 import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class AccesoUsuario extends JFrame {
-
+	
+	private static Main main;
 	private JPanel contentPane;
 	public static JTextField cajaUsuario;
 	public static JPasswordField cajaContrasena;
@@ -23,7 +29,7 @@ public class AccesoUsuario extends JFrame {
     public static JButton btnRegister;
     private JTextField textField;
     private JTextField textField_1;
-
+    
 	/**
 	 * Launch the application.
 	 */
@@ -31,7 +37,7 @@ public class AccesoUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AccesoUsuario frame = new AccesoUsuario();
+					AccesoUsuario frame = new AccesoUsuario(main);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +49,9 @@ public class AccesoUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AccesoUsuario() {
+	public AccesoUsuario(Main main) {
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contentPane = new JPanel();
@@ -86,11 +94,25 @@ public class AccesoUsuario extends JFrame {
 		textField_1.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Entrar");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnNewButton.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 14));
 		btnNewButton.setBounds(227, 437, 89, 34);
 		contentPane.add(btnNewButton);
 		
 		JButton btnNewButton_1 = new JButton("Registrarse");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				RegistroUsuario ru=new RegistroUsuario(main);
+				ru.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
 		btnNewButton_1.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 14));
 		btnNewButton_1.setBounds(218, 498, 113, 42);
 		contentPane.add(btnNewButton_1);

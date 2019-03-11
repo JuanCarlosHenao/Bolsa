@@ -15,14 +15,10 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 		this.correo = correo;
 		this.id = id;
+		cuentas=null;
 	}
 	
-	public Usuario(String nombre, String correo, String id, CuentaBancaria cuentas) {
-		this.nombre = nombre;
-		this.correo = correo;
-		this.id = id;
-		this.cuentas = cuentas;
-	}
+
 
 	// ----------- GETTERS & SETTERS ---------- //
 	

@@ -6,6 +6,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Principal.Main;
+import Principal.Mercado;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -16,7 +20,7 @@ import java.awt.event.ActionEvent;
 public class Principal extends JFrame {
 
 	private JPanel contentPane;
-
+	private static Main main;
 	/**
 	 * Launch the application.
 	 */
@@ -24,7 +28,8 @@ public class Principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Principal frame = new Principal();
+					
+					Principal frame = new Principal(main);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -36,7 +41,8 @@ public class Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Principal() {
+	public Principal(Main main ) {
+		this.main=main;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 500);
 		contentPane = new JPanel();
@@ -59,6 +65,10 @@ public class Principal extends JFrame {
 		JButton btnUsu = new JButton("Usuarios");
 		btnUsu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				AccesoUsuario au=new AccesoUsuario(main);
+				au.setVisible(true);
+				dispose();
+				
 			}
 		});
 		btnUsu.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -66,8 +76,17 @@ public class Principal extends JFrame {
 		contentPane.add(btnUsu);
 		
 		JButton btnProv = new JButton("Proveedores");
+		btnProv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AccesoProveedor ap=new AccesoProveedor();
+				ap.setVisible(true);
+				dispose();
+			}
+		});
 		btnProv.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnProv.setBounds(274, 246, 117, 37);
 		contentPane.add(btnProv);
 	}
+
+	
 }
