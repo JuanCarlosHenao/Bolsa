@@ -1,6 +1,8 @@
 package Principal;
 
-public class CriptoMoneda extends Inversion {
+import java.io.Serializable;
+
+public class CriptoMoneda extends Inversion implements Serializable {
 	// DEPENDE DEL DOLAR 
 
 	private Variable[] variables ;

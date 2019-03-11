@@ -1,6 +1,8 @@
 package Principal;
 
-public abstract class Inversion {
+import java.io.Serializable;
+
+public abstract class Inversion implements Serializable {
 	protected String codigo;
 	protected String idProv;
 	protected String idUsu = null;

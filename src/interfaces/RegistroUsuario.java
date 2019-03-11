@@ -8,14 +8,17 @@ import java.awt.Font;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Main;
+import Principal.Mercado;
 import Principal.Usuario;
 import Principal.UtilidadesFicheros;
+
 
 import javax.swing.JPasswordField;
 import java.awt.event.ActionListener;
@@ -29,7 +32,7 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 	private JTextField email;
 	private JPasswordField passwordField;
 	private Usuario user;
-	private static Main main;
+	private  Mercado mercado;
 
 	/**
 	 * Launch the application.
@@ -38,7 +41,8 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroUsuario frame = new RegistroUsuario(main);
+					Mercado m=new Mercado();
+					RegistroUsuario frame = new RegistroUsuario(m);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,7 +54,8 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroUsuario(Main main) {
+	public RegistroUsuario(Mercado mercado) {
+		this.mercado=mercado;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contra = new JPanel();
@@ -100,13 +105,20 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 		JButton btnRegistroP = new JButton("Registrar");
 		btnRegistroP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
+				
 				user=new Usuario(nbEmpresa.getText(),email.getText(),identi.getText());
-				AccesoUsuario au=new AccesoUsuario(main);
-				UtilidadesFicheros.escribirDatosMercado("mercado.datos", main);
+				mercado.addUsuario(user);
+				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
+				AccesoUsuario au=new AccesoUsuario(mercado);
+				
 				au.setVisible(true);
 				dispose();
+				}
 				
-			}
+				
+				
+			
 		});
 		btnRegistroP.setForeground(Color.BLACK);
 		btnRegistroP.setFont(new Font("Tahoma", Font.BOLD, 14));

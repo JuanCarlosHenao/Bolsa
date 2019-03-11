@@ -1,8 +1,9 @@
 package Principal;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
-public class Proveedor {
+public class Proveedor implements Serializable {
 
 	private String nombre;			//nombre del proveedor
 	private String id;				// codigo identificante del proveedor

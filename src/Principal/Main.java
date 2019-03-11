@@ -19,17 +19,17 @@ public class Main implements Serializable {
 			File file = new File("mercado.datos");
 			if(file.exists()) {
 			
-				Main main=new Main();
-				main = UtilidadesFicheros.leerDatosMercado("mercado.datos");
+				Mercado mercado=new Mercado();
+				mercado = UtilidadesFicheros.leerDatosMercado("mercado.datos");
 				
 				// se debe crear una nuve ventana de la principal del mercado y pasarle merca
-				Principal inicio = new Principal(main);
+				Principal inicio = new Principal(mercado);
 				inicio.setVisible(true);
 			}else {
 				// se debe crear el inicio de todos los tiempos para colocarle el nombre a la bolsa
-					Main main =new Main();
-					Principal inicio = new Principal(main);
-					UtilidadesFicheros.escribirDatosMercado("mercado.datos", main);
+					Mercado mercado =new Mercado();
+					UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
+					Principal inicio = new Principal(mercado);
 					inicio.setVisible(true);
 				/*FormZeroDay principal = new FormZeroDay();
 				principal.setVisible(true);*/

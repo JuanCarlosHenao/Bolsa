@@ -1,6 +1,8 @@
 package Principal;
 
-public class Accion extends Inversion {
+import java.io.Serializable;
+
+public class Accion extends Inversion implements Serializable  {
 	// ES AFECTADA POR EL $DOLAR Y EL $PETROLEO.
 
 	private Variable[] variables;

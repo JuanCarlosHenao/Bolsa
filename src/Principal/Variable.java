@@ -6,10 +6,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Serializable;
 import java.text.DecimalFormat;
 import java.util.Random;
 
-public class Variable {
+public class Variable implements Serializable {
 
 	private double $dolar = 3.165;
 	private double $petroleo = 208.116;

@@ -1,6 +1,8 @@
 package Principal;
 
-public class Bono extends Inversion {
+import java.io.Serializable;
+
+public class Bono extends Inversion implements Serializable {
 	// DEPENDE DE LA INFLACION Y DEL DOLAR
 
 	private Variable[] variables ;

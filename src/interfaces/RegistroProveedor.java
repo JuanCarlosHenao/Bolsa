@@ -6,9 +6,16 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import Principal.Mercado;
+import Principal.Proveedor;
+import Principal.UtilidadesFicheros;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.io.Serializable;
+
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.Color;
@@ -16,13 +23,17 @@ import javax.swing.JToggleButton;
 import javax.swing.JPasswordField;
 import javax.swing.JEditorPane;
 import javax.swing.JScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class RegistroProveedor extends JFrame {
+public class RegistroProveedor extends JFrame implements Serializable {
 
 	private JPanel contra;
 	private JTextField nbEmpresa;
 	private JTextField identi;
 	private JPasswordField passwordField;
+	private Mercado mercado;
+	private Proveedor prove;
 
 	/**
 	 * Launch the application.
@@ -31,7 +42,8 @@ public class RegistroProveedor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroProveedor frame = new RegistroProveedor();
+					Mercado m=new Mercado();
+					RegistroProveedor frame = new RegistroProveedor(m);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +55,8 @@ public class RegistroProveedor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroProveedor() {
+	public RegistroProveedor(Mercado m) {
+		mercado=m;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contra = new JPanel();
@@ -86,6 +99,18 @@ public class RegistroProveedor extends JFrame {
 		identi.setColumns(10);
 		
 		JButton btnRegistroP = new JButton("Registrar");
+		btnRegistroP.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				prove=new Proveedor(nbEmpresa.getText(),identi.getText());
+				mercado.addProveedor(prove);
+				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
+				AccesoProveedor ap=new AccesoProveedor(mercado);
+				ap.setVisible(true);
+				dispose();
+				
+				
+			}
+		});
 		btnRegistroP.setForeground(Color.BLACK);
 		btnRegistroP.setFont(new Font("Tahoma", Font.BOLD, 14));
 		btnRegistroP.setBounds(215, 460, 105, 36);

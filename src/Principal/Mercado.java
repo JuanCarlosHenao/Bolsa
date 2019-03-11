@@ -1,12 +1,13 @@
 package Principal;
 
+import java.io.Serializable;
 import java.util.Arrays;
 
 import Excepciones.EInversion;
 import Excepciones.EProveedor;
 import Excepciones.EUsuario;
 
-public class Mercado {
+public class Mercado implements Serializable {
 
 	private Usuario[] usuarios;
 	private Inversion[] inversiones;

@@ -15,12 +15,13 @@ import java.awt.Font;
 import javax.swing.SwingConstants;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.awt.event.ActionEvent;
 
-public class Principal extends JFrame {
+public class Principal extends JFrame implements Serializable {
 
 	private JPanel contentPane;
-	private static Main main;
+	private Mercado mercado;
 	/**
 	 * Launch the application.
 	 */
@@ -28,8 +29,8 @@ public class Principal extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					
-					Principal frame = new Principal(main);
+					Mercado mercado=new Mercado();
+					Principal frame = new Principal(mercado);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -41,8 +42,8 @@ public class Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Principal(Main main ) {
-		this.main=main;
+	public Principal(Mercado mercado ) {
+		this.mercado=mercado;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 500);
 		contentPane = new JPanel();
@@ -65,7 +66,7 @@ public class Principal extends JFrame {
 		JButton btnUsu = new JButton("Usuarios");
 		btnUsu.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AccesoUsuario au=new AccesoUsuario(main);
+				AccesoUsuario au=new AccesoUsuario(mercado);
 				au.setVisible(true);
 				dispose();
 				
@@ -78,7 +79,7 @@ public class Principal extends JFrame {
 		JButton btnProv = new JButton("Proveedores");
 		btnProv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				AccesoProveedor ap=new AccesoProveedor();
+				AccesoProveedor ap=new AccesoProveedor(mercado);
 				ap.setVisible(true);
 				dispose();
 			}

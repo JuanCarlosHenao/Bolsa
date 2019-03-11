@@ -11,17 +11,19 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Main;
+import Principal.Mercado;
 
 import java.awt.Font;
 import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import javax.swing.JLabel;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 import java.awt.event.ActionEvent;
 
-public class AccesoUsuario extends JFrame {
+public class AccesoUsuario extends JFrame implements Serializable  {
 	
-	private static Main main;
+	private Mercado mercado;
 	private JPanel contentPane;
 	public static JTextField cajaUsuario;
 	public static JPasswordField cajaContrasena;
@@ -37,7 +39,8 @@ public class AccesoUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AccesoUsuario frame = new AccesoUsuario(main);
+					Mercado mercado=new Mercado();
+					AccesoUsuario frame = new AccesoUsuario(mercado);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,7 +52,9 @@ public class AccesoUsuario extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public AccesoUsuario(Main main) {
+	public AccesoUsuario(Mercado mercado) {
+		this.mercado=mercado;
+		
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -96,6 +101,9 @@ public class AccesoUsuario extends JFrame {
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/*EntradaUsuario eu=new EntradaUsuario(mercado);
+				eu.setvisible
+				dispose();*/
 				
 			}
 		});
@@ -106,7 +114,7 @@ public class AccesoUsuario extends JFrame {
 		JButton btnNewButton_1 = new JButton("Registrarse");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				RegistroUsuario ru=new RegistroUsuario(main);
+				RegistroUsuario ru=new RegistroUsuario(mercado);
 				ru.setVisible(true);
 				dispose();
 				

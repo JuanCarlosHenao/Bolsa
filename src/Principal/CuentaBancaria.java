@@ -1,6 +1,8 @@
 package Principal;
 
-public class CuentaBancaria {
+import java.io.Serializable;
+
+public class CuentaBancaria implements Serializable {
 
 	private float saldo;
 	private String id;
