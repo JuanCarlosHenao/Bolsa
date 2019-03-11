@@ -1,27 +1,24 @@
 package interfaces;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import javax.swing.JTextField;
-import javax.swing.JButton;
 import java.awt.Color;
-import javax.swing.JToggleButton;
+import java.awt.EventQueue;
+import java.awt.Font;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
+import javax.swing.border.EmptyBorder;
 import javax.swing.JPasswordField;
-import javax.swing.JEditorPane;
-import javax.swing.JScrollPane;
 
-public class RegistroProveedor extends JFrame {
-
+public class RegistroUsuario extends JFrame {
 	private JPanel contra;
 	private JTextField nbEmpresa;
 	private JTextField identi;
+	private JTextField email;
 	private JPasswordField passwordField;
 
 	/**
@@ -31,7 +28,7 @@ public class RegistroProveedor extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					RegistroProveedor frame = new RegistroProveedor();
+					RegistroUsuario frame = new RegistroUsuario();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -43,7 +40,7 @@ public class RegistroProveedor extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public RegistroProveedor() {
+	public RegistroUsuario() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contra = new JPanel();
@@ -57,22 +54,22 @@ public class RegistroProveedor extends JFrame {
 		lblNewLabel.setBounds(187, 100, 170, 36);
 		contra.add(lblNewLabel);
 		
-		JLabel lblNewLabel_1 = new JLabel("Nombre de la empresa: ");
+		JLabel lblNewLabel_1 = new JLabel("Nombre :");
 		lblNewLabel_1.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_1.setHorizontalAlignment(SwingConstants.CENTER);
-		lblNewLabel_1.setBounds(31, 220, 144, 20);
+		lblNewLabel_1.setBounds(89, 220, 105, 20);
 		contra.add(lblNewLabel_1);
 		
-		JLabel lblNewLabel_2 = new JLabel("ID : ");
+		JLabel lblNewLabel_2 = new JLabel("C\u00E9dula :");
 		lblNewLabel_2.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_2.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		lblNewLabel_2.setBounds(116, 285, 59, 23);
 		contra.add(lblNewLabel_2);
 		
-		JLabel lblNewLabel_3 = new JLabel("Contrase\u00F1a : ");
+		JLabel lblNewLabel_3 = new JLabel("Correo : ");
 		lblNewLabel_3.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel_3.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblNewLabel_3.setBounds(89, 349, 86, 41);
+		lblNewLabel_3.setBounds(108, 349, 86, 41);
 		contra.add(lblNewLabel_3);
 		
 		nbEmpresa = new JTextField();
@@ -85,14 +82,24 @@ public class RegistroProveedor extends JFrame {
 		contra.add(identi);
 		identi.setColumns(10);
 		
+		email = new JTextField();
+		email.setBounds(242, 352, 130, 36);
+		contra.add(email);
+		email.setColumns(10);
+		
 		JButton btnRegistroP = new JButton("Registrar");
 		btnRegistroP.setForeground(Color.BLACK);
 		btnRegistroP.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnRegistroP.setBounds(215, 460, 105, 36);
+		btnRegistroP.setBounds(211, 528, 105, 36);
 		contra.add(btnRegistroP);
 		
+		JLabel lblNewLabel_4 = new JLabel("Contrase\u00F1a :");
+		lblNewLabel_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblNewLabel_4.setBounds(108, 431, 105, 25);
+		contra.add(lblNewLabel_4);
+		
 		passwordField = new JPasswordField();
-		passwordField.setBounds(242, 349, 130, 36);
+		passwordField.setBounds(242, 426, 130, 36);
 		contra.add(passwordField);
 	}
 }

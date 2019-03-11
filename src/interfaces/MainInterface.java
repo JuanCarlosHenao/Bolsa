@@ -10,8 +10,6 @@ public class MainInterface {
 			EventQueue.invokeLater(new Runnable() {
 				public void run() {
 					try {
-						PaginaAccesoUsuario logginWindow = new PaginaAccesoUsuario();
-						logginWindow.frmLogginAcces.setVisible(true);
 						// buscar como hacer bien para cuando unda un boton se cierre esa ventana y se abra la otra
 						//RegisterPage registerWindow = new RegisterPage();
 						//registerWindow.frame.setVisible(true);

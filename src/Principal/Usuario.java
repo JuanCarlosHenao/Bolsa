@@ -8,6 +8,7 @@ public class Usuario implements Serializable {
 	private String nombre;
 	private String correo;
 	private String id;
+	//private String contrasena;
 	private CuentaBancaria cuentas;
 
 	public Usuario(String nombre, String correo, String id) {

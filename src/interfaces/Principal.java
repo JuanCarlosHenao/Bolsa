@@ -11,8 +11,11 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 import Principal.Mercado;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class Principal {
+	
 
 	JFrame frame;
 	JFrame frmLogginAcces;
@@ -21,6 +24,7 @@ public class Principal {
     public static JButton btnLoggin;
     public static JButton btnRegister;
     private Mercado mercado;
+    private JLabel lblWelcomToMarktrade_1;
 
 	/**
 	 * Launch the application.
@@ -58,18 +62,23 @@ public class Principal {
 		frmLogginAcces.getContentPane().setLayout(null);
 		
 		JLabel lblWelcomToMarktrade = new JLabel("Bienvenidos a la Bolsa");
+		lblWelcomToMarktrade.setBounds(159, 50, 200, 27);
 		lblWelcomToMarktrade.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblWelcomToMarktrade.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWelcomToMarktrade.setBounds(159, 50, 200, 27);
 		frmLogginAcces.getContentPane().add(lblWelcomToMarktrade);
 		
-		lblWelcomToMarktrade = new JLabel("Escoja la opción de cuenta:");
-		lblWelcomToMarktrade.setFont(new Font("Tahoma", Font.PLAIN, 16));
-		lblWelcomToMarktrade.setHorizontalAlignment(SwingConstants.CENTER);
-		lblWelcomToMarktrade.setBounds(159, 150, 212, 27);
-		frmLogginAcces.getContentPane().add(lblWelcomToMarktrade);
+		lblWelcomToMarktrade_1 = new JLabel("Escoja la opción de cuenta:");
+		lblWelcomToMarktrade_1.setBounds(159, 150, 212, 27);
+		lblWelcomToMarktrade_1.setFont(new Font("Tahoma", Font.PLAIN, 16));
+		lblWelcomToMarktrade_1.setHorizontalAlignment(SwingConstants.CENTER);
+		frmLogginAcces.getContentPane().add(lblWelcomToMarktrade_1);
 		
 		JButton btnLoggin = new JButton("Usuario");
+		btnLoggin.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 		btnLoggin.setBounds(100, 300, 150, 50);
 		frmLogginAcces.getContentPane().add(btnLoggin);
 		
