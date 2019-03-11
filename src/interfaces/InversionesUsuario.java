@@ -16,13 +16,16 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import Principal.Mercado;
+import java.awt.SystemColor;
+import javax.swing.JSpinner;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.ListSelectionModel;
 
 public class InversionesUsuario extends JFrame implements Serializable {
 
 	private JPanel contentPane;
 	private Mercado mercado;
-	private JTable table;
-	private JScrollBar scrollBar;
+	private JTable tabla;
 
 	/**
 	 * Launch the application.
@@ -45,6 +48,7 @@ public class InversionesUsuario extends JFrame implements Serializable {
 	 * Create the frame.
 	 */
 	public InversionesUsuario(Mercado m) {
+		this.setTitle("Inversiones");
 		mercado = m;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 300);
@@ -59,15 +63,38 @@ public class InversionesUsuario extends JFrame implements Serializable {
 		lblMenDeInversiones.setFont(new Font("Tahoma", Font.BOLD, 14));
 		contentPane.add(lblMenDeInversiones);
 		
-		table = new JTable();
-		table.setBorder(new LineBorder(new Color(1, 1, 1), 2));
-		table.setBounds(10, 58, 514, 192);
-		contentPane.add(table);
-		getContentPane().add(new JScrollPane(table));
-
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 49, 514, 201);
+		contentPane.add(scrollPane);
 		
-		scrollBar = new JScrollBar();
-		scrollBar.setBounds(507, 58, 17, 192);
-		contentPane.add(scrollBar);
+		tabla = new JTable();
+		tabla.setCellSelectionEnabled(true);
+		tabla.setFont(new Font("Tahoma", Font.ITALIC, 12));
+		tabla.setSurrendersFocusOnKeystroke(true);
+		tabla.setForeground(new Color(0, 0, 0));
+		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+		tabla.setModel(new DefaultTableModel(
+			new Object[][] {
+				{"Tipo", "Código", "Proveedor", "Precio"},
+			},
+			new String[] {
+				"Tipo", "Código", "Proveedor", "Precio"
+			}
+		) {
+			/**
+			 * 
+			 */
+			private static final long serialVersionUID = 1L;
+			Class[] columnTypes = new Class[] {
+				String.class, Object.class, Object.class, Object.class
+			};
+			public Class getColumnClass(int columnIndex) {
+				return columnTypes[columnIndex];
+			}
+		});
+		scrollPane.setColumnHeaderView(tabla);
+		
+		
+		
 	}
 }

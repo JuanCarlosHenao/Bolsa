@@ -57,6 +57,7 @@ public class RegistroProveedor extends JFrame implements Serializable {
 	 */
 	public RegistroProveedor(Mercado m) {
 		mercado=m;
+		this.setTitle("Inversiones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contra = new JPanel();

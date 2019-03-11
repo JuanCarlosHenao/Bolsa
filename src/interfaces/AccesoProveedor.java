@@ -52,6 +52,7 @@ public class AccesoProveedor extends JFrame implements Serializable {
 	 */
 	public AccesoProveedor(Mercado m) {
 		mercado=m;
+		this.setTitle("Inversiones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contentPane = new JPanel();

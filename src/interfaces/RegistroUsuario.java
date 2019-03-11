@@ -55,6 +55,7 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 	 * Create the frame.
 	 */
 	public RegistroUsuario(Mercado mercado) {
+		this.setTitle("Inversiones");
 		this.mercado=mercado;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);

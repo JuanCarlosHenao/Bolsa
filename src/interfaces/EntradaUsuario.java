@@ -45,6 +45,7 @@ public class EntradaUsuario extends JFrame implements Serializable {
 	 */
 	public EntradaUsuario(Mercado m) {
 		mercado = m;
+		this.setTitle("Inversiones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contentPane = new JPanel();
@@ -66,6 +67,7 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		panel.add(lblNewLabel);
 		
 		textField = new JTextField();
+		textField.setEditable(false);
 		textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		textField.setBounds(89, 9, 411, 40);
 		panel.add(textField);
