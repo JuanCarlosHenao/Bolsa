@@ -55,7 +55,7 @@ public class DepositarCuentaUsuario extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		ImageIcon imagen = new ImageIcon("C:\\\\Users\\\\LUIS FELIPE\\\\estructuras\\\\Bolsa\\\\Icons\\\\back.png");
+		ImageIcon imagen = new ImageIcon("Icons\\\\back.png");
 		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));
 		JButton btnRegresar = new JButton("Regresar", img);
 		btnRegresar.addActionListener(new ActionListener() {
