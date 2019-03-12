@@ -391,7 +391,6 @@ public class Mercado implements Serializable {
 		// ----- HACER UNA INVERSION
 	public void realizarInversion(String idUsuario, String idInversion) throws EInversion {
 		Inversion voyAComprar=buscarInversion(idInversion);
-		voyAComprar.setIdUsu(idUsuario);
 		if (voyAComprar.getIdUsu()==null) {
 			voyAComprar.setIdUsu(idUsuario);
 		}else {
@@ -437,13 +436,27 @@ public class Mercado implements Serializable {
 	public Inversion[] inversionesPorUsuario(String idUsuario) {
 		Inversion[] propias=new Inversion[0];
 		for (int i=0;i<inversiones.length;i++) {
-			if (inversiones[i].getIdUsu().compareTo(idUsuario)==0) {
+			if (inversiones[i].getIdUsu()!=null && inversiones[i].getIdUsu().compareTo(idUsuario)==0) {
 				propias=Arrays.copyOf(propias, propias.length+1);
 				propias[propias.length-1]=inversiones[i];
 
 			}
 		}
 		return propias;
+		
+	}
+	
+	public Inversion [] inversionesPorProveedor(String idProveedor) {
+		Inversion[] propiasPro=new Inversion[0];
+		for (int i=0;i<inversiones.length;i++) {
+			if (inversiones[i].getIdProv().compareTo(idProveedor)==0) {
+				propiasPro=Arrays.copyOf(propiasPro, propiasPro.length+1);
+				propiasPro[propiasPro.length-1]=inversiones[i];
+
+			}
+		}
+		return propiasPro;
+		
 		
 	}
 	

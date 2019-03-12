@@ -5,7 +5,7 @@ import java.io.Serializable;
 public abstract class Inversion implements Serializable {
 	protected String codigo;
 	protected String idProv;
-	protected String idUsu = null;
+	protected String idUsu =null; 
 	protected String tipo;
 	private double precioBase;
 	private Proveedor proveedor;
@@ -17,6 +17,7 @@ public abstract class Inversion implements Serializable {
 		this.idProv = idProv;
 		this.tipo = tipo;
 		this.precioBase = precioBase;
+		idUsu="";
 	}
 	// ---------- GETTERS & SETTERS ---------- //
 	public String getCodigo() {

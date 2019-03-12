@@ -37,7 +37,7 @@ public class Main implements Serializable {
 				}
 				
 				for (int i=0;i<mercado.getInversiones().length;i++) {
-					System.out.println("Inversiones "+ mercado.getInversiones()[i].getCodigo());
+					System.out.println("Inversiones "+ mercado.getInversiones()[i].getCodigo()+" id usuario "+mercado.getInversiones()[i].getIdUsu() + " id prov "+ mercado.getInversiones()[i].getIdProv() );
 				}
 				//System.out.println(mercado.getUsuarios()[0].getNombre());
 				/*System.out.println(mercado.getProveedores()[0].getNombre());

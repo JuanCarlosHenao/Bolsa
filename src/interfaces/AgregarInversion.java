@@ -113,9 +113,7 @@ public class AgregarInversion extends JFrame implements Serializable {
 		JButton btnAddCripto = new JButton("Agregar Criptomoneda");
 		btnAddCripto.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				m.addCriptoMoneda(codigo.getText(), "idProv", "accion", Integer.parseInt(precio.getText()));
-				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
-				dispose();
+				
 				mercado.addCriptoMoneda(codigo.getText(), proveedor.getId(), "Criptomoneda",Integer.parseInt(precio.getText()) );
 				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
 				AgregarInversion ai=new AgregarInversion(mercado,proveedor);
