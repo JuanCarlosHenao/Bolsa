@@ -17,7 +17,7 @@ public class CuentaBancaria implements Serializable {
 		return saldo;
 	}
 	public void setSaldo(float saldo) {
-		this.saldo = saldo;
+		this.saldo += saldo;
 	}
 	public String getId() {
 		return id;

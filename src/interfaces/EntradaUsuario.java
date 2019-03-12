@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.io.Serializable;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -15,15 +16,18 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import Principal.Mercado;
+import Principal.Usuario;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 public class EntradaUsuario extends JFrame implements Serializable {
 
 	private JPanel contentPane;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField muestraNombre;
+	private JTextField muestraSaldo;
 	private Mercado mercado;
+	private Usuario usuario;
 
 	/**
 	 * Launch the application.
@@ -33,7 +37,8 @@ public class EntradaUsuario extends JFrame implements Serializable {
 			public void run() {
 				try {
 					Mercado m = new Mercado();
-					EntradaUsuario frame = new EntradaUsuario(m);
+					Usuario u= new Usuario();
+					EntradaUsuario frame = new EntradaUsuario(m,u);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,15 +50,30 @@ public class EntradaUsuario extends JFrame implements Serializable {
 	/**
 	 * Create the frame.
 	 */
-	public EntradaUsuario(Mercado m) {
+	public EntradaUsuario(Mercado m, Usuario u) {
 		mercado = m;
-		this.setTitle("Inversiones");
+		usuario =u;
+		this.setTitle("EntradaUsuario");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		ImageIcon imagen = new ImageIcon("Icons\\\\back.png");
+		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));
+		JButton btnRegresar = new JButton("Regresar", img);
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EntradaUsuario eu=new EntradaUsuario(mercado,usuario);
+				eu.setVisible(true);
+				dispose();
+			}
+		});
+		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnRegresar.setBounds(10, 11, 110, 26);
+		contentPane.add(btnRegresar);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
@@ -68,12 +88,12 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		lblNewLabel.setBounds(10, 21, 67, 14);
 		panel.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField.setBounds(89, 9, 411, 40);
-		panel.add(textField);
-		textField.setColumns(10);
+		muestraNombre = new JTextField(usuario.getNombre());
+		muestraNombre.setEditable(false);
+		muestraNombre.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		muestraNombre.setBounds(89, 9, 411, 40);
+		panel.add(muestraNombre);
+		muestraNombre.setColumns(10);
 		
 		JLabel lblSaldoEnLa = new JLabel("Saldo \r\nen la \r\ncuenta:");
 		lblSaldoEnLa.setHorizontalAlignment(SwingConstants.TRAILING);
@@ -81,10 +101,11 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		lblSaldoEnLa.setBounds(10, 61, 106, 40);
 		panel.add(lblSaldoEnLa);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(126, 61, 374, 40);
-		panel.add(textField_1);
-		textField_1.setColumns(10);
+		muestraSaldo = new JTextField("el saldo es "+ Float.toString(usuario.getCuentas().getSaldo()));
+		muestraSaldo.setEditable(false);
+		muestraSaldo.setBounds(126, 61, 374, 40);
+		panel.add(muestraSaldo);
+		muestraSaldo.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Pagina principal para Usuarios");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -95,7 +116,7 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		JButton btnDepositarEnLa = new JButton("Depositar en la cuenta");
 		btnDepositarEnLa.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				DepositarCuentaUsuario du=new DepositarCuentaUsuario(m);
+				DepositarCuentaUsuario du=new DepositarCuentaUsuario(m,usuario);
 				du.setVisible(true);
 				dispose();
 				
@@ -132,7 +153,7 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		JButton btnEditarMiPerfil = new JButton("Editar mi perfil");
 		btnEditarMiPerfil.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EditarPerfilUsuario eu=new EditarPerfilUsuario(m);
+				EditarPerfilUsuario eu=new EditarPerfilUsuario(m,usuario);
 				eu.setVisible(true);
 				dispose();
 				

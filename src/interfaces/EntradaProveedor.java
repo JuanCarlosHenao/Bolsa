@@ -7,6 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -17,13 +18,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import Principal.Mercado;
+import Principal.Proveedor;
 
 
 public class EntradaProveedor extends JFrame implements Serializable {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField muestraProveedor;
 	private Mercado mercado ;
+	private Proveedor prov;
 
 	/**
 	 * Launch the application.
@@ -33,7 +36,8 @@ public class EntradaProveedor extends JFrame implements Serializable {
 			public void run() {
 				try {
 					Mercado m = new Mercado();
-					EntradaProveedor frame = new EntradaProveedor(m);
+					Proveedor p=new Proveedor();
+					EntradaProveedor frame = new EntradaProveedor(m,p);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,14 +49,29 @@ public class EntradaProveedor extends JFrame implements Serializable {
 	/**
 	 * Create the frame.
 	 */
-	public EntradaProveedor(Mercado m) {
+	public EntradaProveedor(Mercado m, Proveedor p) {
 		mercado = m;
+		prov=p;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+		
+		ImageIcon imagen = new ImageIcon("Icons\\\\back.png");
+		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));
+		JButton btnRegresar = new JButton("Regresar", img);
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				AccesoProveedor p=new AccesoProveedor(mercado);
+				p.setVisible(true);
+				dispose();
+			}
+		});
+		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnRegresar.setBounds(10, 11, 110, 26);
+		contentPane.add(btnRegresar);
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(Color.LIGHT_GRAY);
@@ -67,11 +86,12 @@ public class EntradaProveedor extends JFrame implements Serializable {
 		lblNewLabel.setBounds(10, 21, 67, 14);
 		panel.add(lblNewLabel);
 		
-		textField = new JTextField();
-		textField.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		textField.setBounds(89, 9, 411, 66);
-		panel.add(textField);
-		textField.setColumns(10);
+		muestraProveedor = new JTextField(prov.getNombre());
+		muestraProveedor.setEditable(false);
+		muestraProveedor.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		muestraProveedor.setBounds(89, 9, 411, 66);
+		panel.add(muestraProveedor);
+		muestraProveedor.setColumns(10);
 		
 		JLabel lblNewLabel_1 = new JLabel("Pagina principal para Proveedores\r\n");
 		lblNewLabel_1.setFont(new Font("Times New Roman", Font.BOLD, 18));
@@ -93,7 +113,7 @@ public class EntradaProveedor extends JFrame implements Serializable {
 		JButton btnAadirInversion = new JButton("A\u00F1adir inversion");
 		btnAadirInversion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				AgregarInversion ai=new AgregarInversion(mercado);
+				AgregarInversion ai=new AgregarInversion(mercado,prov);
 				ai.setVisible(true);
 				dispose();
 				
@@ -105,6 +125,12 @@ public class EntradaProveedor extends JFrame implements Serializable {
 		contentPane.add(btnAadirInversion);
 		
 		JButton btnEliminarInversion = new JButton("Eliminar inversion");
+		btnEliminarInversion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//EliminarInversion ei= new EliminarInversion(m);
+				
+			}
+		});
 		btnEliminarInversion.setBackground(Color.WHITE);
 		btnEliminarInversion.setFont(new Font("Tahoma", Font.BOLD, 12));
 		btnEliminarInversion.setBounds(176, 464, 202, 61);

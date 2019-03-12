@@ -14,6 +14,8 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Mercado;
+import Principal.Usuario;
+import Principal.UtilidadesFicheros;
 
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
@@ -28,6 +30,7 @@ public class EditarPerfilUsuario extends JFrame implements Serializable {
 	private JTextField pass1;
 	private JTextField pass2;
 	private Mercado mercado;
+	private Usuario usuario;
 
 	/**
 	 * Launch the application.
@@ -37,7 +40,8 @@ public class EditarPerfilUsuario extends JFrame implements Serializable {
 			public void run() {
 				try {
 					Mercado m=new Mercado();
-					EditarPerfilUsuario frame = new EditarPerfilUsuario(m);
+					Usuario u=new Usuario();
+					EditarPerfilUsuario frame = new EditarPerfilUsuario(m,u);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -49,8 +53,9 @@ public class EditarPerfilUsuario extends JFrame implements Serializable {
 	/**
 	 * Create the frame.
 	 */
-	public EditarPerfilUsuario(Mercado m) {
+	public EditarPerfilUsuario(Mercado m,Usuario user) {
 		mercado=m;
+		usuario=user;
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
@@ -64,6 +69,9 @@ public class EditarPerfilUsuario extends JFrame implements Serializable {
 		JButton btnRegresar = new JButton("Regresar", img);
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				EntradaUsuario eu=new EntradaUsuario(mercado,user);
+				eu.setVisible(true);
+				dispose();
 			}
 		});
 		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -107,6 +115,13 @@ public class EditarPerfilUsuario extends JFrame implements Serializable {
 		JButton btnGuardar = new JButton("Guardar y actualizar datos");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				usuario.setCorreo(correo.getText());
+				usuario.setId(cedula.getText());
+				usuario.setNombre(nombre.getText());
+				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
+				EditarPerfilUsuario au=new EditarPerfilUsuario(mercado,usuario);
+				au.setVisible(true);
+				dispose();
 				
 			}
 		});

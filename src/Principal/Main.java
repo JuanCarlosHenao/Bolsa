@@ -22,10 +22,27 @@ public class Main implements Serializable {
 				Mercado mercado=new Mercado();
 				mercado = UtilidadesFicheros.leerDatosMercado("mercado.datos");
 				
-				System.out.println(mercado.getUsuarios()[0].getNombre());
-				System.out.println(mercado.getProveedores()[0].getNombre());
+						
+				
+				for (int i=0;i<mercado.getUsuarios().length;i++) {
+					
+					System.out.println("Usuario "+ mercado.getUsuarios()[i].getNombre()+"---saldo "+mercado.getUsuarios()[i].getCuentas().getSaldo());
+					
+					
+				}
+				
+				
+				for (int i=0;i<mercado.getProveedores().length;i++) {
+					System.out.println("proveedor "+mercado.getProveedores()[i].getId());
+				}
+				
+				for (int i=0;i<mercado.getInversiones().length;i++) {
+					System.out.println("Inversiones "+ mercado.getInversiones()[i].getCodigo());
+				}
+				//System.out.println(mercado.getUsuarios()[0].getNombre());
+				/*System.out.println(mercado.getProveedores()[0].getNombre());
 				System.out.println(mercado.getProveedores()[1].getNombre());
-				System.out.println(mercado.getUsuarios()[0].getCuentas().getSaldo());
+				System.out.println(mercado.getUsuarios()[0].getCuentas().getSaldo());*/
 				//System.out.println(mercado.getInversiones()[0].getCodigo());
 				
 				

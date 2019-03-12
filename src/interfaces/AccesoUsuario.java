@@ -3,6 +3,7 @@ package interfaces;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -10,6 +11,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
+import Excepciones.EUsuario;
 import Principal.Main;
 import Principal.Mercado;
 
@@ -29,8 +31,8 @@ public class AccesoUsuario extends JFrame implements Serializable  {
 	public static JPasswordField cajaContrasena;
     public static JButton btnLoggin;
     public static JButton btnRegister;
-    private JTextField textField;
-    private JPasswordField passwordField;
+    private JTextField identificacion;
+    private JPasswordField contraseña;
     
 	/**
 	 * Launch the application.
@@ -62,6 +64,20 @@ public class AccesoUsuario extends JFrame implements Serializable  {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		ImageIcon imagen = new ImageIcon("Icons\\\\back.png");
+		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));
+		JButton btnRegresar = new JButton("Regresar", img);
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				Principal p=new Principal(mercado);
+				p.setVisible(true);
+				dispose();
+			}
+		});
+		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnRegresar.setBounds(10, 11, 110, 26);
+		contentPane.add(btnRegresar);
+		
 		JLabel lblNewLabel = new JLabel("Identificaci\u00F3n");
 		lblNewLabel.setHorizontalAlignment(SwingConstants.CENTER);
 		lblNewLabel.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -80,10 +96,10 @@ public class AccesoUsuario extends JFrame implements Serializable  {
 		lblNewLabel_2.setBounds(184, 120, 156, 27);
 		contentPane.add(lblNewLabel_2);
 		
-		textField = new JTextField();
-		textField.setBounds(210, 240, 121, 34);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		identificacion = new JTextField();
+		identificacion.setBounds(210, 240, 121, 34);
+		contentPane.add(identificacion);
+		identificacion.setColumns(10);
 		
 		JLabel lblContrasea = new JLabel("Contrase\u00F1a");
 		lblContrasea.setHorizontalAlignment(SwingConstants.CENTER);
@@ -94,9 +110,17 @@ public class AccesoUsuario extends JFrame implements Serializable  {
 		JButton btnNewButton = new JButton("Entrar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				EntradaUsuario eu=new EntradaUsuario(mercado);
-				eu.setVisible(true);
-				dispose();
+				
+				EntradaUsuario eu;
+				try {
+					eu = new EntradaUsuario(mercado, mercado.buscarUsuario(identificacion.getText()));
+					eu.setVisible(true);
+					dispose();
+				} catch (EUsuario e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 				
 			}
 		});
@@ -118,8 +142,8 @@ public class AccesoUsuario extends JFrame implements Serializable  {
 		btnNewButton_1.setBounds(210, 498, 130, 42);
 		contentPane.add(btnNewButton_1);
 		
-		passwordField = new JPasswordField();
-		passwordField.setBounds(210, 348, 121, 34);
-		contentPane.add(passwordField);
+		contraseña = new JPasswordField();
+		contraseña.setBounds(210, 348, 121, 34);
+		contentPane.add(contraseña);
 	}
 }

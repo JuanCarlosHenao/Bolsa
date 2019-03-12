@@ -150,13 +150,16 @@ public class Mercado implements Serializable {
 	
 	public Usuario buscarUsuario(String id) throws EUsuario {
 		int i = 0 ;
-		while(i < usuarios.length) {
-			if(usuarios[i].getId().compareTo(id)==0) {
-				return usuarios[i];
-			}
-			else i++;
+		while(i<usuarios.length && usuarios[i].getId().compareTo(id)!=0) {
+			i++;
 		}
-		throw new EUsuario("No se pudo encontrar el usuario.");
+		if (i<usuarios.length) {
+			return usuarios[i];
+		}else {
+			throw new EUsuario("No se pudo encontrar el usuario.");
+		}
+			
+		
 	}
 	
 	public Inversion buscarInversion(String codigo) throws EInversion {
