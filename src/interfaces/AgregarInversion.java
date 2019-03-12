@@ -69,11 +69,25 @@ public class AgregarInversion extends JFrame {
 		contentPane.add(btnAddAcc);
 		
 		JButton btnAddBono = new JButton("Agregar Bono");
+		btnAddBono.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//m.addBono(codigo.getText(), "idProv", "accion", Integer.parseInt(precio.getText()));
+				//UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
+				dispose();
+			}
+		});
 		btnAddBono.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAddBono.setBounds(190, 387, 173, 55);
 		contentPane.add(btnAddBono);
 		
 		JButton btnAddCripto = new JButton("Agregar Criptomoneda");
+		btnAddCripto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				m.addCriptoMoneda(codigo.getText(), "idProv", "accion", Integer.parseInt(precio.getText()));
+				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
+				dispose();
+			}
+		});
 		btnAddCripto.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAddCripto.setBounds(190, 473, 173, 55);
 		contentPane.add(btnAddCripto);
@@ -120,5 +134,6 @@ public class AgregarInversion extends JFrame {
 		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnRegresar.setBounds(10, 11, 110, 26);
 		contentPane.add(btnRegresar);
+		
 	}
 }

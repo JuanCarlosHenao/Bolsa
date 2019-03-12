@@ -1,27 +1,28 @@
 package interfaces;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
+import Principal.Inversion;
 import Principal.Mercado;
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.ScrollPaneConstants;
+import javax.swing.border.LineBorder;
 
 public class InversionesMercado extends JFrame implements Serializable {
 
@@ -78,10 +79,17 @@ public class InversionesMercado extends JFrame implements Serializable {
 		
 
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 107, 514, 201);
+		scrollPane.setBounds(10, 108, 514, 201);
 		contentPane.add(scrollPane);
 		
+		ArrayList<Inversion> lista = new ArrayList<Inversion>();
+		
+		
 		tabla = new JTable();
+		tabla.setEnabled(false);
+		tabla.setBorder(new LineBorder(new Color(0, 0, 0)));
+		tabla.setFillsViewportHeight(true);
+		tabla.setToolTipText("");
 		tabla.setColumnSelectionAllowed(true);
 		tabla.setCellSelectionEnabled(true);
 		tabla.setFont(new Font("Tahoma", Font.ITALIC, 12));
@@ -90,6 +98,7 @@ public class InversionesMercado extends JFrame implements Serializable {
 		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tabla.setModel(new DefaultTableModel(
 			new Object[][] {
+				{"Tipo", "Código", "Proveedor", "Precio"},
 				{"Tipo", "Código", "Proveedor", "Precio"},
 			},
 			new String[] {

@@ -75,23 +75,16 @@ public class InversionesUsuario extends JFrame implements Serializable {
 		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		tabla.setModel(new DefaultTableModel(
 			new Object[][] {
-				{"Tipo", "Código", "Proveedor", "Precio"},
+				{"Tipo", "C\u00F3digo", "Proveedor", "Precio"},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
+				{null, null, null, null},
 			},
 			new String[] {
-				"Tipo", "Código", "Proveedor", "Precio"
+				"Tipo", "C\u00F3digo", "Proveedor", "Precio"
 			}
-		) {
-			/**
-			 * 
-			 */
-			private static final long serialVersionUID = 1L;
-			Class[] columnTypes = new Class[] {
-				String.class, Object.class, Object.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
+		));
 		scrollPane.setColumnHeaderView(tabla);
 		
 		
