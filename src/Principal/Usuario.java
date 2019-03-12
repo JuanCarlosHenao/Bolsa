@@ -15,7 +15,7 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 		this.correo = correo;
 		this.id = id;
-		cuentas=null;
+		cuentas=new CuentaBancaria(0,id);;
 	}
 	
 

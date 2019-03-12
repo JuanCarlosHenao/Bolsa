@@ -17,6 +17,7 @@ public class Mercado implements Serializable {
 	
 	public Mercado(String nombre) {
 		this.nombre = nombre;
+		inversiones=new Inversion[0];
 	}
 	
 	// ---------- GETTERS & SETTERS ---------- //
