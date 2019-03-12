@@ -3,6 +3,8 @@ package interfaces;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
@@ -10,15 +12,16 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Principal.Mercado;
 import Principal.Usuario;
+
 
 import java.awt.SystemColor;
 import java.awt.event.ActionEvent;
@@ -28,12 +31,14 @@ import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
 
+
 public class InversionesUsuario extends JFrame implements Serializable {
 
 	private JPanel contentPane;
 	private Mercado mercado;
-	private JTable tabla;
 	private Usuario usuario;
+	private JTable tabla;
+
 	private JTable tabloide;
 
 	/**
@@ -44,7 +49,9 @@ public class InversionesUsuario extends JFrame implements Serializable {
 			public void run() {
 				try {
 					Mercado m = new Mercado();
+
 					Usuario u=new Usuario();
+
 					InversionesUsuario frame = new InversionesUsuario(m,u);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -57,17 +64,18 @@ public class InversionesUsuario extends JFrame implements Serializable {
 	/**
 	 * Create the frame.
 	 */
-	public InversionesUsuario(Mercado m, Usuario user ) {
+	
+
+	public InversionesUsuario(Mercado m , Usuario u) {
 		this.setTitle("Inversiones");
 		mercado = m;
-		usuario=user;
+		usuario = u;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 687, 531);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
 		
 		ImageIcon imagen = new ImageIcon("Icons\\\\back.png");
 		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));

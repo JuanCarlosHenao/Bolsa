@@ -1,29 +1,24 @@
 package interfaces;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
-import Principal.Main;
 import Principal.Mercado;
 import Principal.Usuario;
 import Principal.UtilidadesFicheros;
-
-
-import javax.swing.JPasswordField;
-import java.awt.event.ActionListener;
-import java.io.Serializable;
-import java.awt.event.ActionEvent;
 
 public class RegistroUsuario extends JFrame implements Serializable  {
 	private JPanel contra;
@@ -32,6 +27,7 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 	private JTextField email;
 	private JPasswordField passwordField;
 	private Usuario user;
+	private JPanel contentPane;
 	private  Mercado mercado;
 
 	/**
@@ -130,5 +126,6 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 		passwordField = new JPasswordField();
 		passwordField.setBounds(242, 426, 130, 36);
 		contra.add(passwordField);
+		
 	}
 }
