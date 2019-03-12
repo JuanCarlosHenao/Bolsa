@@ -434,6 +434,19 @@ public class Mercado implements Serializable {
 		return sinComprar;
 	}
 	
+	public Inversion[] inversionesPorUsuario(String idUsuario) {
+		Inversion[] propias=new Inversion[0];
+		for (int i=0;i<inversiones.length;i++) {
+			if (inversiones[i].getIdUsu().compareTo(idUsuario)==0) {
+				propias=Arrays.copyOf(propias, propias.length+1);
+				propias[propias.length-1]=inversiones[i];
+
+			}
+		}
+		return propias;
+		
+	}
+	
 	
 	
 	

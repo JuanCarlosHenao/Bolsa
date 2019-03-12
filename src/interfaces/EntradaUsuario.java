@@ -129,7 +129,9 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		JButton btnVerListaDe = new JButton("Inversiones de mercado\r\n");
 		btnVerListaDe.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//InversionesMercado im= new InversionesMercado();
+				InversionesMercado im= new InversionesMercado(mercado,usuario);
+				im.setVisible(true);
+				dispose();
 				
 				
 			}
@@ -141,7 +143,7 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		JButton btnMisInversiones = new JButton("Consultar mis inversiones\r\n");
 		btnMisInversiones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InversionesUsuario iu= new InversionesUsuario(m);
+				InversionesUsuario iu= new InversionesUsuario(m,usuario);
 				iu.setVisible(true);
 				dispose();
 			}

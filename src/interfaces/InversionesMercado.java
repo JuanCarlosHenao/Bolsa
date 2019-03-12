@@ -17,11 +17,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
+import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
 import Principal.Inversion;
 import Principal.Mercado;
+import Principal.Usuario;
+import Principal.UtilidadesFicheros;
+
 import javax.swing.border.LineBorder;
 
 public class InversionesMercado extends JFrame implements Serializable {
@@ -29,6 +33,12 @@ public class InversionesMercado extends JFrame implements Serializable {
 	private JPanel contentPane;
 	private Mercado mercado ;
 	private JTable tabla;
+	private Usuario usuario;
+	private  JTable tabloide;
+	/**
+	 * @wbp.nonvisual location=113,84
+	 */
+	
 
 	/**
 	 * Launch the application.
@@ -38,8 +48,12 @@ public class InversionesMercado extends JFrame implements Serializable {
 			public void run() {
 				try {
 					Mercado m = new Mercado();
-					InversionesMercado frame = new InversionesMercado(m);
+					Usuario u=new Usuario();
+					InversionesMercado frame = new InversionesMercado(m,u);
 					frame.setVisible(true);
+					
+					
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -50,10 +64,11 @@ public class InversionesMercado extends JFrame implements Serializable {
 	/**
 	 * Create the frame.
 	 */
-	public InversionesMercado(Mercado m) {
+	public InversionesMercado(Mercado m, Usuario user) {
 		mercado = m ;
+		usuario=user;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 450);
+		setBounds(100, 100, 682, 514);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -64,6 +79,9 @@ public class InversionesMercado extends JFrame implements Serializable {
 		JButton btnRegresar = new JButton("Regresar", img);
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				EntradaUsuario eu=new EntradaUsuario(mercado,usuario);
+				eu.setVisible(true);
+				dispose();
 			}
 		});
 		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
@@ -77,44 +95,33 @@ public class InversionesMercado extends JFrame implements Serializable {
 		contentPane.add(lblInversionesDelMercado);
 		
 		
+		
+		
+		// para crear la tabla 
+		
+		String [] columns= new String[] {"Tipo", "Codigo", "Proveedor", "Precio"};
+		Object datos [][]= new Object[m.getInversiones().length][4];
+		for (int i=0;i<m.getInversiones().length;i++) {
+			datos[i][0]=m.getInversiones()[i].getTipo();
+			datos[i][1]=m.getInversiones()[i].getCodigo();
+			datos[i][2]=m.getInversiones()[i].getIdProv();
+			datos[i][3]=m.getInversiones()[i].getPrecioBase();
+			
+		}
+		tabloide= new JTable(datos, columns);
+		JScrollPane panel = new JScrollPane(tabloide);
+		panel.setBounds(37, 97, 590, 322);
+		contentPane.add(panel);
+		this.setTitle("Inversiones");
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.setVisible(true);
+		//--------------------------------
+		
+		
+		
+		
 
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 108, 514, 201);
-		contentPane.add(scrollPane);
 		
-		ArrayList<Inversion> lista = new ArrayList<Inversion>();
-		
-		
-		tabla = new JTable();
-		tabla.setEnabled(false);
-		tabla.setBorder(new LineBorder(new Color(0, 0, 0)));
-		tabla.setFillsViewportHeight(true);
-		tabla.setToolTipText("");
-		tabla.setColumnSelectionAllowed(true);
-		tabla.setCellSelectionEnabled(true);
-		tabla.setFont(new Font("Tahoma", Font.ITALIC, 12));
-		tabla.setSurrendersFocusOnKeystroke(true);
-		tabla.setForeground(new Color(0, 0, 0));
-		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tabla.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Tipo", "Código", "Proveedor", "Precio"},
-				{"Tipo", "Código", "Proveedor", "Precio"},
-			},
-			new String[] {
-				"Tipo", "Código", "Proveedor", "Precio"
-			}
-		){
-			private static final long serialVersionUID = 1L;
-			Class[] columnTypes = new Class[] {
-				String.class, Object.class, Object.class, Object.class
-			};
-			public Class getColumnClass(int columnIndex) {
-				return columnTypes[columnIndex];
-			}
-		});
-		scrollPane.setColumnHeaderView(tabla);
 		
 	}
-
 }
