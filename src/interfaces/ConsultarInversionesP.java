@@ -48,6 +48,7 @@ public class ConsultarInversionesP extends JFrame implements Serializable{
 	 * Create the frame.
 	 */
 	public ConsultarInversionesP(Mercado m , Proveedor p) {
+		setTitle("Inversiones");
 		mercado = m;
 		proveedor = p;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

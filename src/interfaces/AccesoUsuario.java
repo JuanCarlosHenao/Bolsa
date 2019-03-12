@@ -1,27 +1,23 @@
 package interfaces;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Excepciones.EUsuario;
-import Principal.Main;
 import Principal.Mercado;
-
-import java.awt.Font;
-import javax.swing.JTextPane;
-import javax.swing.SwingConstants;
-import javax.swing.JLabel;
-import java.awt.event.ActionListener;
-import java.io.Serializable;
-import java.awt.event.ActionEvent;
 
 public class AccesoUsuario extends JFrame implements Serializable  {
 	

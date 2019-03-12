@@ -103,8 +103,6 @@ public class RegistroProveedor extends JFrame implements Serializable {
 				AccesoProveedor ap=new AccesoProveedor(mercado);
 				ap.setVisible(true);
 				dispose();
-				
-				
 			}
 		});
 		btnRegistroP.setForeground(Color.BLACK);

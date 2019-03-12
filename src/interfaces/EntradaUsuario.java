@@ -53,7 +53,7 @@ public class EntradaUsuario extends JFrame implements Serializable {
 	public EntradaUsuario(Mercado m, Usuario u) {
 		mercado = m;
 		usuario =u;
-		this.setTitle("EntradaUsuario");
+		this.setTitle("Inversiones");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contentPane = new JPanel();
@@ -186,7 +186,6 @@ public class EntradaUsuario extends JFrame implements Serializable {
 				VenderInversionU vi = new VenderInversionU(mercado,usuario);
 				vi.setVisible(true);
 				dispose();
-
 			}
 		});
 		btnVenderInv.setFont(new Font("Tahoma", Font.PLAIN, 12));

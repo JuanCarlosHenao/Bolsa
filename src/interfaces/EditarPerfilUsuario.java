@@ -54,6 +54,7 @@ public class EditarPerfilUsuario extends JFrame implements Serializable {
 	 * Create the frame.
 	 */
 	public EditarPerfilUsuario(Mercado m,Usuario user) {
+		setTitle("Inversiones");
 		mercado=m;
 		usuario=user;
 		
