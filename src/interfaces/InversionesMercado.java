@@ -18,6 +18,7 @@ import javax.swing.border.EmptyBorder;
 
 import Principal.Mercado;
 import Principal.Usuario;
+import javax.swing.table.DefaultTableModel;
 
 public class InversionesMercado extends JFrame implements Serializable {
 
@@ -82,7 +83,7 @@ public class InversionesMercado extends JFrame implements Serializable {
 		JLabel lblInversionesDelMercado = new JLabel("Inversiones del Mercado");
 		lblInversionesDelMercado.setHorizontalAlignment(SwingConstants.CENTER);
 		lblInversionesDelMercado.setFont(new Font("Tahoma", Font.BOLD, 18));
-		lblInversionesDelMercado.setBounds(129, 55, 268, 26);
+		lblInversionesDelMercado.setBounds(212, 59, 268, 26);
 		contentPane.add(lblInversionesDelMercado);
 		
 		
@@ -101,6 +102,13 @@ public class InversionesMercado extends JFrame implements Serializable {
 		}
 		
 		tabloide= new JTable(datos, columns);
+		tabloide.setModel(new DefaultTableModel(
+			new Object[][] {
+			},
+			new String[] {
+				"Tipo", "Codigo", "Proveedor", "Precio", "ID User"
+			}
+		));
 		JScrollPane panel = new JScrollPane(tabloide);
 		panel.setBounds(37, 97, 590, 322);
 		contentPane.add(panel);

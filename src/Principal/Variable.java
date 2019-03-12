@@ -60,7 +60,6 @@ public class Variable implements Serializable {
 	}
 	public void recibeInflacion(double nuevaInflacion) {
 		inflacion=nuevaInflacion;
-		
 	}
 	
 	
@@ -92,32 +91,21 @@ public class Variable implements Serializable {
 		         	System.out.println(siguiente);
 		         	bw.newLine();
 		         	contador++;
-	        	 
 	         }
-	        
-	           
 	      }
 	      catch (IOException e) {
 	            System.out.println("no se puede abrir el fichero ");
-	        } finally {
-	           try {
-	           // Nuevamente aprovechamos el finally para 
-	           // asegurarnos que se cierra el fichero.
-	        	  bw.close();
-	              fw.close();
-	            
-	           } catch (IOException e2) {
-	               System.out.println("no se pudo cerrar bien el fichero  ");
-	           }
-	        }
-		
-		
-		
+	      } finally {
+	    	  try {
+	          // Nuevamente aprovechamos el finally para 
+	          // asegurarnos que se cierra el fichero.
+	        	bw.close();
+	            fw.close();
+	          } catch (IOException e2) {
+	             System.out.println("no se pudo cerrar bien el fichero  ");
+	          }
+	      }
 	}
-	
-	
-	
-	
 	// ------------ METODOS ----------- //
 	
 	
