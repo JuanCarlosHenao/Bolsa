@@ -53,6 +53,7 @@ public class AgregarInversion extends JFrame implements Serializable {
 	 * @param prov 
 	 */
 	public AgregarInversion(Mercado m, Proveedor prov) {
+		setTitle("Inversiones");
 		mercado = m ;
 		proveedor=prov;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -107,7 +107,6 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 				mercado.addUsuario(user);
 				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
 				AccesoUsuario au=new AccesoUsuario(mercado);
-				
 				au.setVisible(true);
 				dispose();
 				}

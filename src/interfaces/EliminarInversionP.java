@@ -50,6 +50,7 @@ public class EliminarInversionP extends JFrame implements Serializable{
 	 * Create the frame.
 	 */
 	public EliminarInversionP(Mercado m , Proveedor p) {
+		setTitle("Inversiones\r\n");
 		mercado = m;
 		proveedor = p;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

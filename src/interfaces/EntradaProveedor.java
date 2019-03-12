@@ -50,6 +50,7 @@ public class EntradaProveedor extends JFrame implements Serializable {
 	 * Create the frame.
 	 */
 	public EntradaProveedor(Mercado m, Proveedor p) {
+		setTitle("Inversiones");
 		mercado = m;
 		prov=p;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -1,12 +1,10 @@
 package interfaces;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.Serializable;
-import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,18 +13,11 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
-import javax.swing.SwingUtilities;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
-import Principal.Inversion;
 import Principal.Mercado;
 import Principal.Usuario;
-import Principal.UtilidadesFicheros;
-
-import javax.swing.border.LineBorder;
 
 public class InversionesMercado extends JFrame implements Serializable {
 
@@ -101,13 +92,14 @@ public class InversionesMercado extends JFrame implements Serializable {
 		
 		String [] columns= new String[] {"Tipo", "Codigo", "Proveedor", "Precio"};
 		Object datos [][]= new Object[m.getInversiones().length][4];
+		
 		for (int i=0;i<m.getInversiones().length;i++) {
 			datos[i][0]=m.getInversiones()[i].getTipo();
 			datos[i][1]=m.getInversiones()[i].getCodigo();
 			datos[i][2]=m.getInversiones()[i].getIdProv();
 			datos[i][3]=m.getInversiones()[i].getPrecioBase();
-			
 		}
+		
 		tabloide= new JTable(datos, columns);
 		JScrollPane panel = new JScrollPane(tabloide);
 		panel.setBounds(37, 97, 590, 322);

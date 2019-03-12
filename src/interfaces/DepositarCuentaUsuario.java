@@ -50,6 +50,7 @@ public class DepositarCuentaUsuario extends JFrame implements Serializable {
 	 * @param usuario 
 	 */
 	public DepositarCuentaUsuario(Mercado m, Usuario usuario) {
+		setTitle("Inversiones");
 		mercado=m;
 		user=usuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

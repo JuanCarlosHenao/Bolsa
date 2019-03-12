@@ -49,6 +49,7 @@ public class VenderInversionU extends JFrame implements Serializable{
 	 * Create the frame.
 	 */
 	public VenderInversionU(Mercado m , Usuario u) {
+		setTitle("Inversiones");
 		mercado = m ;
 		usuario = u;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
