@@ -1,22 +1,25 @@
 package interfaces;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Mercado;
 
-public class EditarPerfilUsuario extends JFrame {
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+
+public class EditarPerfilUsuario extends JFrame implements Serializable {
 
 	private JPanel contentPane;
 	private JTextField nombre;
@@ -33,7 +36,7 @@ public class EditarPerfilUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Mercado m = new Mercado();
+					Mercado m=new Mercado();
 					EditarPerfilUsuario frame = new EditarPerfilUsuario(m);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -47,7 +50,8 @@ public class EditarPerfilUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public EditarPerfilUsuario(Mercado m) {
-		mercado = m ;
+		mercado=m;
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 700);
 		contentPane = new JPanel();
@@ -103,6 +107,7 @@ public class EditarPerfilUsuario extends JFrame {
 		JButton btnGuardar = new JButton("Guardar y actualizar datos");
 		btnGuardar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 			}
 		});
 		btnGuardar.setBounds(167, 554, 189, 37);

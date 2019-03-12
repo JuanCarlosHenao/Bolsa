@@ -15,6 +15,8 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 
 import Principal.Mercado;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class EntradaUsuario extends JFrame implements Serializable {
 
@@ -91,6 +93,14 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		contentPane.add(lblNewLabel_1);
 		
 		JButton btnDepositarEnLa = new JButton("Depositar en la cuenta");
+		btnDepositarEnLa.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DepositarCuentaUsuario du=new DepositarCuentaUsuario(m);
+				du.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnDepositarEnLa.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnDepositarEnLa.setBounds(176, 343, 186, 61);
 		contentPane.add(btnDepositarEnLa);
@@ -101,11 +111,23 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		contentPane.add(btnVerListaDe);
 		
 		JButton btnMisInversiones = new JButton("Consultar mis inversiones\r\n");
+		btnMisInversiones.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
 		btnMisInversiones.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnMisInversiones.setBounds(176, 438, 186, 61);
 		contentPane.add(btnMisInversiones);
 		
 		JButton btnEditarMiPerfil = new JButton("Editar mi perfil");
+		btnEditarMiPerfil.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EditarPerfilUsuario eu=new EditarPerfilUsuario(m);
+				eu.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnEditarMiPerfil.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnEditarMiPerfil.setBounds(176, 257, 186, 55);
 		contentPane.add(btnEditarMiPerfil);

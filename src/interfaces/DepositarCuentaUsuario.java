@@ -1,5 +1,6 @@
 package interfaces;
 
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -7,15 +8,16 @@ import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Mercado;
+
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
+import javax.swing.JCheckBox;
 
 public class DepositarCuentaUsuario extends JFrame {
 
@@ -31,7 +33,7 @@ public class DepositarCuentaUsuario extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Mercado m = new Mercado();
+					Mercado m=new Mercado();
 					DepositarCuentaUsuario frame = new DepositarCuentaUsuario(m);
 					frame.setVisible(true);
 				} catch (Exception e) {
@@ -45,7 +47,7 @@ public class DepositarCuentaUsuario extends JFrame {
 	 * Create the frame.
 	 */
 	public DepositarCuentaUsuario(Mercado m) {
-		mercado = m;
+		mercado=m;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
 		contentPane = new JPanel();
