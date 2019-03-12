@@ -16,13 +16,16 @@ import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Mercado;
+import Principal.Usuario;
+import Principal.UtilidadesFicheros;
 
 public class DepositarCuentaUsuario extends JFrame implements Serializable {
 
 	private JPanel contentPane;
-	private JTextField textField;
+	private JTextField muestraSaldo;
 	private Mercado mercado;
 	private JTextField deposito;
+	private Usuario user;
 
 	/**
 	 * Launch the application.
@@ -76,13 +79,21 @@ public class DepositarCuentaUsuario extends JFrame implements Serializable {
 		lblSaldoActual.setBounds(97, 107, 99, 26);
 		contentPane.add(lblSaldoActual);
 		
-		textField = new JTextField();
-		textField.setEditable(false);
-		textField.setBounds(256, 110, 117, 22);
-		contentPane.add(textField);
-		textField.setColumns(10);
+		muestraSaldo = new JTextField(Float.toString(user.getCuentas().getSaldo()));
+		muestraSaldo.setEditable(false);
+		muestraSaldo.setBounds(256, 110, 117, 22);
+		contentPane.add(muestraSaldo);
+		muestraSaldo.setColumns(10);
 		
 		JButton btnNewButton = new JButton("Actualizar y guardar cambios");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				user.getCuentas().setSaldo(Integer.parseInt(deposito.getText()));
+				UtilidadesFicheros.escribirDatosMercado("mercado.datos", m);
+				
+			
+			}
+		});
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnNewButton.setBounds(136, 249, 197, 23);
 		contentPane.add(btnNewButton);

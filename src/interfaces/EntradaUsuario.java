@@ -106,6 +106,13 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		contentPane.add(btnDepositarEnLa);
 		
 		JButton btnVerListaDe = new JButton("Inversiones de mercado\r\n");
+		btnVerListaDe.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//InversionesMercado im= new InversionesMercado();
+				
+				
+			}
+		});
 		btnVerListaDe.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnVerListaDe.setBounds(176, 529, 186, 55);
 		contentPane.add(btnVerListaDe);
@@ -113,6 +120,9 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		JButton btnMisInversiones = new JButton("Consultar mis inversiones\r\n");
 		btnMisInversiones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				InversionesUsuario iu= new InversionesUsuario(m);
+				iu.setVisible(true);
+				dispose();
 			}
 		});
 		btnMisInversiones.setFont(new Font("Tahoma", Font.PLAIN, 12));

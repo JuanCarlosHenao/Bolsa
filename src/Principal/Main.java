@@ -21,9 +21,12 @@ public class Main implements Serializable {
 			
 				Mercado mercado=new Mercado();
 				mercado = UtilidadesFicheros.leerDatosMercado("mercado.datos");
+				
 				System.out.println(mercado.getUsuarios()[0].getNombre());
 				System.out.println(mercado.getProveedores()[0].getNombre());
-				System.out.println(mercado.getInversiones()[0].getCodigo());
+				System.out.println(mercado.getProveedores()[1].getNombre());
+				System.out.println(mercado.getUsuarios()[0].getCuentas().getSaldo());
+				//System.out.println(mercado.getInversiones()[0].getCodigo());
 				
 				
 				// se debe crear una nuve ventana de la principal del mercado y pasarle merca
