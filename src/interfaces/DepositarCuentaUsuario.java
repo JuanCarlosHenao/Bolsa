@@ -1,25 +1,23 @@
 package interfaces;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Mercado;
 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import javax.swing.JTextField;
-import javax.swing.JCheckBox;
-
-public class DepositarCuentaUsuario extends JFrame {
+public class DepositarCuentaUsuario extends JFrame implements Serializable {
 
 	private JPanel contentPane;
 	private JTextField textField;
@@ -84,25 +82,20 @@ public class DepositarCuentaUsuario extends JFrame {
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		JCheckBox chckbxNewCheckBox = new JCheckBox("Hacer deposito");
-		chckbxNewCheckBox.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		chckbxNewCheckBox.setBounds(168, 151, 134, 23);
-		contentPane.add(chckbxNewCheckBox);
-		
 		JButton btnNewButton = new JButton("Actualizar y guardar cambios");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnNewButton.setBounds(127, 279, 197, 23);
+		btnNewButton.setBounds(136, 249, 197, 23);
 		contentPane.add(btnNewButton);
 		
 		deposito = new JTextField();
-		deposito.setBounds(168, 217, 117, 31);
+		deposito.setBounds(174, 182, 117, 31);
 		contentPane.add(deposito);
 		deposito.setColumns(10);
 		
 		JLabel lblIngreseMontoA = new JLabel("Ingrese monto a depositar :");
 		lblIngreseMontoA.setHorizontalAlignment(SwingConstants.CENTER);
 		lblIngreseMontoA.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		lblIngreseMontoA.setBounds(146, 199, 167, 14);
+		lblIngreseMontoA.setBounds(149, 157, 167, 14);
 		contentPane.add(lblIngreseMontoA);
 		
 	}

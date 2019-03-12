@@ -1,35 +1,32 @@
 package interfaces;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.SwingConstants;
+import javax.swing.ListSelectionModel;
 import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 
 import Principal.Mercado;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import javax.swing.JLabel;
+import javax.swing.SwingConstants;
+import javax.swing.ScrollPaneConstants;
 
-import javax.swing.JSpinner;
-import javax.swing.table.DefaultTableModel;
-import javax.swing.ListSelectionModel;
-
-public class InversionesUsuario extends JFrame implements Serializable {
+public class InversionesMercado extends JFrame implements Serializable {
 
 	private JPanel contentPane;
-	private Mercado mercado;
+	private Mercado mercado ;
 	private JTable tabla;
 
 	/**
@@ -40,7 +37,7 @@ public class InversionesUsuario extends JFrame implements Serializable {
 			public void run() {
 				try {
 					Mercado m = new Mercado();
-					InversionesUsuario frame = new InversionesUsuario(m);
+					InversionesMercado frame = new InversionesMercado(m);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -52,27 +49,40 @@ public class InversionesUsuario extends JFrame implements Serializable {
 	/**
 	 * Create the frame.
 	 */
-	public InversionesUsuario(Mercado m) {
-		this.setTitle("Inversiones");
-		mercado = m;
+	public InversionesMercado(Mercado m) {
+		mercado = m ;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 300);
+		setBounds(100, 100, 550, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblMenDeInversiones = new JLabel("Men\u00FA mis inversiones");
-		lblMenDeInversiones.setBounds(177, 11, 171, 14);
-		lblMenDeInversiones.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMenDeInversiones.setFont(new Font("Tahoma", Font.BOLD, 14));
-		contentPane.add(lblMenDeInversiones);
+		ImageIcon imagen = new ImageIcon("Icons\\\\back.png");
+		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));
+		JButton btnRegresar = new JButton("Regresar", img);
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnRegresar.setBounds(10, 11, 110, 26);
+		contentPane.add(btnRegresar);
 		
+		JLabel lblInversionesDelMercado = new JLabel("Inversiones del Mercado");
+		lblInversionesDelMercado.setHorizontalAlignment(SwingConstants.CENTER);
+		lblInversionesDelMercado.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblInversionesDelMercado.setBounds(129, 55, 268, 26);
+		contentPane.add(lblInversionesDelMercado);
+		
+		
+
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 49, 514, 201);
+		scrollPane.setBounds(10, 107, 514, 201);
 		contentPane.add(scrollPane);
 		
 		tabla = new JTable();
+		tabla.setColumnSelectionAllowed(true);
 		tabla.setCellSelectionEnabled(true);
 		tabla.setFont(new Font("Tahoma", Font.ITALIC, 12));
 		tabla.setSurrendersFocusOnKeystroke(true);
@@ -85,10 +95,7 @@ public class InversionesUsuario extends JFrame implements Serializable {
 			new String[] {
 				"Tipo", "Código", "Proveedor", "Precio"
 			}
-		) {
-			/**
-			 * 
-			 */
+		){
 			private static final long serialVersionUID = 1L;
 			Class[] columnTypes = new Class[] {
 				String.class, Object.class, Object.class, Object.class
@@ -99,17 +106,6 @@ public class InversionesUsuario extends JFrame implements Serializable {
 		});
 		scrollPane.setColumnHeaderView(tabla);
 		
-		ImageIcon imagen = new ImageIcon("C:\\\\Users\\\\LUIS FELIPE\\\\estructuras\\\\Bolsa\\\\Icons\\\\back.png");
-		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));
-		JButton btnRegresar = new JButton("Regresar", img);
-		btnRegresar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnRegresar.setBounds(10, 11, 110, 26);
-		contentPane.add(btnRegresar);
-		
-		
 	}
+
 }
