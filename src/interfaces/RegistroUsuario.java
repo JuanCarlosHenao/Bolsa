@@ -107,8 +107,7 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 		btnRegistroP.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				
-				user=new Usuario(nbEmpresa.getText(),email.getText(),identi.getText());
+				user=new Usuario(nbEmpresa.getText(), email.getText(), identi.getText());
 				mercado.addUsuario(user);
 				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
 				AccesoUsuario au=new AccesoUsuario(mercado);
@@ -116,9 +115,6 @@ public class RegistroUsuario extends JFrame implements Serializable  {
 				au.setVisible(true);
 				dispose();
 				}
-				
-				
-				
 			
 		});
 		btnRegistroP.setForeground(Color.BLACK);

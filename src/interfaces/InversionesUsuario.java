@@ -5,6 +5,8 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.io.Serializable;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -17,6 +19,9 @@ import javax.swing.border.LineBorder;
 
 import Principal.Mercado;
 import java.awt.SystemColor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JSpinner;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ListSelectionModel;
@@ -94,6 +99,16 @@ public class InversionesUsuario extends JFrame implements Serializable {
 		});
 		scrollPane.setColumnHeaderView(tabla);
 		
+		ImageIcon imagen = new ImageIcon("C:\\\\Users\\\\LUIS FELIPE\\\\estructuras\\\\Bolsa\\\\Icons\\\\back.png");
+		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));
+		JButton btnRegresar = new JButton("Regresar", img);
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnRegresar.setBounds(10, 11, 110, 26);
+		contentPane.add(btnRegresar);
 		
 		
 	}
