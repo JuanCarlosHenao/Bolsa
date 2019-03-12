@@ -22,6 +22,7 @@ public class DepositarCuentaUsuario extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private Mercado mercado;
+	private JTextField deposito;
 
 	/**
 	 * Launch the application.
@@ -88,8 +89,19 @@ public class DepositarCuentaUsuario extends JFrame {
 		
 		JButton btnNewButton = new JButton("Actualizar y guardar cambios");
 		btnNewButton.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnNewButton.setBounds(139, 279, 197, 23);
+		btnNewButton.setBounds(127, 279, 197, 23);
 		contentPane.add(btnNewButton);
+		
+		deposito = new JTextField();
+		deposito.setBounds(168, 217, 117, 31);
+		contentPane.add(deposito);
+		deposito.setColumns(10);
+		
+		JLabel lblIngreseMontoA = new JLabel("Ingrese monto a depositar :");
+		lblIngreseMontoA.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIngreseMontoA.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblIngreseMontoA.setBounds(146, 199, 167, 14);
+		contentPane.add(lblIngreseMontoA);
 		
 	}
 }
