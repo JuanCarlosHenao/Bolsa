@@ -1,36 +1,31 @@
 package interfaces;
 
-import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.Serializable;
 
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import Principal.Mercado;
 import Principal.Proveedor;
 import Principal.UtilidadesFicheros;
 
-import javax.swing.JLabel;
-import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.io.Serializable;
-
-import javax.swing.JTextField;
-import javax.swing.JButton;
-import java.awt.Color;
-import javax.swing.JToggleButton;
-import javax.swing.JPasswordField;
-import javax.swing.JEditorPane;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
 public class RegistroProveedor extends JFrame implements Serializable {
 
 	private JPanel contra;
 	private JTextField nbEmpresa;
 	private JTextField identi;
+	private JPanel contentPane;
 	private JPasswordField passwordField;
 	private Mercado mercado;
 	private Proveedor prove;

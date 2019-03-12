@@ -66,7 +66,7 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		JButton btnRegresar = new JButton("Regresar", img);
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				EntradaUsuario eu=new EntradaUsuario(mercado,usuario);
+				AccesoUsuario eu=new AccesoUsuario(mercado);
 				eu.setVisible(true);
 				dispose();
 			}
@@ -123,7 +123,7 @@ public class EntradaUsuario extends JFrame implements Serializable {
 			}
 		});
 		btnDepositarEnLa.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnDepositarEnLa.setBounds(176, 343, 186, 61);
+		btnDepositarEnLa.setBounds(300, 254, 186, 61);
 		contentPane.add(btnDepositarEnLa);
 		
 		JButton btnVerListaDe = new JButton("Inversiones de mercado\r\n");
@@ -135,19 +135,19 @@ public class EntradaUsuario extends JFrame implements Serializable {
 			}
 		});
 		btnVerListaDe.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnVerListaDe.setBounds(176, 529, 186, 55);
+		btnVerListaDe.setBounds(300, 384, 186, 55);
 		contentPane.add(btnVerListaDe);
 		
 		JButton btnMisInversiones = new JButton("Consultar mis inversiones\r\n");
 		btnMisInversiones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				InversionesUsuario iu= new InversionesUsuario(m);
+				InversionesUsuario iu= new InversionesUsuario(m,u);
 				iu.setVisible(true);
 				dispose();
 			}
 		});
 		btnMisInversiones.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnMisInversiones.setBounds(176, 438, 186, 61);
+		btnMisInversiones.setBounds(45, 381, 186, 61);
 		contentPane.add(btnMisInversiones);
 		
 		JButton btnEditarMiPerfil = new JButton("Editar mi perfil");
@@ -160,7 +160,32 @@ public class EntradaUsuario extends JFrame implements Serializable {
 			}
 		});
 		btnEditarMiPerfil.setFont(new Font("Tahoma", Font.PLAIN, 12));
-		btnEditarMiPerfil.setBounds(176, 257, 186, 55);
+		btnEditarMiPerfil.setBounds(45, 257, 186, 55);
 		contentPane.add(btnEditarMiPerfil);
+		
+		JButton btnComprarInv = new JButton("Comprar Inversion\r\n");
+		btnComprarInv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ComprarInversionU ci = new ComprarInversionU(mercado,usuario);
+				ci.setVisible(true);
+				dispose();
+			}
+		});
+		btnComprarInv.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnComprarInv.setBounds(45, 514, 186, 55);
+		contentPane.add(btnComprarInv);
+		
+		JButton btnVenderInv = new JButton("Vender Inversion");
+		btnVenderInv.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				VenderInversionU vi = new VenderInversionU(mercado,usuario);
+				vi.setVisible(true);
+				dispose();
+
+			}
+		});
+		btnVenderInv.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		btnVenderInv.setBounds(300, 511, 186, 61);
+		contentPane.add(btnVenderInv);
 	}
 }

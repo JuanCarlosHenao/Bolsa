@@ -1,6 +1,5 @@
 package interfaces;
 
-import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -12,22 +11,21 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
-import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.ListSelectionModel;
+import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
 
 import Principal.Mercado;
 import Principal.Usuario;
 
-public class InversionesUsuario extends JFrame implements Serializable {
+public class ComprarInversionU extends JFrame implements Serializable {
 
 	private JPanel contentPane;
 	private Mercado mercado;
 	private Usuario usuario;
-	private JTable tabla;
+	private JTable table;
+	private JTextField idInv;
 
 	/**
 	 * Launch the application.
@@ -38,7 +36,7 @@ public class InversionesUsuario extends JFrame implements Serializable {
 				try {
 					Mercado m = new Mercado();
 					Usuario u = new Usuario();
-					InversionesUsuario frame = new InversionesUsuario(m,u);
+					ComprarInversionU frame = new ComprarInversionU(m,u);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -50,12 +48,11 @@ public class InversionesUsuario extends JFrame implements Serializable {
 	/**
 	 * Create the frame.
 	 */
-	public InversionesUsuario(Mercado m , Usuario u) {
-		this.setTitle("Inversiones");
+	public ComprarInversionU(Mercado m , Usuario u) {
 		mercado = m;
 		usuario = u;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 550, 300);
+		setBounds(100, 100, 550, 450);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -75,37 +72,33 @@ public class InversionesUsuario extends JFrame implements Serializable {
 		btnRegresar.setBounds(10, 11, 110, 26);
 		contentPane.add(btnRegresar);
 		
-		JLabel lblMenDeInversiones = new JLabel("Men\u00FA mis inversiones");
-		lblMenDeInversiones.setBounds(177, 11, 171, 14);
-		lblMenDeInversiones.setHorizontalAlignment(SwingConstants.CENTER);
-		lblMenDeInversiones.setFont(new Font("Tahoma", Font.BOLD, 14));
-		contentPane.add(lblMenDeInversiones);
+		JLabel lblComprarInversiones = new JLabel("Comprar Inversiones");
+		lblComprarInversiones.setHorizontalAlignment(SwingConstants.CENTER);
+		lblComprarInversiones.setFont(new Font("Tahoma", Font.BOLD, 18));
+		lblComprarInversiones.setBounds(136, 47, 284, 26);
+		contentPane.add(lblComprarInversiones);
 		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(10, 49, 514, 201);
-		contentPane.add(scrollPane);
+		table = new JTable();
+		table.setBounds(10, 107, 514, 175);
+		contentPane.add(table);
 		
-		tabla = new JTable();
-		tabla.setCellSelectionEnabled(true);
-		tabla.setFont(new Font("Tahoma", Font.ITALIC, 12));
-		tabla.setSurrendersFocusOnKeystroke(true);
-		tabla.setForeground(new Color(0, 0, 0));
-		tabla.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-		tabla.setModel(new DefaultTableModel(
-			new Object[][] {
-				{"Tipo", "C\u00F3digo", "Proveedor", "Precio"},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-				{null, null, null, null},
-			},
-			new String[] {
-				"Tipo", "C\u00F3digo", "Proveedor", "Precio"
-			}
-		));
-		scrollPane.setColumnHeaderView(tabla);
+		JLabel lblIngreseElId = new JLabel("Ingrese el ID de la inversi\u00F3n que desea comprar :");
+		lblIngreseElId.setHorizontalAlignment(SwingConstants.CENTER);
+		lblIngreseElId.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		lblIngreseElId.setBounds(48, 312, 284, 14);
+		contentPane.add(lblIngreseElId);
 		
+		idInv = new JTextField();
+		idInv.setHorizontalAlignment(SwingConstants.CENTER);
+		idInv.setBounds(342, 310, 139, 20);
+		contentPane.add(idInv);
+		idInv.setColumns(10);
 		
+		JButton btnComprarInv = new JButton("Comprar Inversi\u00F3n");
+		btnComprarInv.setFont(new Font("Tahoma", Font.PLAIN, 14));
+		btnComprarInv.setBounds(199, 363, 166, 34);
+		contentPane.add(btnComprarInv);
 		
 	}
+
 }

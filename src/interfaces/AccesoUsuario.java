@@ -134,8 +134,6 @@ public class AccesoUsuario extends JFrame implements Serializable  {
 				RegistroUsuario ru=new RegistroUsuario(mercado);
 				ru.setVisible(true);
 				dispose();
-				
-				
 			}
 		});
 		btnNewButton_1.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 14));

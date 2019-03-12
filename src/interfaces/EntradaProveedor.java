@@ -104,6 +104,10 @@ public class EntradaProveedor extends JFrame implements Serializable {
 		btnMisInversiones.setBackground(Color.WHITE);
 		btnMisInversiones.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				ConsultarInversionesP ci = new ConsultarInversionesP(mercado,prov);
+				ci.setVisible(true);
+				dispose();
+
 			}
 		});
 		btnMisInversiones.setFont(new Font("Tahoma", Font.BOLD, 12));
@@ -127,8 +131,9 @@ public class EntradaProveedor extends JFrame implements Serializable {
 		JButton btnEliminarInversion = new JButton("Eliminar inversion");
 		btnEliminarInversion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//EliminarInversion ei= new EliminarInversion(m);
-				
+				EliminarInversionP ei = new EliminarInversionP(mercado, prov);
+				ei.setVisible(true);
+				dispose();
 			}
 		});
 		btnEliminarInversion.setBackground(Color.WHITE);

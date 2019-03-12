@@ -137,7 +137,7 @@ public class AccesoProveedor extends JFrame implements Serializable {
 			}
 		});
 		btnNewButton_1.setFont(new Font("MS Reference Sans Serif", Font.PLAIN, 14));
-		btnNewButton_1.setBounds(218, 498, 113, 42);
+		btnNewButton_1.setBounds(199, 498, 148, 42);
 		contentPane.add(btnNewButton_1);
 		
 		contraseña = new JPasswordField();
