@@ -35,7 +35,8 @@ public class DepositarCuentaUsuario extends JFrame implements Serializable {
 			public void run() {
 				try {
 					Mercado m=new Mercado();
-					DepositarCuentaUsuario frame = new DepositarCuentaUsuario(m);
+					Usuario u=new Usuario();
+					DepositarCuentaUsuario frame = new DepositarCuentaUsuario(m,u);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,9 +47,11 @@ public class DepositarCuentaUsuario extends JFrame implements Serializable {
 
 	/**
 	 * Create the frame.
+	 * @param usuario 
 	 */
-	public DepositarCuentaUsuario(Mercado m) {
+	public DepositarCuentaUsuario(Mercado m, Usuario usuario) {
 		mercado=m;
+		user=usuario;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 500, 400);
 		contentPane = new JPanel();
@@ -61,13 +64,16 @@ public class DepositarCuentaUsuario extends JFrame implements Serializable {
 		JButton btnRegresar = new JButton("Regresar", img);
 		btnRegresar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				EntradaUsuario eu=new EntradaUsuario(mercado,user);
+				eu.setVisible(true);
+				dispose();
 			}
 		});
 		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
 		btnRegresar.setBounds(10, 11, 110, 26);
 		contentPane.add(btnRegresar);
 		
-		JLabel lblDepositoEnLa = new JLabel("Deposito en la Cuenta Bancaria");
+		JLabel lblDepositoEnLa = new JLabel("Deposito en la de "+user.getNombre());
 		lblDepositoEnLa.setHorizontalAlignment(SwingConstants.CENTER);
 		lblDepositoEnLa.setFont(new Font("Tahoma", Font.BOLD, 18));
 		lblDepositoEnLa.setBounds(77, 48, 339, 26);

@@ -15,7 +15,7 @@ public class Usuario implements Serializable {
 		this.nombre = nombre;
 		this.correo = correo;
 		this.id = id;
-		cuentas=new CuentaBancaria(0,id);;
+		cuentas=new CuentaBancaria(5000,id);;
 	}
 	
 
@@ -23,6 +23,12 @@ public class Usuario implements Serializable {
 	// ----------- GETTERS & SETTERS ---------- //
 	
 	
+	public Usuario() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+
 	public String getNombre() {
 		return nombre;
 	}

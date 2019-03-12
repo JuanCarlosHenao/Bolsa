@@ -4,6 +4,7 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.Serializable;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,15 +17,18 @@ import javax.swing.border.EmptyBorder;
 
 import Principal.Inversion;
 import Principal.Mercado;
+import Principal.Proveedor;
 import Principal.UtilidadesFicheros;
 
-public class AgregarInversion extends JFrame {
+public class AgregarInversion extends JFrame implements Serializable {
 
 	private JPanel contentPane;
 	private Mercado mercado;
 	private Inversion inv;
 	private JTextField codigo;
 	private JTextField precio;
+	private Proveedor proveedor;
+	
 
 	/**
 	 * Launch the application.
@@ -34,7 +38,8 @@ public class AgregarInversion extends JFrame {
 			public void run() {
 				try {
 					Mercado m = new Mercado();
-					AgregarInversion frame = new AgregarInversion(m);
+					Proveedor p=new Proveedor();
+					AgregarInversion frame = new AgregarInversion(m,p);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -45,9 +50,11 @@ public class AgregarInversion extends JFrame {
 
 	/**
 	 * Create the frame.
+	 * @param prov 
 	 */
-	public AgregarInversion(Mercado m) {
+	public AgregarInversion(Mercado m, Proveedor prov) {
 		mercado = m ;
+		proveedor=prov;
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 600);
 		contentPane = new JPanel();
@@ -55,13 +62,30 @@ public class AgregarInversion extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		ImageIcon imagen = new ImageIcon("Icons\\\\back.png");
+		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));
+		JButton btnRegresar = new JButton("Regresar", img);
+		btnRegresar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				EntradaProveedor p=new EntradaProveedor(mercado,proveedor);
+				p.setVisible(true);
+				dispose();
+			}
+		});
+		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		btnRegresar.setBounds(10, 11, 110, 26);
+		contentPane.add(btnRegresar);
+		
 		JButton btnAddAcc = new JButton("Agregar Accion");
 		btnAddAcc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				m.addAccion(codigo.getText(), "idProv", "accion", Integer.parseInt(precio.getText()));
+				m.addAccion(codigo.getText(), proveedor.getId(), "Accion", Integer.parseInt(precio.getText()));
 				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
-				// POP-UP DE CREACION EXITOSA
+				AgregarInversion ai=new AgregarInversion(mercado,proveedor);
+				ai.setVisible(true);
 				dispose();
+				// POP-UP DE CREACION EXITOSA
+				
 			}
 		});
 		btnAddAcc.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -69,11 +93,31 @@ public class AgregarInversion extends JFrame {
 		contentPane.add(btnAddAcc);
 		
 		JButton btnAddBono = new JButton("Agregar Bono");
+		btnAddBono.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mercado.addBono(codigo.getText(), proveedor.getId(), "Bono",Integer.parseInt(precio.getText()) );
+				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
+				AgregarInversion ai=new AgregarInversion(mercado,proveedor);
+				ai.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnAddBono.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAddBono.setBounds(190, 387, 173, 55);
 		contentPane.add(btnAddBono);
 		
 		JButton btnAddCripto = new JButton("Agregar Criptomoneda");
+		btnAddCripto.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				mercado.addCriptoMoneda(codigo.getText(), proveedor.getId(), "Criptomoneda",Integer.parseInt(precio.getText()) );
+				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
+				AgregarInversion ai=new AgregarInversion(mercado,proveedor);
+				ai.setVisible(true);
+				dispose();
+				
+			}
+		});
 		btnAddCripto.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		btnAddCripto.setBounds(190, 473, 173, 55);
 		contentPane.add(btnAddCripto);
@@ -110,15 +154,6 @@ public class AgregarInversion extends JFrame {
 		lblAgregarUnaInversin.setBounds(166, 31, 207, 26);
 		contentPane.add(lblAgregarUnaInversin);
 		
-		ImageIcon imagen = new ImageIcon("Icons\\\\back.png");
-		ImageIcon img = new ImageIcon(imagen.getImage().getScaledInstance(23, 23, java.awt.Image.SCALE_DEFAULT));
-		JButton btnRegresar = new JButton("Regresar", img);
-		btnRegresar.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-			}
-		});
-		btnRegresar.setFont(new Font("Tahoma", Font.PLAIN, 10));
-		btnRegresar.setBounds(10, 11, 110, 26);
-		contentPane.add(btnRegresar);
+	
 	}
 }

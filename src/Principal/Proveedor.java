@@ -13,6 +13,10 @@ public class Proveedor implements Serializable {
 		this.id = id;
 	}
 	
+	public Proveedor() {
+		// TODO Auto-generated constructor stub
+	}
+
 	// ----------- GETTERS & SETTERS ----------- //
 	public String getNombre() {
 		return nombre;
