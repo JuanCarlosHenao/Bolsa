@@ -17,7 +17,7 @@ public abstract class Inversion implements Serializable {
 		this.idProv = idProv;
 		this.tipo = tipo;
 		this.precioBase = precioBase;
-		idUsu="";
+		
 	}
 	// ---------- GETTERS & SETTERS ---------- //
 	public String getCodigo() {

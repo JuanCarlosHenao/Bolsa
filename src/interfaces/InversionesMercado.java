@@ -91,24 +91,20 @@ public class InversionesMercado extends JFrame implements Serializable {
 		
 		// para crear la tabla 
 		
-		String [] columns= new String[] {"Tipo", "Codigo", "Proveedor", "Precio"};
-		Object datos [][]= new Object[m.getInversiones().length][4];
+		String [] columns= new String[] {"Tipo", "Codigo", "Proveedor", "Precio", " id User"};
+		Object datos [][]= new Object[m.getInversiones().length][5];
 		
 		for (int i=0;i<m.getInversiones().length;i++) {
 			datos[i][0]=m.getInversiones()[i].getTipo();
 			datos[i][1]=m.getInversiones()[i].getCodigo();
 			datos[i][2]=m.getInversiones()[i].getIdProv();
 			datos[i][3]=m.getInversiones()[i].getPrecioBase();
+			datos[i][4]=m.getInversiones()[i].getIdUsu();
+			
 		}
 		
 		tabloide= new JTable(datos, columns);
-		tabloide.setModel(new DefaultTableModel(
-			new Object[][] {
-			},
-			new String[] {
-				"Tipo", "Codigo", "Proveedor", "Precio", "ID User"
-			}
-		));
+		
 		JScrollPane panel = new JScrollPane(tabloide);
 		panel.setBounds(37, 97, 590, 322);
 		contentPane.add(panel);

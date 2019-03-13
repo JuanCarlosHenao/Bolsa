@@ -18,11 +18,14 @@ public class Mercado implements Serializable {
 	public Mercado(String nombre) {
 		this.nombre = nombre;
 		inversiones=new Inversion[0];
+		
 	}
 	
 	// ---------- GETTERS & SETTERS ---------- //
 	
 	public Mercado() {
+		variables[0]=new Variable();
+		variables[1]=new Variable();
 		// TODO Auto-generated constructor stub
 	}
 
@@ -389,12 +392,18 @@ public class Mercado implements Serializable {
 	
 
 		// ----- HACER UNA INVERSION
-	public void realizarInversion(String idUsuario, String idInversion) throws EInversion {
+	public void realizarInversion(String idUsuario, String idInversion) throws EInversion, EUsuario {
 		Inversion voyAComprar=buscarInversion(idInversion);
-		if (voyAComprar.getIdUsu()==null) {
-			voyAComprar.setIdUsu(idUsuario);
+		Usuario comprador=buscarUsuario(idUsuario);
+		if (voyAComprar.getPrecioBase()<comprador.getCuentas().getSaldo()) {
+			if (voyAComprar.getIdUsu()==null) {
+				voyAComprar.setIdUsu(idUsuario);
+			}else {
+				throw new EInversion("La inversion ya tiene dueño ");
+			}
+			
 		}else {
-			throw new EInversion("La inversion ya tiene dueño ");
+			throw new EInversion("Saldo insuficiente para comprar la accion");
 		}
 	}
 	
@@ -402,20 +411,20 @@ public class Mercado implements Serializable {
 	public void actualizarVariables() {
 		
 		
-		
-			variables[1]=new Variable();
-			variables[1].set$dolar();
-			variables[1].set$petroleo();
-			variables[1].setInflacion();
-			
 			variables[0].recibeDolar(variables[1].get$dolar());
 			variables[0].recibeInflacion(variables[1].getInflacion());
 			variables[0].recibePetroleo(variables[1].get$petroleo());
+		
 			
-			variables[1]=new Variable();
 			variables[1].set$dolar();
 			variables[1].set$petroleo();
 			variables[1].setInflacion();
+			
+			
+			//variables[1]=new Variable();
+			/*variables[1].set$dolar();
+			variables[1].set$petroleo();
+			variables[1].setInflacion();*/
 			
 
 	}
@@ -458,6 +467,15 @@ public class Mercado implements Serializable {
 		return propiasPro;
 		
 		
+	}
+	
+	public void venderInversion(String idInversion, String idUsuario) throws EInversion, EUsuario {
+		//Inversion[] seva=inversionesPorUsuario(idUsuario);
+		Inversion sefue=buscarInversion(idInversion);
+		sefue.setIdUsu(null);
+		Usuario vende=buscarUsuario(idUsuario);
+		vende.getCuentas().setSaldo((float) sefue.getPrecioBase());
+	
 	}
 	
 	

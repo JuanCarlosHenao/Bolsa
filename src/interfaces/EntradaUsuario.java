@@ -3,6 +3,7 @@ package interfaces;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.io.IOException;
 import java.io.Serializable;
 
 import javax.swing.ImageIcon;
@@ -17,6 +18,7 @@ import javax.swing.border.LineBorder;
 
 import Principal.Mercado;
 import Principal.Usuario;
+import Principal.UtilidadesFicheros;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
@@ -171,9 +173,16 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		JButton btnComprarInv = new JButton("Comprar Inversion\r\n");
 		btnComprarInv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				ComprarInversionU ci = new ComprarInversionU(mercado,usuario);
-				ci.setVisible(true);
-				dispose();
+				ComprarInversionU ci;
+				try {
+					ci = new ComprarInversionU(mercado,usuario);
+					ci.setVisible(true);
+					dispose();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
 			}
 		});
 		btnComprarInv.setFont(new Font("Tahoma", Font.PLAIN, 12));
@@ -183,7 +192,9 @@ public class EntradaUsuario extends JFrame implements Serializable {
 		JButton btnVenderInv = new JButton("Vender Inversion");
 		btnVenderInv.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
 				VenderInversionU vi = new VenderInversionU(mercado,usuario);
+				UtilidadesFicheros.escribirDatosMercado("mercado.datos", mercado);
 				vi.setVisible(true);
 				dispose();
 			}
