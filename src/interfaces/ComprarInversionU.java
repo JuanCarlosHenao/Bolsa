@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -154,7 +155,7 @@ public class ComprarInversionU extends JFrame implements Serializable {
 					
 				} catch (EInversion e) {
 					// TODO Auto-generated catch block
-					e.getMessage()
+					JOptionPane.showMessageDialog(btnComprarInv, "Saldo insuficiente");
 				} catch (EUsuario e1) {
 					// TODO Auto-generated catch block
 					e1.printStackTrace();

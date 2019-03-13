@@ -92,29 +92,45 @@ public class Mercado implements Serializable {
 		proveedores[proveedores.length-1] = p;
 	}
 	
-	public void addAccion(String codigo, String idProv, String tipo, double precioBase) {
+	public void addAccion(String codigo, String idProv, String tipo, double precioBase) throws EInversion {
+		
 		if(inversiones == null) {
 			inversiones = new Inversion[1];
 		} else {
-			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
+			if(buscarInversion(codigo)!=null) {
+				Arrays.copyOf(inversiones, inversiones.length+1);
+			}else {
+				throw new EInversion("");
+			}
+			
 		}
+		
 		inversiones[inversiones.length-1] = new Accion(codigo, idProv, tipo, precioBase);
 	}
 	
-	public void addCriptoMoneda(String codigo, String idProv, String tipo, double precioBase) {
+	public void addCriptoMoneda(String codigo, String idProv, String tipo, double precioBase) throws EInversion {
 		if(inversiones == null) {
 			inversiones = new Inversion[1];
 		} else {
-			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
+			if(buscarInversion(codigo)!=null) {
+				Arrays.copyOf(inversiones, inversiones.length+1);
+			}else {
+				throw new EInversion("");
+			}
+			
 		}
 		inversiones[inversiones.length-1] = new CriptoMoneda(codigo, idProv, tipo, precioBase);
 	}
 	
-	public void addBono(String codigo, String idProv, String tipo, double precioBase) {
+	public void addBono(String codigo, String idProv, String tipo, double precioBase) throws EInversion {
 		if(inversiones == null) {
 			inversiones = new Inversion[1];
 		} else {
-			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
+			if(buscarInversion(codigo)!=null) {
+				Arrays.copyOf(inversiones, inversiones.length+1);
+			}else {
+				throw new EInversion("");
+			}
 		}
 		inversiones[inversiones.length-1] = new Bono(codigo, idProv, tipo, precioBase);
 	}
@@ -479,7 +495,18 @@ public class Mercado implements Serializable {
 	}
 	
 	
-	
+	public void eliminarInversion(String codigo) {
+		Inversion[] nuevaLista = new Inversion[inversiones.length-1];
+		int cont = 0 ;
+		for(int i = 0 ; i < inversiones.length; i++) {
+			if(inversiones[i].getCodigo().compareTo(codigo)!=0) {
+				nuevaLista[cont]=inversiones[i]; 
+				cont++;
+			}
+		}
+		inversiones = Arrays.copyOf(nuevaLista, nuevaLista.length);
+		
+	}
 	
 	
 	
