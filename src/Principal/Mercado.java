@@ -92,45 +92,29 @@ public class Mercado implements Serializable {
 		proveedores[proveedores.length-1] = p;
 	}
 	
-	public void addAccion(String codigo, String idProv, String tipo, double precioBase) throws EInversion {
-		
+	public void addAccion(String codigo, String idProv, String tipo, double precioBase) {
 		if(inversiones == null) {
 			inversiones = new Inversion[1];
 		} else {
-			if(buscarInversion(codigo)!=null) {
-				Arrays.copyOf(inversiones, inversiones.length+1);
-			}else {
-				throw new EInversion("");
-			}
-			
+			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
 		}
-		
 		inversiones[inversiones.length-1] = new Accion(codigo, idProv, tipo, precioBase);
 	}
 	
-	public void addCriptoMoneda(String codigo, String idProv, String tipo, double precioBase) throws EInversion {
+	public void addCriptoMoneda(String codigo, String idProv, String tipo, double precioBase) {
 		if(inversiones == null) {
 			inversiones = new Inversion[1];
 		} else {
-			if(buscarInversion(codigo)!=null) {
-				Arrays.copyOf(inversiones, inversiones.length+1);
-			}else {
-				throw new EInversion("");
-			}
-			
+			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
 		}
 		inversiones[inversiones.length-1] = new CriptoMoneda(codigo, idProv, tipo, precioBase);
 	}
 	
-	public void addBono(String codigo, String idProv, String tipo, double precioBase) throws EInversion {
+	public void addBono(String codigo, String idProv, String tipo, double precioBase) {
 		if(inversiones == null) {
 			inversiones = new Inversion[1];
 		} else {
-			if(buscarInversion(codigo)!=null) {
-				Arrays.copyOf(inversiones, inversiones.length+1);
-			}else {
-				throw new EInversion("");
-			}
+			inversiones = Arrays.copyOf(inversiones, inversiones.length+1);
 		}
 		inversiones[inversiones.length-1] = new Bono(codigo, idProv, tipo, precioBase);
 	}
